@@ -919,7 +919,7 @@ summary.header__icon {
 .new-arrival-box {
   width: calc(25% - 12px);
   background: var(--button-background-color);
-  padding: 50px 30px 0px 30px;
+  padding: 50px 30px 30px;
   border-radius: var(--column-box-border-radius);
   display: flex;
   flex-wrap: wrap;
@@ -1317,6 +1317,7 @@ ul.slick-dots {
 }
 .card-product-price {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 12px;
   width: 100%;
@@ -1681,6 +1682,9 @@ footer .footer-social-icon {
     max-width: 100%;
     padding-left: 30px;
     padding-right: 30px;
+  }
+  .new-arrival-product .card-product-item{
+    padding-bottom: 120px;
   }
 }
 
