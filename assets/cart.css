@@ -39,7 +39,7 @@
 
 .cart-variant {
   font-size: 13px;
-  color: #rgba(var(--color-foreground), 1);;
+  color: rgba(var(--color-foreground), 1);
 }
 
 .cart-price,
