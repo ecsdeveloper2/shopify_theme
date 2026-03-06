@@ -93,14 +93,63 @@
         "usp_block_3",
         "usp_block_4"
       ],
+      "disabled": true,
       "settings": {
         "color_scheme": "scheme-2"
+      }
+    },
+    "usps_bar_Un7YQy": {
+      "type": "usps-bar",
+      "blocks": {
+        "usp_block_EtydpN": {
+          "type": "usp_block",
+          "settings": {
+            "icon_svg": "",
+            "heading": "🚚 Free Shipping",
+            "description": "Free shipping on all orders over $50 with fast and reliable delivery."
+          }
+        },
+        "usp_block_B9BarC": {
+          "type": "usp_block",
+          "settings": {
+            "icon_svg": "",
+            "heading": "🔄 Easy Returns",
+            "description": "Hassle-free returns within 30 days for a smooth shopping experience."
+          }
+        },
+        "usp_block_p8gnLp": {
+          "type": "usp_block",
+          "settings": {
+            "icon_svg": "",
+            "heading": "🔒 Secure Checkout",
+            "description": "Your payments are protected with advanced security and trusted gateways."
+          }
+        },
+        "usp_block_Yn3KL4": {
+          "type": "usp_block",
+          "settings": {
+            "icon_svg": "",
+            "heading": "⭐ Premium Quality",
+            "description": "Carefully selected products made with high-quality materials."
+          }
+        }
+      },
+      "block_order": [
+        "usp_block_EtydpN",
+        "usp_block_B9BarC",
+        "usp_block_p8gnLp",
+        "usp_block_Yn3KL4"
+      ],
+      "name": "USPs Bar",
+      "settings": {
+        "color_scheme": ""
       }
     }
   },
   "order": [
     "top_header",
     "header",
-    "usps_bar"
+    "usps_bar",
+    "usps_bar_Un7YQy"
   ]
 }
