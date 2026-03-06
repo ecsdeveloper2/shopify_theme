@@ -1,0 +1,189 @@
+{%- style -%}
+:root {
+    --column-box-border-radius: {{ section.settings.border_radius }}px;
+  }
+{%- endstyle -%}
+{%- liquid
+  assign show_desktop_slider = false
+  if section.settings.enable_desktop_slider
+    assign show_desktop_slider = true
+  endif
+-%}
+<div class="column-box-section section-{{ section.id }}-padding color-{{ section.settings.color_scheme }}">
+    <div class="page-container">
+        {% render 'section-header' %}
+        <div class="column-box-item{% if show_desktop_slider %} swiper swiper-slider-{{ section.id }}{% else %} item-gap d-flex flex-wrap{% endif %}">
+            {% if show_desktop_slider %}
+                <div class="swiper-wrapper">
+            {% endif %}
+            {% for block in section.blocks %}
+                {% if show_desktop_slider %}
+                <div class="swiper-slide">
+            {% endif %}
+            <div class="column-box{% unless show_desktop_slider %} col-{{ section.settings.columns_show }} col-{{ section.settings.columns_show }}-lg col-{{ section.settings.columns_show }}-sm col-{{ section.settings.columns_show }}-xs{% endunless %}">
+                <div class="column" style="background: {% if block.settings.background_image %}url('{{ block.settings.background_image }}') no-repeat center/cover{% else %}var(--box-background){% endif %};">
+                    <div class="column-content">
+                        {% if block.settings.subheading %}
+                        <span class="category-label">{{ block.settings.subheading }}</span>
+                        {% endif %}
+                        {% if block.settings.heading %}
+                        <h3><a href="{{ block.settings.button_url }}" class="h2">{{ block.settings.heading }}</a></h3>
+                        {% endif %}
+                        {% if block.settings.description %}
+                        {{ block.settings.description | class_list:'h3' }}
+                        {% endif %}
+                        <a href="{{ block.settings.button_url }}" class="btn btn-secondary">
+                            <span class="span-title">{{ block.settings.button_label }}</span>
+                            <span class="svg-wrapper">
+                                {{- 'right-long-arrow.svg' | inline_asset_content -}}
+                            </span>
+                        </a>
+                    </div>
+                    {% if block.settings.image %}
+                    <div class="column-image image-box">
+                        <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.image.alt }}" class="img-fluid" />
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% if show_desktop_slider %}
+            </div>
+            {% endif %}
+            {% endfor %}
+            {% if show_desktop_slider %}
+                </div>
+            {% endif %}
+            {% if show_desktop_slider %}
+                {% render 'slider-scroll-bar', section: section %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% if show_desktop_slider %}
+    {% render 'slider-js',section: section %}
+{% endif %}
+{% schema %}
+{
+    "name": "Our Categories",
+    "tag": "section",
+    "class": "section",
+    "disabled_on": {
+        "groups": ["header", "footer"]
+    },
+    "settings": [
+        {
+            "type": "color_scheme",
+            "id": "color_scheme",
+            "label": "Color scheme",
+            "default": "scheme-1"
+        },
+        {
+            "type": "range",
+            "id": "border_radius",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "unit": "px",
+            "label": "Border Radius",
+            "default": 10
+        },
+        {
+            "type": "range",
+            "id": "columns_show",
+            "max": 4,
+            "min": 1,
+            "default":3,
+            "step": 0.1,
+            "label": "Column Show"
+        },
+        {
+            "type": "checkbox",
+            "id": "enable_desktop_slider",
+            "label": "t:sections.featured-collection.settings.enable_desktop_slider.label",
+            "default": false
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Section Title",
+            "default": "Our Categories"
+        },
+        {
+            "type": "richtext",
+            "id": "description",
+            "label": "Section Description",
+            "default": "<p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.</p>"
+        },
+        {
+            "type":"url",
+            "id":"view_all_link",
+            "label":"View all link"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "column",
+            "name": "Column",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "background_image",
+                    "label": "Background Image"
+                },
+                {
+                    "type": "text",
+                    "id": "subheading",
+                    "label": "Subheading",
+                    "default": "Subheading"
+                },
+                {
+                    "type": "text",
+                    "id": "heading",
+                    "label": "Heading",
+                    "default": "Heading"
+                },
+                {
+                    "type": "richtext",
+                    "id": "description",
+                    "label": "Description",
+                    "default": "<p>Description</p>",
+                    "info": "Add a description for the column."
+                },
+                {
+                    "type": "url",
+                    "id": "button_url",
+                    "label": "Button URL"
+                },
+                {
+                    "type": "text",
+                    "id": "button_label",
+                    "label": "Button Label",
+                    "default": "Shop Now",
+                    "info": "Label for the button that links to the URL specified above."
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Our Categories",
+            "blocks": [
+                {
+                    "type": "column"
+                },
+                {
+                    "type": "column"
+                },
+                {
+                    "type": "column"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

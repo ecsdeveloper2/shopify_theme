@@ -1,0 +1,225 @@
+<!doctype html>
+<html class="js" lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="">
+    <link rel="canonical" href="{{ canonical_url }}">
+
+    {%- if settings.favicon != blank -%}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+    {%- endif -%}
+    <title>
+      {{ page_title |  capitalize }}
+      {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+      {%- if current_page != 1 %} &ndash; Page {{ current_page |  capitalize }}{% endif -%}
+      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+    </title>
+
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}">
+    {% endif %}
+    {% render 'meta-tags' %}
+    {{ content_for_header }}
+    {%- unless settings.heading_font_family.system? and settings.body_font_family.system? and settings.subheading_font_family.system? -%}
+      <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+    {%- endunless -%}
+    {%- liquid
+      assign body_font_bold = settings.body_font_family | font_modify: 'weight', 'bold'
+      assign body_font_italic = settings.body_font_family | font_modify: 'style', 'italic'
+      assign body_font_bold_italic = body_font_bold | font_modify: 'style', 'italic'
+    %}
+    {% style %}
+    {{ settings.body_font_family | font_face: font_display: 'swap' }}
+      {{ body_font_bold | font_face: font_display: 'swap' }}
+      {{ body_font_italic | font_face: font_display: 'swap' }}
+      {{ body_font_bold_italic | font_face: font_display: 'swap' }}
+      {{ settings.heading_font_family | font_face: font_display: 'swap' }}
+      {{ settings.subheading_font_family | font_face: font_display: 'swap' }}
+    {% for scheme in settings.color_schemes -%}
+        {% assign scheme_classes = scheme_classes | append: ', .color-' | append: scheme.id %}
+        {% if forloop.index == 1 -%}
+          :root,
+        {%- endif %}
+        .color-{{ scheme.id }} {
+          --color-background: {{ scheme.settings.background.red }},{{ scheme.settings.background.green }},{{ scheme.settings.background.blue }};
+        {% if scheme.settings.background_gradient != empty %}
+          --gradient-background: {{ scheme.settings.background_gradient }};
+        {% else %}
+          --gradient-background: {{ scheme.settings.background }};
+        {% endif %}
+
+        {% liquid
+          assign background_color = scheme.settings.background
+          assign background_color_brightness = background_color | color_brightness
+          if background_color_brightness <= 26
+            assign background_color_contrast = background_color | color_lighten: 50
+          elsif background_color_brightness <= 65
+            assign background_color_contrast = background_color | color_lighten: 5
+          else
+            assign background_color_contrast = background_color | color_darken: 25
+          endif
+        %}
+
+        --color-foreground: {{ scheme.settings.text.red }},{{ scheme.settings.text.green }},{{ scheme.settings.text.blue }};
+        --color-background-contrast: {{ background_color_contrast.red }},{{ background_color_contrast.green }},{{ background_color_contrast.blue }};
+        --subheading-text-color:{{ scheme.settings.subheading_text_color }};
+        --box-background:{{ scheme.settings.box-background }};
+        --box-shadow:{{ scheme.settings.shadow.red }},{{ scheme.settings.shadow.green }},{{ scheme.settings.shadow.blue }};
+        --link-color: rgb({{ scheme.settings.link.rgb }});
+        --link-hover-color: rgb({{ scheme.settings.link_hover.rgb }});
+        --link-active-color: rgb({{ scheme.settings.link_active.rgb }});
+        --link-active-hover-color: rgb({{ scheme.settings.link_active_hover.rgb }});
+        --link-dark-mode-color: rgb({{ scheme.settings.link_dark_mode_color.rgb }});
+        --link-dark-mode-hover-color: rgb({{ scheme.settings.link_dark_mode_hover_color.rgb }});
+        --link-dark-mode-active-color: rgb({{ scheme.settings.link_dark_mode_active_color.rgb }});
+        --link-dark-mode-active-hover-color: rgb({{ scheme.settings.link_dark_mode_active_hover_color.rgb }});
+        --button-text-color: rgb({{ scheme.settings.button_label.rgb }});
+        --button-background-color: rgb({{ scheme.settings.button.rgb }});
+        --button-border-color: rgb({{ scheme.settings.secondary_button_label.rgb }});
+        --button-hover-text-color: rgb({{ scheme.settings.button_hover_text.rgb }});
+        --button-hover-background-color: rgb({{ scheme.settings.button_hover_background.rgb }});
+        --button-hover-border-color: rgb({{ scheme.settings.button_hover_border_color.rgb }});
+        --dark-mode-text-color: rgb({{ scheme.settings.dark_mode_text.rgb }});
+        --dark-mode-background-color: rgb({{ scheme.settings.dark_mode_background.rgb }});
+        --dark-mode-button-text-color: rgb({{ scheme.settings.dark_mode_button_label.rgb }});
+        --dark-mode-button-background-color: rgb({{ scheme.settings.dark_mode_button_background.rgb }});
+        --dark-mode-button-border-color: rgb({{ scheme.settings.dark_mode_button_border.rgb }});
+        --dark-mode-button-hover-text-color: rgb({{ scheme.settings.dark_mode_button_hover_text.rgb }});
+        --dark-mode-button-hover-background-color: rgb({{ scheme.settings.dark_mode_button_hover_background.rgb }});
+        --dark-mode-button-hover-border-color: rgb({{ scheme.settings.dark_mode_button_hover_border_color.rgb }});
+        --icon-color: rgb({{ scheme.settings.icon_color.rgb }});
+        --icon-hover-color: rgb({{ scheme.settings.icon_hover_color.rgb }});
+        --icon-dark-mode-color: rgb({{ scheme.settings.icon_dark_mode_color.rgb }});
+        --column-box-border-radius: 10px;
+      }
+      {% endfor %}
+      {{ scheme_classes | prepend: 'body' }} {
+        color: rgba(var(--color-foreground), 1);
+        background-color: rgb(var(--color-background));
+      }
+      {% render 'dark-mode' %}
+    :root{
+      /* general schema */
+      --logo-width: {{ settings.logo_width }};
+
+      /* typography style schema */
+      --heading-font-family: {{ settings.heading_font_family.family }}, {{ settings.heading_font_family.fallback_families }};
+      --heading-font-size: {{ settings.heading_font_size }}px;
+      --heading-font-weight: {{ settings.heading_font_weight }};
+      --heading-line-height: {{ settings.heading_line_height }}em;
+      --heading-letter-spacing: {{ settings.heading_letter_spacing }};
+      --heading-text-transform: {{ settings.heading_text_transform }};
+      --heading-text-align: {{ settings.heading-alignment }};
+      --subheading-font-family: {{ settings.subheading_font_family.family }}, {{ settings.subheading_font_family.fallback_families }};
+      --subheading-font-size: {{ settings.subheading_font_size }}px;
+      --subheading-font-weight: {{ settings.subheading_font_weight }};
+      --subheading-line-height: {{ settings.subheading_line_height }}em;
+      --subheading-letter-spacing: {{ settings.subheading_letter_spacing }};
+      --subheading-text-transform: {{ settings.subheading_text_transform }};
+      --subheading-text-align: {{ settings.subheading-alignment }};
+      --body-font-family: {{ settings.body_font_family.family }}, {{ settings.body_font_family.fallback_families }};
+      --body-font-size: {{ settings.body_font_size }}px;
+      --body-font-weight: {{ settings.body_font_weight }};
+      --body-line-height: {{ settings.body_line_height }}em;
+      --body-letter-spacing: {{ settings.body_letter_spacing }};
+      --body-text-transform: {{ settings.body_text_transform }};
+      --body-text-align: {{ settings.body-alignment }};
+      --link-color: {{ settings.link_color }};
+      --link-font-size: {{ settings.link_font_size }}px;
+      --link-active-color: {{ settings.link_active_color }};
+      --link-hover-color: {{ settings.link_hover_color }};
+      --link-hover-underline: {{ settings.link_hover_underline }};
+
+      /* layout style schema */
+      --spacing-sections: {{ settings.spacing_sections }}px;
+      --spacing-sections-tablet: {{ settings.spacing_sections_tablet }}px;
+      --spacing-sections-mobile: {{ settings.spacing_sections_mobile }}px;
+      --spacing_blocks: {{ settings.spacing_blocks }}px;
+
+      /* input style schema */
+      --input-background: {{ settings.input_background }};
+      --input-border: {{ settings.input_border.red }},{{ settings.input_border.green }},{{ settings.input_border.blue }};
+      --input-text: {{ settings.input_text }};
+      --input-font-size: {{ settings.input_font_size }}px;
+      --input-font-weight: {{ settings.input_font_weight }};
+      --input-line-height: {{ settings.input_line_height }};
+      --input-letter-spacing: {{ settings.input_letter_spacing }};
+      --input-placeholder-text-color: {{ settings.input_placeholder_text }};
+      --input-border-radius: {{ settings.input_border_radius }}px;
+      --input-border-width: {{ settings.input_border_width }}px;
+      --input-height: {{ settings.input_height }}px;
+
+       /* button schema */
+       --button-font-size: {{ settings.main_button_font_size }}px;
+      --button-font-weight: {{ settings.main_button_font_weight }};
+      --button-line-height: {{ settings.main_button_line_height }};
+      --button-letter-spacing: {{ settings.main_button_letter_spacing }};
+      --button-text-transform: {{ settings.main_button_text_transform }};
+      --button-text-align: {{ settings.main_button-alignment }};
+      --button-border-radius: {{ settings.main_button_border_radius }}px;
+      --button-border-width: {{ settings.main_button_border_width }}px;
+
+      /* mode schema */
+      --main_dark-mode-background: {{ settings.main_dark_mode_background }};
+      --main_dark-mode-text-color: {{ settings.main_dark_mode_text }};
+
+      /* sidebar schema */
+      --sidebar-background: {{ settings.sidebar_background }};
+      --sidebar-text: {{ settings.sidebar_text }};
+      --sidebar-link-color: {{ settings.sidebar_link_color }};
+      --sidebar-link-hover-color: {{ settings.sidebar_link_hover_color }};
+      --sidebar-link-active-color: {{ settings.sidebar_link_active_color }};
+      --sidebar-link-hover-underline: {{ settings.sidebar_link_hover_underline }};
+
+      /* message schema */
+      --success-message-color: {{ settings.success_message_color }};
+      --error-message-color: {{ settings.error_message_color }};
+      --warning-message-color: {{ settings.warning_message_color }};
+      --info-message-color: {{ settings.info_message_color }};
+
+      /* product card schema */
+      --original_price_color:{{ settings.original_price_color }};
+      --sale_price_color:{{ settings.sale_price_color }};
+    }
+    {% endstyle %}
+    {%- unless settings.body_font_family.system? -%}
+      <link rel="preload" as="font" href="{{ settings.body_font_family | font_url }}" type="font/woff2" crossorigin>
+    {%- endunless -%}
+    {%- unless settings.heading_font_family.system? -%}
+      <link rel="preload" as="font" href="{{ settings.heading_font_family | font_url }}" type="font/woff2" crossorigin>
+    {%- endunless -%}
+    {%- unless settings.subheading_font_family.system? -%}
+      <link rel="preload" as="font" href="{{ settings.subheading_font_family | font_url }}" type="font/woff2" crossorigin>
+    {%- endunless -%}
+    <script src="{{ 'details-disclosure.js' | asset_url }}" defer="defer"></script>
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    {{ 'style.css' | asset_url | stylesheet_tag }}
+	{{ 'cart.css' | asset_url | stylesheet_tag }}
+    {% if template == 'collection' %}
+      {{ 'collection-page.css' | asset_url | stylesheet_tag }}
+    {% endif %}
+    {{ 'slider-common.css' | asset_url | stylesheet_tag }}
+    {{ 'quick-model.css' | asset_url | stylesheet_tag }}
+    {{ 'general.min.css' | asset_url | stylesheet_tag }}
+    {{ 'dark-mode.css' | asset_url | stylesheet_tag }}
+    {{ 'predictive-search.css' | asset_url | stylesheet_tag }}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  </head>
+  <body class="gradient">
+    {% sections 'header-group' %}
+    <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
+      {{ content_for_layout }}
+    </main>
+    {% sections 'footer-group' %}
+    <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'dark-mode.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'global.js' | asset_url }}"></script>
+	
+	{% render 'mini-cart-drawer' %}
+  </body>
+</html>

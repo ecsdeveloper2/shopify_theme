@@ -1,0 +1,411 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner_slider": {
+      "type": "banner-slider",
+      "blocks": {
+        "banner_slider_item_kUCpHC": {
+          "type": "banner-slider-item",
+          "settings": {
+            "color_scheme": "",
+            "image": "shopify://shop_images/banner-image1.webp",
+            "image-mobile": "shopify://shop_images/banner-image1.webp",
+            "image_opacity": 0,
+            "link": "shopify://collections/herschel"
+          },
+          "blocks": {}
+        },
+        "banner_slider_item": {
+          "type": "banner-slider-item",
+          "settings": {
+            "color_scheme": "",
+            "image": "shopify://shop_images/banner-image2.webp",
+            "image-mobile": "shopify://shop_images/banner-image2.webp",
+            "image_opacity": 0,
+            "link": "shopify://collections/dr-martens"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "banner_slider_item_kUCpHC",
+        "banner_slider_item"
+      ],
+      "settings": {}
+    },
+    "new_arrival_J3Hxg7": {
+      "type": "new-arrival",
+      "settings": {
+        "title": "New arrival",
+        "image": "shopify://shop_images/home3_slide-item.webp",
+        "color_scheme": "scheme-1",
+        "collection": "puffer-coat",
+        "columns_show": 3.5,
+        "product_limit": 8,
+        "show_secondary_image": true,
+        "quick_add": true,
+        "shop_now": false
+      }
+    },
+    "best_selling_products_4pDCUz": {
+      "type": "best-selling-products",
+      "settings": {
+        "title": "Our Best Sellers",
+        "description": "<p>Shop our most popular picks, trusted by thousands of happy customers.These top sellers combine style, quality, and value you’ll love.</p>",
+        "view_all_link": "",
+        "columns_show": 4,
+        "collection": "all",
+        "color_scheme": "",
+        "show_secondary_image": true,
+        "quick_add": true,
+        "shop_now": false
+      }
+    },
+    "image_banner_rkMCY8": {
+      "type": "image-banner",
+      "name": "Image Banner",
+      "settings": {
+        "layout": "full_bleed",
+        "color_scheme": "",
+        "heading": "Where science meets nature to redefine skincare.",
+        "description": "<p>Our cutting-edge formulas, backed by clinical studies, bring you the latest in skin & hair care innovation.</p>",
+        "button_link": "#",
+        "button_text": "Shop Now",
+        "image": "shopify://shop_images/home3_slide-item.webp"
+      }
+    },
+    "category_section_jKKYNt": {
+      "type": "category-section",
+      "blocks": {
+        "category_item_g3VtAd": {
+          "type": "category_item",
+          "settings": {
+            "collection": "jacket",
+            "title": "",
+            "link": ""
+          }
+        },
+        "category_item_EdC94d": {
+          "type": "category_item",
+          "settings": {
+            "collection": "kid",
+            "title": "",
+            "link": ""
+          }
+        },
+        "category_item_8tGpqQ": {
+          "type": "category_item",
+          "settings": {
+            "collection": "puffer-coat",
+            "title": "",
+            "link": ""
+          }
+        },
+        "category_item_AWVpRL": {
+          "type": "category_item",
+          "settings": {
+            "collection": "sweater",
+            "title": "",
+            "link": ""
+          }
+        },
+        "category_item_8PpTcq": {
+          "type": "category_item",
+          "settings": {
+            "collection": "timberland",
+            "title": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "category_item_g3VtAd",
+        "category_item_EdC94d",
+        "category_item_8tGpqQ",
+        "category_item_AWVpRL",
+        "category_item_8PpTcq"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "title": "Our Top Collections",
+        "description": "<p>Discover products that fit your style and needs, neatly organized into easy-to-shop categories. From best-sellers to new arrivals, find exactly what you’re searching for in just a few clicks. Enjoy a seamless browsing experience designed for convenience. Shop with confidence and find your perfect match effortlessly.</p>",
+        "view_all_link": "",
+        "columns_show": 4,
+        "enable_desktop_slider": true
+      }
+    },
+    "our_categorys_Fyyicb": {
+      "type": "our-categorys",
+      "blocks": {
+        "column_LwWHbw": {
+          "type": "column",
+          "settings": {
+            "subheading": "Nutrition",
+            "heading": "Essentials",
+            "description": "<p>Explore our collection of essential items that.</p>",
+            "button_url": "",
+            "button_label": "Shop Now",
+            "image": "shopify://shop_images/category_image1.png"
+          }
+        },
+        "column_BQpirU": {
+          "type": "column",
+          "settings": {
+            "subheading": "Nutrition",
+            "heading": "Essentials",
+            "description": "<p>Explore our collection of essential items that.</p>",
+            "button_url": "",
+            "button_label": "Shop Now",
+            "image": "shopify://shop_images/home3_slide-item.webp"
+          }
+        }
+      },
+      "block_order": [
+        "column_LwWHbw",
+        "column_BQpirU"
+      ],
+      "name": "Our Categories",
+      "settings": {
+        "color_scheme": "",
+        "border_radius": 10,
+        "columns_show": 2,
+        "enable_desktop_slider": true,
+        "title": "Our Categories",
+        "description": "<p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.</p>",
+        "view_all_link": ""
+      }
+    },
+    "promo_banner_ga9rbY": {
+      "type": "promo-banner",
+      "name": "Promo Banner",
+      "settings": {
+        "color_scheme": "",
+        "heading": "Where science meets nature to redefine skincare.",
+        "description": "<p>Our cutting-edge formulas, backed by clinical studies, bring you the latest in skin & hair care innovation.</p>",
+        "button_link": "",
+        "button_text": "Shop Now",
+        "image": "shopify://shop_images/image-overlay.png"
+      }
+    },
+    "collection_tabbing_jaXyeV": {
+      "type": "collection-tabbing",
+      "blocks": {
+        "tab_NxqFGT": {
+          "type": "tab",
+          "settings": {
+            "collection": "jacket"
+          }
+        },
+        "tab_GwJGfe": {
+          "type": "tab",
+          "settings": {
+            "collection": "herschel"
+          }
+        },
+        "tab_VCErDK": {
+          "type": "tab",
+          "settings": {
+            "collection": "jacket"
+          }
+        },
+        "tab_y9PcyP": {
+          "type": "tab",
+          "settings": {
+            "collection": "kid"
+          }
+        },
+        "tab_QDJNjN": {
+          "type": "tab",
+          "settings": {
+            "collection": "nike"
+          }
+        }
+      },
+      "block_order": [
+        "tab_NxqFGT",
+        "tab_GwJGfe",
+        "tab_VCErDK",
+        "tab_y9PcyP",
+        "tab_QDJNjN"
+      ],
+      "name": "Collection Tabbing",
+      "settings": {
+        "title": "shop by Categories",
+        "color_scheme": "",
+        "columns_show": 4,
+        "show_secondary_image": true,
+        "quick_add": true,
+        "shop_now": false
+      }
+    },
+    "brand_logo_slider_btJUme": {
+      "type": "brand-logo-slider",
+      "blocks": {
+        "logo_rci36P": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/logo.webp"
+          }
+        },
+        "logo_44pdjb": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/logo.webp"
+          }
+        },
+        "logo_KFrQrY": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/logo.webp"
+          }
+        },
+        "logo_TpKUU9": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/logo.webp"
+          }
+        },
+        "logo_pcmBMP": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/logo.webp"
+          }
+        },
+        "logo_cKCkrh": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/logo.webp"
+          }
+        },
+        "logo_y8KPfP": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/logo.webp"
+          }
+        },
+        "logo_T3UHpT": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/logo.webp"
+          }
+        }
+      },
+      "block_order": [
+        "logo_rci36P",
+        "logo_44pdjb",
+        "logo_KFrQrY",
+        "logo_TpKUU9",
+        "logo_pcmBMP",
+        "logo_cKCkrh",
+        "logo_y8KPfP",
+        "logo_T3UHpT"
+      ],
+      "settings": {
+        "title": "Shop by Brand",
+        "description": "<p>Discover your favorite brands all in one place. From trusted names to emerging labels, shop by brand to find the styles and quality you love.</p>",
+        "view_all_link": "",
+        "color_scheme": "",
+        "columns_show": 4,
+        "enable_desktop_slider": true
+      }
+    },
+    "featured_blog_fUjFdM": {
+      "type": "featured-blog",
+      "settings": {
+        "title": "Explore Blogs",
+        "description": "<p>Get inspired with the latest tips, trends, and stories on our blog. Explore expert advice, style guides, and behind-the-scenes updates all in one place.</p>",
+        "view_all_link": "",
+        "color_scheme": "",
+        "columns_show": 4,
+        "blog_to_show": 12,
+        "blog": "news",
+        "enable_desktop_slider": true
+      }
+    },
+    "new_sletters_p3BQV6": {
+      "type": "new-sletters",
+      "name": "Newsletter Section",
+      "settings": {
+        "image": "shopify://shop_images/banner-image2.webp",
+        "title": "New Sletter",
+        "subtext": "Subscribe to get special offers, free giveaways, and once-in-a-lifetime deals.",
+        "button_label": "Subscribe",
+        "color_scheme": "scheme-d1d6ea59-e59b-4dca-84b0-47a0bed20039"
+      }
+    },
+    "faq_9htgiJ": {
+      "type": "faq",
+      "blocks": {
+        "faq_item_PpfMKK": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What products do you offer?",
+            "answer": "<p>We offer a wide range of trendy clothing and stylish footwear for men and women. Our collection includes casual wear, occasion wear, and everyday essentials.</p>"
+          }
+        },
+        "faq_item_pQXcAV": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How long does delivery take?",
+            "answer": "<p>Orders are processed within 1–2 business days. Delivery typically takes 3–7 business days depending on your location.</p>"
+          }
+        },
+        "faq_item_FDQewz": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do you offer free shipping?",
+            "answer": "<p>Yes, we offer free shipping on orders above ₹999. Shipping charges (if any) are shown at checkout.</p>"
+          }
+        },
+        "faq_item_MDVBy7": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What is your return policy?",
+            "answer": "<p>We offer a 7-day easy return and exchange policy. Items must be unused and in original condition.</p>"
+          }
+        },
+        "faq_item_BWMdUc": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How can I track my order?",
+            "answer": "<p>Once your order is shipped, you will receive a tracking link via email or SMS.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_PpfMKK",
+        "faq_item_pQXcAV",
+        "faq_item_FDQewz",
+        "faq_item_MDVBy7",
+        "faq_item_BWMdUc"
+      ],
+      "name": "FAQ Section",
+      "settings": {
+        "title": "Frequently Asked Questions",
+        "color_scheme": ""
+      }
+    }
+  },
+  "order": [
+    "banner_slider",
+    "new_arrival_J3Hxg7",
+    "best_selling_products_4pDCUz",
+    "image_banner_rkMCY8",
+    "category_section_jKKYNt",
+    "our_categorys_Fyyicb",
+    "promo_banner_ga9rbY",
+    "collection_tabbing_jaXyeV",
+    "brand_logo_slider_btJUme",
+    "featured_blog_fUjFdM",
+    "new_sletters_p3BQV6",
+    "faq_9htgiJ"
+  ]
+}

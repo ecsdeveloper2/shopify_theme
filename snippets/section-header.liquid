@@ -1,0 +1,13 @@
+<div class="heading-navigation">
+    <div class="section-heading">
+        <h2>{{ section.settings.title }}</h2>
+        {{ section.settings.description }}
+        {% if section.settings.collection %}
+            <a class="view-all-button btn" href="{{ section.settings.collection.url }}">{{- 'sections.collection_list.view_all' | t -}}</a>
+        {%  elsif section.settings.blog %}
+            <a class="view-all-button btn" href="{{ section.settings.blog.url }}">{{- 'sections.collection_list.view_all' | t -}}</a>
+        {%  elsif section.settings.view_all_link %}
+            <a class="view-all-button btn" href="{{ section.settings.view_all_link }}">{{- 'sections.collection_list.view_all' | t -}}</a>
+        {% endif %}
+    </div>
+</div>

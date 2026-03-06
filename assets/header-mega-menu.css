@@ -1,0 +1,91 @@
+.header-mega-menu ul {
+  gap: 12px 30px;
+}
+.header-mega-menu ul.mega-menu__subgroup {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+}
+.mega-menu__list.mega-menu__list--condensed .mega-menu__subgroup {
+  display: block;
+  width: calc(33.33% - 20px);
+}
+.mega-menu__list.mega-menu__list--condensed .mega-menu__subgroup li {
+  margin-bottom: 8px;
+}
+.mega-menu__list.mega-menu__list--condensed .mega-menu__subgroup li:last-child {
+  margin-bottom: 0;
+}
+.header-mega-menu ul.mega-menu__list a.mega-menu__link--level-2 {
+  font-weight: 700;
+  margin-bottom: 15px;
+  display: inline-block;
+  font-size: calc(var(--link-font-size) + 2px);
+}
+.header-mega-menu ul.mega-menu__list li.mega-menu-list-item {
+  width: 100%;
+}
+.header-mega-menu
+  ul.mega-menu__list
+  li.mega-menu-list-item
+  a.mega-menu__link--level-2 {
+  font-weight: 500;
+  margin: 0;
+}
+.header-mega-menu ul.mega-menu__list a {
+  font-size: calc(var(--link-font-size) - 2px);
+}
+/* .header-mega-menu ul li a,
+.header-mega-menu ul li details summary span {
+  font-weight: 400;
+  font-size: var(--link-font-size);
+  line-height: 24px;
+  letter-spacing: 0.44px;
+  vertical-align: middle;
+  cursor: pointer;
+} */
+.header-mega-menu .header__submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: var(--color-background);
+  z-index: 10;
+  border-radius: 8px;
+  box-shadow: 0px 0px 2px 0px #000000ba;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+  width: max-content;
+}
+.header-mega-menu .header__menu-item.list-menu__item svg {
+  width: 14px;
+  height: 14px;
+  display: inline-block;
+}
+.header-mega-menu .header__menu-item.list-menu__item {
+  gap: 10px;
+  padding: 20px 0;
+}
+.header-mega-menu details[open] .header__menu-item.list-menu__item svg {
+  rotate: 180deg;
+}
+.header-mega-menu .mega-menu__content {
+  background-color: rgb(var(--color-background));
+  border-left: 0;
+  border-radius: 0;
+  border-right: 0;
+  left: 0;
+  overflow-y: auto;
+  padding-bottom: 3rem;
+  padding-top: 3rem;
+  position: absolute;
+  right: 0;
+  top: 80%;
+  z-index: 2;
+  box-shadow: 1px 9px 25px -5px rgba(var(--box-shadow), 0.4);
+}
+.header-mega-menu .mega-menu__content .mega-menu__list li {
+  margin: 0 0 0.5rem;
+}

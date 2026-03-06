@@ -1,0 +1,146 @@
+{%- liquid
+  assign show_desktop_slider = false
+  if section.settings.enable_desktop_slider
+    assign show_desktop_slider = true
+  endif
+-%}
+<div class="color-{{ section.settings.color_scheme }} section-{{ section.id }}-padding">
+  <div class="page-container">
+    {% render 'section-header' %}
+    <div class="category-items-row{% if show_desktop_slider %} swiper swiper-slider-{{ section.id }} {% else %} item-gap d-flex flex-wrap{% endif %}">
+      {% if show_desktop_slider %}
+          <div class="swiper-wrapper">
+      {% endif %}
+      {% for block in section.blocks %}
+        {% if show_desktop_slider %}
+            <div class="swiper-slide">
+        {% endif %}
+          <div class="category-item{% if block.settings.title == blank %} collection-data-box{% else %} custom-data-box{% endif %}{% unless show_desktop_slider %} col-{{ section.settings.columns_show }} col-{{ section.settings.columns_show }}-lg col-{{ section.settings.columns_show }}-sm col-{{ section.settings.columns_show }}-xs{% endunless %}">
+            {% if block.settings.title == blank %}
+              {% assign collection = block.settings.collection %}
+              <div class="category-img">
+                <a href="{{ collection.url }}">
+                  <img src="{{ collection.image | img_url: 'master' }}" alt="{{ collection.image.alt }}" class="img-fluid" />
+                </a>
+              </div>
+              <div class="category-content">
+                <a href="{{ collection.url }}">
+                  <h3>{{ collection.title |  capitalize }}</h3>
+                  {{- 'right-long-arrow.svg' | inline_asset_content -}}
+                </a>
+              </div>
+            {% else %}
+            <div class="category-img">
+              <a href="{{ block.settings.link }}">
+                <img src="{{ block.settings.image | img_url: 'master' }}" alt="{{ block.settings.image.alt }}" class="img-fluid" />
+              </a>
+            </div>
+            <div class="category-content">
+              <a href="{{ block.settings.link }}">
+                <h3>{{ block.settings.title }}</h3>
+                {{- 'right-long-arrow.svg' | inline_asset_content -}}
+              </a>
+            </div>
+            {% endif %}
+          </div>
+        {% if show_desktop_slider %}
+          </div>
+        {% endif %}
+      {% endfor %}
+      {% if show_desktop_slider %}
+          </div>
+      {% endif %}
+      {% if show_desktop_slider %}
+        {% render 'slider-scroll-bar', section: section %}
+      {% endif %}
+    </div>
+  </div>
+</div>
+ {% if show_desktop_slider %}
+  {% render 'slider-js',section: section %}
+{% endif %}
+{% schema %}
+{
+    "name": "Category Section",
+    "class": "category-section section",
+    "tag": "section",
+    "disabled_on": {
+      "groups": ["header", "footer"]
+    },
+    "settings": [
+      {
+        "type": "color_scheme",
+        "id": "color_scheme",
+        "label": "Color scheme",
+        "default": "scheme-1"
+      },
+       {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Our Top Collections"
+      },
+      {
+        "type": "richtext",
+        "id": "description",
+        "label": "Section Description",
+        "default": "<p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.</p>"
+      },
+      {
+        "type":"url",
+        "id":"view_all_link",
+        "label":"View all link"
+      },
+      {
+          "type": "range",
+          "id": "columns_show",
+          "min": 1,
+          "max": 6,
+          "step": 0.1,
+          "default": 4,
+          "label": "t:sections.featured-collection.settings.columns_desktop.label"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_desktop_slider",
+        "label": "t:sections.featured-collection.settings.enable_desktop_slider.label",
+        "default": false
+      }
+    ],
+    "max_blocks": 10,
+    "blocks": [
+        {
+        "type": "category_item",
+        "name": "Category Item",
+        "settings": [
+            {
+              "type": "collection",
+              "id": "collection",
+              "label": "Collection"
+            },
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Product Title",
+                "default": "Collection Title"
+            },
+            {
+                "type": "url",
+                "id": "link",
+                "label": "Link"
+            },
+            {
+                "type": "image_picker",
+                "id": "image",
+                "label": "Collection Image"
+            }
+        ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Category Section"
+        }
+    ]
+}
+{% endschema %}

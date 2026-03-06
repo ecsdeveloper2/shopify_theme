@@ -1,0 +1,115 @@
+{%- liquid
+  assign sort_by = search.sort_by | default: search.default_sort_by
+  assign terms = search.terms | escape
+  assign search_url = '?q=' | append: terms | append: '&options%5Bprefix%5D=last&sort_by=' | append: sort_by
+-%}
+{%- if search.results_count == 0 -%}
+  <div class="page-container color-{{ section.settings.color_scheme }}">
+    <div class="search-no-results text-center">
+      <h2>No results found</h2>
+      <p>We couldn’t find anything matching "{{ search.terms }}".</p>
+    </div>
+  </div>
+{%- endif -%}
+
+<div class="page-container color-{{ section.settings.color_scheme }}">
+  {% paginate search.results by 24 %}
+    {%- if search.performed -%}
+      {%- assign products = search.results | where: 'object_type', 'product' -%}
+      {%- assign articles = search.results | where: 'object_type', 'article' -%}
+      {%- assign pages = search.results | where: 'object_type', 'page' -%}
+
+      {%- if products.size > 0 -%}
+        <div class="search-section products-section">
+          <h2>Products</h2>
+          <div class="d-flex flex-wrap item-gap">
+            {%- for product in products -%}
+              <div class="col-4 col-4-lg col-4-sm col-4-xs">
+                <div class="card-product-item">
+                  {% render 'card-product',
+                    product: product,
+                    show_secondary_image: section.settings.show_secondary_image,
+                    quick-add: true
+                  %}
+                </div>
+              </div>
+            {%- endfor -%}
+          </div>
+        </div>
+      {%- endif -%}
+
+      {%- if articles.size > 0 -%}
+        <div class="search-section articles-section">
+          <h2>Articles</h2>
+          <div class="d-flex flex-wrap item-gap">
+            {%- for article in articles -%}
+              <div class="col-4 col-4-lg col-4-sm col-4-xs">
+                <div class="blog-item-block">
+                  {% render 'article-card', article: article %}
+                </div>
+              </div>
+            {%- endfor -%}
+          </div>
+        </div>
+      {%- endif -%}
+
+      {%- if pages.size > 0 -%}
+        <div class="search-section pages-section">
+          <h2>Pages</h2>
+          <div class="d-flex flex-wrap item-gap">
+            {%- for page in pages -%}
+              <div class="col-4 col-4-lg col-4-sm col-4-xs">
+                <div class="article-card-wrapper card-wrapper underline-links-hover">
+                  <div
+                    class="card card--card card--text ratio color-{{ settings.blog_card_color_scheme }}"
+                    style="--ratio-percent: 100%;"
+                  >
+                    <div class="card__content">
+                      <div class="card__information">
+                        <h3 class="card__heading">
+                          <a href="{{ page.url }}" class="full-unstyled-link link">
+                            {{ page.title | truncate: 50 | escape }}
+                          </a>
+                        </h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {%- endfor -%}
+          </div>
+        </div>
+      {%- endif -%}
+    {%- endif -%}
+  {% endpaginate %}
+</div>
+{% schema %}
+{
+  "name": "t:sections.main-search.name",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "columns_show",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "default": 4,
+      "label": "t:sections.main-search.settings.columns_desktop.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_secondary_image",
+      "default": false,
+      "label": "t:sections.main-search.settings.show_secondary_image.label"
+    }
+  ]
+}
+{% endschema %}

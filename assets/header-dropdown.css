@@ -1,0 +1,76 @@
+.header-drop-down-menu ul {
+  gap: 25px;
+}
+.header-drop-down-menu ul li a,
+.header-drop-down-menu ul li details summary span {
+  font-weight: 400;
+  font-size: var(--link-font-size);
+  line-height: 24px;
+  letter-spacing: 0.44px;
+  vertical-align: middle;
+  cursor: pointer;
+}
+.header-drop-down-menu ul li details summary {
+  cursor: pointer;
+}
+.header-drop-down-menu .header__submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: rgb(var(--color-background));
+  z-index: 10;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  width: max-content;
+  min-width: 200px;
+  border: 1px solid;
+}
+.header-drop-down-menu .header__submenu.header__submenu--nested {
+  left: 100%;
+  margin-left: 6px;
+  display: none;
+  top: 0;
+}
+.header__submenu-list:hover .header__submenu.header__submenu--nested {
+  display: block;
+}
+.header-drop-down-menu .header__submenu li {
+  padding: 5px 20px;
+}
+.header-drop-down-menu .header__submenu li.header__submenu-list details summary svg {
+  rotate: -90deg !important;
+}
+.header-drop-down-menu .header__submenu li.header__submenu-list:first-child {
+  padding: 20px 20px 5px;
+}
+.header-drop-down-menu .header__submenu li.header__submenu-list:last-child {
+  padding: 5px 20px 20px;
+}
+.header-drop-down-menu .header__submenu li.header__submenu-list:only-child {
+  padding: 20px 20px;
+}
+.header-drop-down-menu .header__submenu li.header__submenu-list:only-child .header__menu-item.list-menu__item {
+  padding: 0;
+}
+.header-drop-down-menu .header__submenu-list .header__menu-item.list-menu__item {
+  padding: 0;
+}
+.header-drop-down-menu .header__submenu li a,
+.header-drop-down-menu .header__submenu li details summary span {
+  font-size: calc(var(--link-font-size) - 1px);
+}
+.header-drop-down-menu .header__menu-item.list-menu__item {
+  gap: 10px;
+  padding: 20px 0;
+}
+.header-drop-down-menu details[open] .header__menu-item.list-menu__item svg {
+  rotate: 180deg;
+}
+.header-drop-down-menu .header__menu-item.list-menu__item svg {
+  width: 14px;
+  height: 14px;
+  display: inline-block;
+}

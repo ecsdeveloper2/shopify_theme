@@ -1,0 +1,43 @@
+@media (prefers-color-scheme: dark) {
+  body {
+    color: var(--main_dark-mode-text-color) ;
+    background-color: var(--main_dark-mode-background) ;
+  }
+}
+body.dark-mode .top-header-contact a svg path,
+body.dark-mode .header__icon .svg-wrapper svg path,
+body.dark-mode .usps-bar-column .usp-icon svg path {
+  fill: var(--icon-dark-mode-color) ;
+}
+body.dark-mode .dark-text-white{
+  color: var(--dark-mode-text-color);
+}
+body.dark-mode .header-block.icons .header__icon.header__icon--cart .cart-count-bubble {
+  background-color: var(--dark-mode-background-color) ;
+  color: var(--dark-mode-button-text-color) ;
+}
+body.dark-mode .mega-menu-open::before {
+  background: rgba(var(--dark-mode-background-color), 0.5);
+}
+body.dark-mode .menu-drawer-container .menu-drawer {
+  background: var(--dark-mode-background-color);
+}
+body.dark-mode .link-active {
+  color: var(--link-dark-mode-active-color) ;
+}
+body.dark-mode .link-active:hover {
+  color: var(--link-dark-mode-active-hover-color) ;
+}
+body.dark-mode .link {
+  color: var(--link-dark-mode-color);
+}
+body.dark-mode .header__submenu-list .header__menu-item.link {
+  color: var(--link-color);
+}
+body.dark-mode .link:hover,
+body.dark-mode .link:hover span {
+  color: var(--link-dark-mode-hover-color) ;
+}
+body.dark-mode .link:hover svg path {
+  fill: var(--link-dark-mode-hover-color) ;
+}

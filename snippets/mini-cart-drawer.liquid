@@ -1,0 +1,237 @@
+{% comment %}
+  Mini Cart Drawer Section
+{% endcomment %}
+{% if settings.cart_type == 'popup' %}
+  <div class="cart-overlay" id="CartOverlay"></div>
+
+  <div class="cart-drawer color-scheme-1" id="CartDrawer">
+    <div class="cart-drawer-header">
+      <h3>View Cart</h3>
+      <button type="button" class="drawer-close btn" id="CloseCart">×</button>
+    </div>
+
+    <div class="cart-drawer-body">
+      {% if cart.item_count > 0 %}
+        {% for item in cart.items %}
+          <div class="drawer-item">
+            <img src="{{ item.image | image_url: width: 80 }}" alt="">
+            <div class="drawer-item-info">
+              <p class="drawer-title">{{ item.product.title }}</p>
+              <p>{{ item.price | money }}</p>
+              <div class="drawer-qty" data-key="{{ item.key }}">
+                <button type="button" class="qty-minus">-</button>
+                <span class="qty-number"> {{ item.quantity }} </span>
+                <button type="button" class="qty-plus">+</button>
+                <button type="button" class="cart-remove-btn" data-key="{{ item.key }}">Remove</button>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+        <div class="cart-drawer-footer">
+          <div class="drawer-subtotal">
+            <span>Subtotal:</span>
+            <span id="DrawerSubtotal" data-currency="{{ shop.currency }}">{{ cart.total_price | money }}</span>
+          </div>
+
+          <a href="/cart" class="btn">View Cart</a>
+          <a href="/checkout" class="btn">Checkout</a>
+        </div>
+      {% else %}
+        <div class="cart-items-empty">
+          <h1 class="cart-items__title h3">
+            {{ 'sections.cart.empty' | t }}
+          </h1>
+          <a href="{{ routes.all_products_collection_url }}" class="btn">{{ 'general.continue_shopping' | t }}</a>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+{% else %}
+  <div class="cart-overlay" id="CartOverlay"></div>
+
+  <div class="cart-popup color-scheme-1" id="CartDrawer">
+    <div class="cart-drawer-header">
+      <h3>View Cart</h3>
+      <button type="button" class="drawer-close btn" id="CloseCart">×</button>
+    </div>
+
+    <div class="cart-drawer-body">
+      {% if cart.item_count > 0 %}
+        {% for item in cart.items %}
+          <div class="drawer-item">
+            <img src="{{ item.image | image_url: width: 80 }}" alt="">
+            <div class="drawer-item-info">
+              <p class="drawer-title">{{ item.product.title }}</p>
+              <p>{{ item.price | money }}</p>
+              <div class="drawer-qty" data-key="{{ item.key }}">
+                <button type="button" class="qty-minus">-</button>
+                <span class="qty-number"> {{ item.quantity }} </span>
+                <button type="button" class="qty-plus">+</button>
+                <button type="button" class="cart-remove-btn" data-key="{{ item.key }}">Remove</button>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+        <div class="cart-drawer-footer">
+          <div class="drawer-subtotal">
+            <span>Subtotal:</span>
+            <span id="DrawerSubtotal" data-currency="{{ shop.currency }}">{{ cart.total_price | money }}</span>
+          </div>
+
+          <a href="/cart" class="btn">View Cart</a>
+          <a href="/checkout" class="btn">Checkout</a>
+        </div>
+      {% else %}
+        <div class="cart-items-empty">
+          <h1 class="cart-items__title h3">
+            {{ 'sections.cart.empty' | t }}
+          </h1>
+          <a href="{{ routes.all_products_collection_url }}" class="btn">{{ 'general.continue_shopping' | t }}</a>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+{% endif %}
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  const CartDrawer = document.getElementById('CartDrawer');
+  const CartOverlay = document.getElementById('CartOverlay');
+  const DrawerSubtotal = document.getElementById('DrawerSubtotal');
+
+  /* =========================
+     OPEN DRAWER FUNCTION
+  ========================== */
+  function openCart() {
+    CartDrawer.classList.add('active');
+    CartOverlay.classList.add('active');
+    document.body.classList.add('cart-open');
+  }
+
+  /* =========================
+     CLOSE DRAWER FUNCTION
+  ========================== */
+  function closeCart() {
+    CartDrawer.classList.remove('active');
+    CartOverlay.classList.remove('active');
+    document.body.classList.remove('cart-open');
+  }
+
+  /* =========================
+     UPDATE CART UI
+  ========================== */
+  function updateCartUI() {
+    fetch(location.href)
+      .then(r => r.text())
+      .then(html => {
+        const d = new DOMParser()
+          .parseFromString(html, 'text/html')
+          .querySelector('#CartDrawer');
+
+        if (d) CartDrawer.innerHTML = d.innerHTML;
+      });
+
+    fetch('/cart.js')
+    .then(r => r.json())
+    .then(cart => {
+
+      const bubbles = document.querySelectorAll('.cart-count-bubble');
+
+      bubbles.forEach(bubble => {
+        const visible = bubble.querySelector('span[aria-hidden="true"]');
+        const hidden = bubble.querySelector('.visually-hidden');
+
+        if (visible) visible.textContent = cart.item_count;
+        if (hidden) hidden.textContent = cart.item_count + ' items';
+      });
+
+      if (DrawerSubtotal) {
+        DrawerSubtotal.textContent =
+          'Rs. ' + (cart.total_price / 100).toLocaleString('en-IN', {
+            minimumFractionDigits: 2
+          });
+      }
+    });
+  } 
+
+  /* =========================
+     ADD TO CART
+  ========================== */
+  document.addEventListener('submit', function (e) {
+
+    const form = e.target.closest('form[data-type="add-to-cart-form"]');
+    if (!form) return;
+
+    e.preventDefault();
+
+    fetch('/cart/add.js', {
+      method: 'POST',
+      body: new FormData(form)
+    })
+      .then(() => {
+        updateCartUI();
+        openCart();
+      });
+
+  });
+
+  /* =========================
+     CLICK EVENTS
+  ========================== */
+  document.addEventListener('click', function (e) {
+
+    /* OPEN FROM HEADER ICON */
+    if (e.target.closest('#cart-icon-bubble')) {
+      e.preventDefault();
+      openCart();
+      return;
+    }
+
+    /* CLOSE */
+    if (e.target.id === 'CloseCart' || e.target.id === 'CartOverlay') {
+      closeCart();
+      return;
+    }
+
+    /* REMOVE ITEM */
+    if (e.target.classList.contains('cart-remove-btn')) {
+
+      fetch('/cart/change.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          id: e.target.dataset.key,
+          quantity: 0
+        })
+      })
+        .then(() => updateCartUI());
+
+      return;
+    }
+
+    /* QUANTITY UPDATE */
+    const qtyWrapper = e.target.closest('.drawer-qty');
+    if (!qtyWrapper) return;
+
+    let numberEl = qtyWrapper.querySelector('.qty-number');
+    let value = parseInt(numberEl.textContent.trim());
+    let newQty = value;
+
+    if (e.target.classList.contains('qty-plus')) newQty++;
+    if (e.target.classList.contains('qty-minus')) newQty--;
+
+    if (newQty < 0) newQty = 0;
+
+    fetch('/cart/change.js', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        id: qtyWrapper.dataset.key,
+        quantity: newQty
+      })
+    })
+      .then(() => updateCartUI());
+
+  });
+});
+</script>

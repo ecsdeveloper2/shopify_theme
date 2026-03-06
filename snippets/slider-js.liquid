@@ -1,0 +1,85 @@
+<script>
+  var swiper = new Swiper(".swiper-slider-{{ block.id | default: section.id }}", {
+    spaceBetween: 20,
+    slidesPerView: {% if row %}
+      {{ section.settings.columns_show | minus: 3 }}
+    {% elsif section.settings.columns_show == 1 %}
+      1
+    {% elsif section.settings.columns_show == 2 %}
+      1
+      {% elsif section.settings.columns_show == 3 %}
+      1
+      {% elsif section.settings.columns_show == 3.5 %}
+        1
+    {% else %}
+      {{ section.settings.columns_show | minus: 3 }}
+    {% endif %},
+    pagination: {
+      el: ".swiper-pagination-{{ block.id | default: section.id }}",
+      type: "fraction"
+    },
+    navigation: {
+      nextEl: ".swiper-button-next-{{ block.id | default: section.id }}",
+      prevEl: ".swiper-button-prev-{{ block.id | default: section.id }}"
+    },
+    scrollbar: {
+      el: ".swiper-scrollbar-{{ block.id | default: section.id }}",
+      draggable: true
+    },
+    breakpoints: {
+      {% if row %}
+        375: {
+          slidesPerView: {{ section.settings.columns_show | minus: 2 }},
+        },
+        640: {
+          slidesPerView: {{ section.settings.columns_show | minus: 1 }},
+        },
+        768: {
+          slidesPerView: {{ section.settings.columns_show | minus: 1 }},
+          spaceBetween: 24,
+        },
+        992: {
+          slidesPerView: {{ section.settings.columns_show }},
+          spaceBetween: 24,
+          grid: {
+            rows: 2,
+            fill: "row",
+          }
+        }
+      {% else %}
+        575: {
+          slidesPerView:
+            {% case section.settings.columns_show %}
+              {% when 1 %} 1
+              {% when 2 %} 1
+              {% when 3 %} 1
+              {% else %} {{ section.settings.columns_show | minus: 3 }}
+            {% endcase %}
+        },
+        640: {
+          slidesPerView:
+            {% case section.settings.columns_show %}
+              {% when 1 %} 1
+              {% when 2 %} 1
+              {% when 3 %} 2
+              {% else %} {{ section.settings.columns_show | minus: 2 }}
+            {% endcase %}
+        },
+        768: {
+          slidesPerView:
+            {% case section.settings.columns_show %}
+              {% when 1 %} 1
+              {% when 2 %} 1
+              {% when 3 %} 3
+              {% else %} {{ section.settings.columns_show | minus: 1 }}
+            {% endcase %},
+          spaceBetween: 24
+        },
+        1024: {
+          slidesPerView: {{ section.settings.columns_show }},
+          spaceBetween: 24
+        }
+      {% endif %}
+    }
+  });
+</script>

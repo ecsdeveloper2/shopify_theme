@@ -1,0 +1,47 @@
+<div class="banner-slider">
+    <div class="slider swiper">
+        <div class="swiper-wrapper">
+            {% content_for 'blocks' %}
+        </div>
+    </div>
+    <div class="scrollbar-counter-navigation banner-slider-navigation">
+        <div class="counter-navigation">
+            <div class="swiper-pagination swiper-pagination-{{ section.id }} dark-text-white"></div>
+            <div class="swiper-navigation">
+                <div class="swiper-button-prev swiper-button-prev-{{ section.id }}"></div>
+                <div class="swiper-button-next swiper-button-next-{{ section.id }}"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+   var swiper = new Swiper(".slider", {
+    pagination: {
+      el: ".swiper-pagination-{{ section.id }}",
+      type: "fraction"
+    },
+    navigation: {
+      nextEl: ".swiper-button-next-{{ section.id }}",
+      prevEl: ".swiper-button-prev-{{ section.id }}"
+    }
+    });
+</script>
+
+{% schema %}
+{
+    "name": "Banner Slider section",
+    "class": "banner-slider-section section",
+    "tag": "section",
+    "disabled_on": {
+        "groups": ["header", "footer"]
+    },
+    "settings": [],
+    "blocks": [{"type": "banner-slider-item"}],
+    "presets": [
+        {
+            "name": "Banner Slider section"
+        }
+    ]
+}
+{% endschema %}

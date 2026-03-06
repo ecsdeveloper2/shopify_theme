@@ -1,0 +1,133 @@
+<div class="card-product-img">
+    <a href="{{ product.url }}">
+      <img
+        srcset="
+          {%- if product.featured_media.width >= 165 -%}{{ product.featured_media | image_url: width: 165 }} 165w,{%- endif -%}
+          {%- if product.featured_media.width >= 360 -%}{{ product.featured_media | image_url: width: 360 }} 360w,{%- endif -%}
+          {%- if product.featured_media.width >= 533 -%}{{ product.featured_media | image_url: width: 533 }} 533w,{%- endif -%}
+          {%- if product.featured_media.width >= 720 -%}{{ product.featured_media | image_url: width: 720 }} 720w,{%- endif -%}
+          {%- if product.featured_media.width >= 940 -%}{{ product.featured_media | image_url: width: 940 }} 940w,{%- endif -%}
+          {%- if product.featured_media.width >= 1066 -%}{{ product.featured_media | image_url: width: 1066 }} 1066w,{%- endif -%}
+          {{ product.featured_media | image_url }} {{ product.featured_media.width }}w
+        "
+        src="{{ product.featured_media | image_url: width: 533 }}"
+        sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 130 | divided_by: 4 }}px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
+        alt="{{ product.featured_media.alt | escape }}"
+        width="{{ product.featured_media.width }}"
+        height="{{ product.featured_media.height }}"
+      >
+      {%- if product.media[1] != null and show-second-image -%}
+        <img
+          srcset="
+            {%- if product.media[1].width >= 165 -%}{{ product.media[1] | image_url: width: 165 }} 165w,{%- endif -%}
+            {%- if product.media[1].width >= 360 -%}{{ product.media[1] | image_url: width: 360 }} 360w,{%- endif -%}
+            {%- if product.media[1].width >= 533 -%}{{ product.media[1] | image_url: width: 533 }} 533w,{%- endif -%}
+            {%- if product.media[1].width >= 720 -%}{{ product.media[1] | image_url: width: 720 }} 720w,{%- endif -%}
+            {%- if product.media[1].width >= 940 -%}{{ product.media[1] | image_url: width: 940 }} 940w,{%- endif -%}
+            {%- if product.media[1].width >= 1066 -%}{{ product.media[1] | image_url: width: 1066 }} 1066w,{%- endif -%}
+            {{ product.media[1] | image_url }} {{ product.media[1].width }}w
+          "
+          src="{{ product.media[1] | image_url: width: 533 }}"
+          sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 130 | divided_by: 4 }}px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
+          alt="{{ product.media[1].alt | escape }}"
+          width="{{ product.media[1].width }}"
+          height="{{ product.media[1].height }}"
+        >
+      {%- endif -%}
+    </a>
+    <div class="card__badge {{ settings.badge_position }}">
+      {%- if product.available == false -%}
+        <span class="sold-out color-{{ settings.sold_out_badge_color_scheme }}">
+          {{- 'products.product.sold_out' | t -}}
+        </span>
+      {%- elsif product.compare_at_price > product.price and product.available -%}
+        <span class="sale color-{{ settings.sale_badge_color_scheme }}">
+          {{- 'products.product.on_sale' | t -}}
+        </span>
+      {%- endif -%}
+    </div>
+</div>
+<div class="card-product-content">
+    <h3 class="dark-text-white"><a href="{{ product.url }}" class="dark-text-white">{{ product.title |  capitalize}}</a></h3>
+</div>
+<div class="card-product-price_btn">
+  <div class="card-product-price">
+      {% if product.compare_at_price > product.price %}
+          <span class="price-regular dark-text-white">{{ product.price | money }}</span>
+          <s class="price-sale">{{ product.compare_at_price | money }}</s>
+      {% else %}
+          <span class="price-regular dark-text-white">{{ product.price | money }}</span>
+      {% endif %}
+  </div>
+  <div class="card-product-btn">
+    {%- if quick-add -%}
+      <div class="quick-add">
+          {%- liquid
+            assign qty_rules = false
+            if product.selected_or_first_available_variant.quantity_rule.min > 1 or product.selected_or_first_available_variant.quantity_rule.max != null or product.selected_or_first_available_variant.quantity_rule.increment > 1
+              assign qty_rules = true
+            endif
+          -%}
+          {%- if product.variants_count > 1 or qty_rules -%}
+            <a href="{{ product.url }}" class="quick-view-btn btn" data-product-id="{{ product.id }}">
+              {{ 'products.product.choose_options' | t }}
+            </a>
+          {%- else -%}
+            <product-form data-section-id="{{ section.id }}">
+              {%- form 'product',
+                product,
+                id: product_form_id,
+                class: 'form',
+                novalidate: 'novalidate',
+                data-type: 'add-to-cart-form'
+              -%}
+                <input
+                  type="hidden"
+                  name="id"
+                  value="{{ product.selected_or_first_available_variant.id }}"
+                  class="product-variant-id"
+                  {% if product.selected_or_first_available_variant.available == false %}
+                    disabled
+                  {% endif %}
+                >
+                <button
+                  id="{{ product_form_id }}-submit"
+                  type="submit"
+                  name="add"
+                  class="{%- if product.selected_or_first_available_variant.available -%}btn add-to-cart{% else %}btn soldout{% endif %}"
+                  aria-haspopup="dialog"
+                  aria-labelledby="{{ product_form_id }}-submit title-{{ section.id }}-{{ product.id }}"
+                  aria-live="polite"
+                  data-sold-out-message="true"
+                  {% if product.selected_or_first_available_variant.available == false %}
+                    disabled
+                  {% endif %}
+                >
+                  <span>
+                    {%- if product.selected_or_first_available_variant.available -%}
+                      {{ 'products.product.add_to_cart' | t }}
+                    {%- else -%}
+                      {{ 'products.product.sold_out' | t }}
+                    {%- endif -%}
+                  </span>
+                  <span class="sold-out-message hidden">
+                    {{ 'products.product.sold_out' | t }}
+                  </span>
+                  {%- render 'loading-spinner' -%}
+                </button>
+              {%- endform -%}
+            </product-form>
+          {%- endif -%}
+      </div>
+    {% endif %}
+    {%- if shop-now -%}
+      <div class="shop-now-button">
+        {%- if product.selected_or_first_available_variant.available -%}
+          <a href="{{ product.url }}" class="btn">Shop Now</a>
+        {% else %}
+          <span class="btn soldout">{{ 'products.product.sold_out' | t }}</span>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</div>

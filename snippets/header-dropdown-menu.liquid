@@ -1,0 +1,120 @@
+{% comment %}
+  Renders a standard dropdown style menu for the header.
+
+  Usage:
+  {% render 'header-dropdown-menu' %}
+{% endcomment %}
+{{ 'header-dropdown.css' | asset_url | stylesheet_tag }}
+<nav class="header__inline-menu header-drop-down-menu w-100">
+  <ul class="list-menu list-menu--{{ section.settings.logo_position }} list-menu--inline list-unstyled d-flex align-items-center" role="list">
+    {%- for link in section.settings.menu.links -%}
+      <li>
+        {%- if link.links != blank -%}
+          <header-menu>
+            <details id="Details-HeaderMenu-{{ forloop.index }}" class="position-relative">
+              <summary
+                id="HeaderMenu-{{ link.handle }}"
+                class="header__menu-item list-menu__item link{% if link.current %} link-active{% endif %} d-flex align-items-center"
+              >
+                <span
+                  {%- if link.child_active %}
+                    class="header__active-menu-item"
+                  {% endif %}
+                >
+                  {{- link.title | capitalize -}}
+                </span>
+                  {{- 'icon-caret.svg' | inline_asset_content -}}
+              </summary>
+              <ul
+                id="HeaderMenu-MenuList-{{ forloop.index }}"
+                class="header__submenu list-menu list-menu--disclosure list-unstyled position-absolute color-{{ section.settings.menu_color_scheme }} gradient caption-large motion-reduce global-settings-popup"
+                role="list"
+                tabindex="-1"
+              >
+                {%- for childlink in link.links -%}
+                  <li class="header__submenu-list position-relative">
+                    {%- if childlink.links == blank -%}
+                      <a
+                        id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
+                        href="{{ childlink.url }}"
+                        class="header__menu-item list-menu__item link link--text focus-inset caption-large{% if childlink.current %} link-active{% endif %}"
+                        {% if childlink.current %}
+                          aria-current="page"
+                        {% endif %}
+                      >
+                        {{ childlink.title | capitalize }}
+                      </a>
+                    {%- else -%}
+                      <details id="Details-HeaderSubMenu-{{ link.handle }}-{{ childlink.handle }}">
+                        <summary
+                          id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
+                          class="header__menu-item link link--text list-menu__item{% if childlink.current %} link-active{% endif %} focus-inset caption-large d-flex align-items-center justify-content-between"
+                        >
+                          <span>{{ childlink.title | capitalize }}</span>
+                          {{- 'icon-caret.svg' | inline_asset_content -}}
+                        </summary>
+                        <ul
+                          id="HeaderMenu-SubMenuList-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
+                          class="header__submenu list-menu motion-reduce list-menu--disclosure list-unstyled position-absolute header__submenu--nested"
+                        >
+                          {%- for grandchildlink in childlink.links -%}
+                            <li>
+                              <a
+                                id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
+                                href="{{ grandchildlink.url }}"
+                                class="header__menu-item list-menu__item link link--text focus-inset caption-large{% if grandchildlink.current %} link-active{% endif %}"
+                                {% if grandchildlink.current %}
+                                  aria-current="page"
+                                {% endif %}
+                              >
+                                {{ grandchildlink.title | capitalize | escape }}
+                              </a>
+                            </li>
+                          {%- endfor -%}
+                        </ul>
+                      </details>
+                    {%- endif -%}
+                  </li>
+                {%- endfor -%}
+              </ul>
+            </details>
+          </header-menu>
+        {%- else -%}
+          <a
+            id="HeaderMenu-{{ link.handle }}"
+            href="{{ link.url }}"
+            class="header__menu-item list-menu__item link link--text focus-inset{% if link.current %} link-active{% endif %}"
+            {% if link.current %}
+              aria-current="page"
+            {% endif %}
+          >
+            <span
+              {%- if link.current %}
+                class="header__active-menu-item"
+              {% endif %}
+            >
+              {{- link.title | capitalize | escape -}}
+            </span>
+          </a>
+        {%- endif -%}
+      </li>
+    {%- endfor -%}
+  </ul>
+</nav>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const menuItems = document.querySelectorAll(".header__submenu-list");
+
+    menuItems.forEach(item => {
+      const details = item.querySelector("details");
+
+      item.addEventListener("mouseenter", () => {
+        details.setAttribute("open", "");
+      });
+
+      item.addEventListener("mouseleave", () => {
+        details.removeAttribute("open");
+      });
+    });
+  });
+</script>

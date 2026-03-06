@@ -1,0 +1,106 @@
+{%- liquid
+  assign show_desktop_slider = false
+  if section.settings.enable_desktop_slider
+    assign show_desktop_slider = true
+  endif
+-%}
+<section class="featured-blog-section color-{{ section.settings.color_scheme }}">
+    <div class="page-container">
+        {% render 'section-header' %}
+        <div class="blogs{% if show_desktop_slider %} swiper swiper-slider-{{ section.id }} {% else %} item-gap d-flex flex-wrap{% endif %}">
+             {% if show_desktop_slider %}
+                <div class="swiper-wrapper">
+            {% endif %}
+            {% for article in blogs[section.settings.blog].articles limit: section.settings.blog_to_show %}
+                {% if show_desktop_slider %}
+                    <div class="swiper-slide">
+                {% endif %}
+                <div class="blog-item{% unless show_desktop_slider %} col-{{ section.settings.columns_show }} col-{{ section.settings.columns_show }}-lg col-{{ section.settings.columns_show }}-sm col-{{ section.settings.columns_show }}-xs{% endunless %}">
+                    {%  render 'article-card',article:article %}
+                </div>
+                {% if show_desktop_slider %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+            {% if show_desktop_slider %}
+                </div>
+            {% endif %}
+            {% comment %} {% if show_desktop_slider %}
+                {% render 'slider-scroll-bar', section: section %}
+            {% endif %} {% endcomment %}
+        </div>
+    </div>
+</section>
+{% if show_desktop_slider %}
+    {% render 'slider-js',section: section %}
+{% endif %}
+{% schema %}
+{
+    "name": "Featured Blog",
+    "tag": "section",
+    "class": "section",
+    "disabled_on": {
+        "groups": ["header", "footer"]
+    },
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default":"Featured Blog"
+        },
+        {
+            "type": "richtext",
+            "id": "description",
+            "label": "Section Description",
+            "default": "<p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.</p>"
+        },
+        {
+            "type":"url",
+            "id":"view_all_link",
+            "label":"View all link"
+        },
+        {
+            "type": "color_scheme",
+            "id": "color_scheme",
+            "label": "Color scheme",
+            "default": "scheme-1"
+        },
+        {
+            "type": "range",
+            "id": "columns_show",
+            "min": 1,
+            "max": 6,
+            "step": 0.1,
+            "default": 4,
+            "label": "t:sections.featured-collection.settings.columns_desktop.label"
+        },
+        {
+            "type": "range",
+            "id": "blog_to_show",
+            "min": 2,
+            "max": 25,
+            "step": 1,
+            "default": 4,
+            "label": "Blog Show Count"
+        },
+        {
+            "type": "blog",
+            "id": "blog",
+            "label": "Select Blog"
+        },
+        {
+            "type": "checkbox",
+            "id": "enable_desktop_slider",
+            "label": "t:sections.featured-collection.settings.enable_desktop_slider.label",
+            "default": false
+        }
+    ],
+    "presets": [
+        {
+            "name": "Featured Blog",
+            "category": "Blog"
+        }
+    ]
+}
+{% endschema %}

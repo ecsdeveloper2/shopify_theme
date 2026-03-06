@@ -1,0 +1,114 @@
+<div class="color-{{ section.settings.color_scheme }}">
+  <div class="page-container">
+    <div class="best-selling-row">
+       {% assign first_product = section.settings.collection.products.first %}
+
+      <div class="best-selling-product">
+        <div class="best-selling-items-row swiper swiper-slider-{{ section.id }}">
+          <div class="swiper-wrapper">
+            {% for product in section.settings.collection.products offset: 2 limit: 8 %}
+              <div class="swiper-slide">
+                <div class="card-product-item">
+                  {% render 'card-product',
+                    product: product,
+                    show-second-image: section.settings.show_secondary_image,
+                    quick-add: section.settings.quick_add,
+                    shop-now: section.settings.shop_now
+                  %}
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+          {% render 'slider-scroll-bar', section: section %}
+        </div>
+      </div>
+      <div class="best-selling-box">
+        <h2 class="dark-text-white">{{ section.settings.title }}</h2>
+        {% if first_product %}
+          <div class="featured-best-product">
+            {% render 'card-product',
+              product: first_product,
+              show-second-image: section.settings.show_secondary_image,
+              quick-add: section.settings.quick_add,
+              shop-now: section.settings.shop_now
+            %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% render 'slider-js', section: section %}
+{% schema %}
+{
+  "name": "Best selling products",
+  "class": "best-selling-products-section section",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Best selling"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Section Description",
+      "default": "<p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.</p>"
+    },
+    {
+      "type": "url",
+      "id": "view_all_link",
+      "label": "View all link"
+    },
+    {
+      "type": "range",
+      "id": "columns_show",
+      "min": 1,
+      "max": 6,
+      "step": 0.1,
+      "default": 4,
+      "label": "t:sections.featured-collection.settings.columns_desktop.label"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_secondary_image",
+      "default": false,
+      "label": "t:sections.featured-collection.settings.show_secondary_image.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "quick_add",
+      "default": true,
+      "label": "t:sections.main-collection-product-grid.settings.quick_add.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "shop_now",
+      "default": false,
+      "label": "Shop Now Button"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Best selling products"
+    }
+  ]
+}
+{% endschema %}

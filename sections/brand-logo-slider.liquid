@@ -1,0 +1,119 @@
+{%- liquid
+  assign show_desktop_slider = false
+  if section.settings.enable_desktop_slider
+    assign show_desktop_slider = true
+  endif
+-%}
+<div class="color-{{ section.settings.color_scheme }}">
+  <div class="page-container">
+    {% render 'section-header' %}
+    <div class="{% if show_desktop_slider %}swiper swiper-slider-{{ section.id }}{% else %}item-gap d-flex flex-wrap{% endif %}">
+      {% if show_desktop_slider %}
+      <div class="swiper-wrapper">
+      {% endif %}
+        {% for block in section.blocks %}
+          {% if show_desktop_slider %}
+            <div class="swiper-slide brand-logo-slider-item">
+          {% else %}
+            <div class="brand-logo-slider-item col-4 col-4-lg col-4-sm col-4-xs">
+          {% endif %}
+            <img src="{{ block.settings.image | image_url }}" alt="Slide {{ forloop.index }}">
+          {% if show_desktop_slider %}
+            </div>
+          {% else %}
+            </div>
+          {% endif %}
+        {% endfor %}
+      {% if show_desktop_slider %}
+      </div>
+      {% endif %}
+      {% if show_desktop_slider %}
+        {% render 'slider-scroll-bar', section: section %}
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% if show_desktop_slider %}
+{% assign row = true %}
+{% render 'slider-js', section: section, row: row %}
+{% endif %}
+{% schema %}
+{
+    "name": "Featured Brands logos",
+    "class": "brands-logos-section section",
+    "tag": "section",
+    "disabled_on": {
+      "groups": ["header", "footer"]
+    },
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Featured brands"
+      },
+      {
+        "type": "richtext",
+        "id": "description",
+        "label": "Section Description",
+        "default": "<p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.</p>"
+      },
+      {
+        "type":"url",
+        "id":"view_all_link",
+        "label":"View all link"
+      },
+      {
+        "type": "color_scheme",
+        "id": "color_scheme",
+        "label": "Color scheme",
+        "default": "scheme-1"
+      },
+      {
+        "type": "range",
+        "id": "columns_show",
+        "min": 1,
+        "max": 6,
+        "step": 0.1,
+        "default": 4,
+        "label": "t:sections.featured-collection.settings.columns_desktop.label"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_desktop_slider",
+        "label": "t:sections.featured-collection.settings.enable_desktop_slider.label",
+        "default": false
+      }
+    ],
+	"blocks": [
+		{
+			"type": "logo",
+			"name":"Logo",
+			"settings": [
+				{
+					"type": "image_picker",
+					"id": "image",
+					"label": "Image",
+				}
+			]
+		}
+	],
+    "presets": [
+        {
+            "name": "Featured Brands logos",
+			"blocks": [
+				{"type": "logo"},
+				{"type": "logo"},
+				{"type": "logo"},
+				{"type": "logo"},
+				{"type": "logo"},
+				{"type": "logo"},
+				{"type": "logo"},
+				{"type": "logo"},
+				{"type": "logo"}
+			]
+        }
+    ]
+}
+{% endschema %}

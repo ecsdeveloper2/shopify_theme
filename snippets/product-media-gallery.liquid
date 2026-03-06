@@ -1,0 +1,92 @@
+{%- assign images = product.media | where: "media_type", "image" -%}
+<div class="product-media-gallery">
+    <div class="main-image-wrapper">
+        <img
+            id="main-product-image"
+            src="{{ images[0] | img_url: '1024x1024' }}"
+            alt="{{ product.title }}"
+            data-index="0"
+            class="main-product-image"
+            style="cursor: zoom-in;"
+        />
+        <span class="zoom-icon svg-wrapper" onclick="zoomImage()">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M32 32C14.3 32 0 46.3 0 64l0 96c0 17.7 14.3 32 32 32s32-14.3 32-32l0-64 64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L32 32zM64 352c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 96c0 17.7 14.3 32 32 32l96 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0 0-64zM320 32c-17.7 0-32 14.3-32 32s14.3 32 32 32l64 0 0 64c0 17.7 14.3 32 32 32s32-14.3 32-32l0-96c0-17.7-14.3-32-32-32l-96 0zM448 352c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64-64 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l96 0c17.7 0 32-14.3 32-32l0-96z"/></svg>
+        </span>
+    </div>
+    <div class="thumbnails-wrapper{% if images.size > 5 %} slider{% endif %}">
+        <div class="thumbnails item-gap" id="thumbnails">
+            {%- for image in images -%}
+                <img
+                    src="{{ image | img_url: '100x100' }}"
+                    alt="{{ product.title }} thumbnail {{ forloop.index }}"
+                    class="thumbnail{% if forloop.first %} active{% endif %}"
+                    data-index="{{ forloop.index0 }}"
+                    onclick="changeMainImage({{ forloop.index0 }})"
+                />
+            {%- endfor -%}
+        </div>
+        {%- if images.size > 5 -%}
+            <button class="thumb-nav prev" onclick="slideThumbnails(-1)">{{- 'icon-caret.svg' | inline_asset_content -}}</button>
+            <button class="thumb-nav next" onclick="slideThumbnails(1)">{{- 'icon-caret.svg' | inline_asset_content -}}</button>
+        {%- endif -%}
+    </div>
+</div>
+
+<div id="zoom-modal" class="zoom-modal" style="display:none;">
+    <span class="close" onclick="closeZoom()">&times;</span>
+    <img class="zoom-modal-content" id="zoomed-image" />
+</div>
+<script>
+    var images = [
+    {% for image in images %}
+        "{{ image | img_url: '1024x1024' }}"{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+];
+var currentIndex = 0;
+var thumbStart = 0;
+
+function changeMainImage(index) {
+    currentIndex = index;
+    document.getElementById('main-product-image').src = images[index];
+    var thumbs = document.querySelectorAll('.thumbnail');
+    thumbs.forEach(function(thumb, i) {
+        thumb.classList.toggle('active', i === index);
+    });
+}
+
+function zoomImage() {
+    var modal = document.getElementById('zoom-modal');
+    var zoomed = document.getElementById('zoomed-image');
+    zoomed.src = images[currentIndex];
+    modal.style.display = 'flex';
+}
+
+function closeZoom() {
+    document.getElementById('zoom-modal').style.display = 'none';
+}
+
+function slideThumbnails(direction) {
+    var thumbs = document.getElementById('thumbnails');
+    var thumbImgs = thumbs.querySelectorAll('.thumbnail');
+    var visible = 5;
+    thumbStart += direction;
+    if (thumbStart < 0) thumbStart = 0;
+    if (thumbStart > thumbImgs.length - visible) thumbStart = thumbImgs.length - visible;
+    thumbImgs.forEach(function(img, i) {
+        img.style.display = (i >= thumbStart && i < thumbStart + visible) ? 'inline-block' : 'none';
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    if (images.length > 5) {
+        slideThumbnails(0);
+    }
+});
+
+window.onclick = function(event) {
+    var modal = document.getElementById('zoom-modal');
+    if (event.target == modal) {
+        closeZoom();
+    }
+}
+</script>

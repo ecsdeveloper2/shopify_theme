@@ -1,0 +1,80 @@
+<style>
+  .breadcrumb{
+    padding: 25px 0 0;
+  }
+</style>
+<div class="page-container left breadcrumbs color-{{ section.settings.color_scheme }}">
+  {% unless template == 'index' or template == 'cart' or template == 'list-collections' %}
+    <nav class="breadcrumb" role="navigation" aria-label="breadcrumbs">
+      <a href="/" title="Home" class="link-heading">Home</a>
+      {% if template contains 'page' %}
+        <span aria-hidden="true">&rsaquo;</span>
+        <span class="text-capitalize h3">{{ page.title }}</span>
+      {% elsif template contains 'product' %}
+        {% if collection %}
+          <span aria-hidden="true">&rsaquo;</span> 
+          <a href="{{ collection.url }}" class="link-heading">{{ collection.title }}</a>
+        {% endif %}
+        
+        <span aria-hidden="true">&rsaquo;</span>
+        <a href="{{ routes.collections_url }}" class="link-heading">Products</a>
+        
+        <span aria-hidden="true">&rsaquo;</span>
+        <span class="text-capitalize h3">{{ product.title }}</span>        
+      {% elsif template contains 'collection' and collection.handle %}
+        <span aria-hidden="true">&rsaquo;</span>
+        {% if current_tags %}
+          {% capture url %}/collections/{{ collection.handle }}{% endcapture %}
+          <a href="{{ url }}" class="link-heading">{{ collection.title | capitalize }}</a>
+          <span aria-hidden="true">&rsaquo;</span>
+          <span class="text-capitalize h3">{{ current_tags | join: ' + ' }}</span>
+        {% else %}
+          <a href="{{ routes.collections_url }}" class="link-heading">{{ routes.collections_url | remove: '/' | capitalize }}</a>
+          <span aria-hidden="true">&rsaquo;</span>
+          <span class="text-capitalize h3">{{ collection.title }}</span>
+        {% endif %}
+      {% elsif template == 'blog' %}
+        <span aria-hidden="true">&rsaquo;</span>
+        {% if current_tags %}
+          <a href="{{ blog.url }}" class="link-heading">{{ blog.title }}</a>
+          <span aria-hidden="true">&rsaquo;</span>
+          <span class="text-capitalize h3">{{ current_tags | join: ' + ' }}</span>
+        {% else %}
+          <span class="text-capitalize h3">{{ blog.title }}</span>
+        {% endif %}
+      {% elsif template == 'article' %}
+        <span aria-hidden="true">&rsaquo;</span> 
+        <a href="{{ blog.url }}" class="link-heading">{{ blog.title }}</a>
+        <span aria-hidden="true">&rsaquo;</span>
+        <span class="text-capitalize h3">{{ article.title }}</span>
+      {% else %}
+        <span aria-hidden="true">&rsaquo;</span>
+        <span class="text-capitalize h3">{{ page_title }}</span>
+      {% endif %}
+    </nav>
+  {% endunless %}
+</div>
+{% schema %}
+{
+    "name": "Breadcrumbs",
+    "tag": "section",
+    "class": "section",
+    "disabled_on": {
+      "groups": ["header", "footer"]
+    },
+    "settings": [
+      {
+        "type": "color_scheme",
+        "id": "color_scheme",
+        "label": "Color scheme",
+        "default": "scheme-1",
+        "info": "Select the color scheme for this section."
+      }
+    ],
+    "presets": [
+        {
+            "name": "Breadcrumbs"
+        }
+    ]
+}
+{% endschema %}

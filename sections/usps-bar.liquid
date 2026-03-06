@@ -1,0 +1,129 @@
+<div class="usps-bar color-{{ section.settings.color_scheme }}">
+    <div class="page-container">
+        <div class="usps-slider swiper">
+            <div class="swiper-wrapper">
+                {% for block in section.blocks %}
+                    <div class="swiper-slide">
+                        <div class="usp-item">
+                            <div class="usps-bar-column">
+                                {% if block.settings.icon != blank and block.settings.icon_svg != blank %}
+                                    <div class="usp-icon">
+                                        {% if block.settings.icon != blank %}
+                                        <img src="{{ block.settings.icon | image_url }}" alt="{{ block.settings.heading }} Icon" class="usp-icon-image" width="" height="">
+                                        {% elsif block.settings.icon_svg != blank %}
+                                            {{ block.settings.icon_svg }}
+                                        {% endif %}
+                                    </div>
+                                {% endif %}
+                                <div class="usp-content">
+                                    {% if block.settings.heading != blank %}
+                                        <strong class="m-0">{{ block.settings.heading }}</strong>
+                                        <p class="m-0">{{ block.settings.description }}</p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var swiper = new Swiper(".usps-slider", {
+        slidesPerView: 4,
+        spaceBetween: 24,
+        breakpoints: {
+			0: {
+				slidesPerView: 1,
+			},
+			575: {
+				slidesPerView: 2,
+			},
+			640: {
+				slidesPerView: 2,
+			},
+			768: {
+				slidesPerView: 2,
+			},
+			992: {
+				slidesPerView: 3,
+			},
+            1200:{
+                slidesPerView: 4,
+            }
+		},
+    });
+</script>
+
+{% schema %}
+{
+    "name": "USPs Bar",
+    "class": "usps-bar-section",
+    "enabled_on": {
+        "groups": ["header"]
+    },
+    "settings": [
+        {
+            "type": "color_scheme",
+            "id": "color_scheme",
+            "label": "Color scheme",
+            "default": "scheme-2"
+        }
+    ],
+    "max_blocks": 4,
+    "blocks": [
+        {
+            "type": "usp_block",
+            "name": "USP Block",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "icon",
+                    "label": "Icon"
+                },
+                {
+                    "type": "text",
+                    "id": "icon_svg",
+                    "label": "Icon SVG",
+                    "default": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-check-circle\"><path d=\"M12 1.5A10.5 10.5 0 1 1 1.5 12 10.5 10.5 0 0 1 12 1.5z\"></path><polyline points=\"9.75 11.25 11.25 12.75 14.25 9.75\"></polyline></svg>"
+                },
+                {
+                    "type": "header",
+                    "content": "USP Block Settings"
+                },
+                {
+                    "type": "text",
+                    "id": "heading",
+                    "label": "Heading",
+                    "default": "USP Heading"
+                },
+                {
+                    "type": "text",
+                    "id": "description",
+                    "label": "Description",
+                    "default": "USP Description"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "USPs Bar",
+            "category": "Custom",
+            "blocks": [
+                {
+                    "type": "usp_block"
+                },
+                {
+                    "type": "usp_block"
+                },
+                {
+                    "type": "usp_block"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

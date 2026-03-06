@@ -1,0 +1,147 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+{%- liquid
+  assign show_desktop_slider = false
+  if section.settings.enable_desktop_slider
+    assign show_desktop_slider = true
+  endif
+-%}
+<div class="color-{{ section.settings.color_scheme }} page-container">
+  <product-recommendations
+    class="related-products section-{{ section.id }}-padding"
+    data-url="{{ routes.product_recommendations_url }}?limit={{ section.settings.products_per_column }}"
+    data-section-id="{{ section.id }}"
+    data-product-id="{{ product.id }}"
+  >
+    {% if recommendations.performed and recommendations.products_count > 0 %}
+      <div class="heading-navigation">
+        <div class="section-heading">
+          <h2>
+            {{ section.settings.heading }}
+          </h2>
+          {{ section.settings.description }}
+        </div>
+      </div>
+      <div class="column-box-item{% if show_desktop_slider %} swiper swiper-slider-{{ section.id }}{% else %} item-gap d-flex flex-wrap{% endif %}" role="list">
+        {% if show_desktop_slider %}
+              <div class="swiper-wrapper">
+          {% endif %}
+      {% for recommendation in recommendations.products %}
+          {% if show_desktop_slider %}
+            <div class="swiper-slide">
+          {% endif %}
+          <div class="column-box{% unless show_desktop_slider %} col-{{ section.settings.columns_show }} col-{{ section.settings.columns_show }}-lg col-{{ section.settings.columns_show }}-sm col-{{ section.settings.columns_show }}-xs{% endunless %}">
+            <div class="card-product-item">
+              {% render 'card-product',
+                product: recommendation,
+                show-second-image: section.settings.show_secondary_image,
+                quick-add: section.settings.quick_add,
+                shop-now: section.settings.shop_now
+              %}
+            </div>
+          </div>
+            {% if show_desktop_slider %}
+              </div>
+            {% endif %}
+          {% endfor %}
+          {% if show_desktop_slider %}
+              </div>
+          {% endif %}
+          {% if show_desktop_slider %}
+              {% render 'slider-scroll-bar', section: section %}
+          {% endif %}
+      </div>
+    {% endif %}
+  </product-recommendations>
+</div>
+{% if show_desktop_slider %}
+  {% render 'slider-js',section: section %}
+{% endif %}
+{% schema %}
+  {
+    "name": "Related Products",
+    "tag": "section",
+    "class": "section related-products",
+    "settings": [
+      {
+        "type": "inline_richtext",
+        "id": "heading",
+        "default": "t:sections.related-products.settings.paragraph__1.default",
+        "label": "t:sections.related-products.settings.heading.label"
+      },
+      {
+        "type": "richtext",
+        "id": "description",
+        "label": "Section Description",
+        "default": "<p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.</p>"
+      },
+      {
+        "type": "color_scheme",
+        "id": "color_scheme",
+        "label": "t:sections.all.colors.label",
+        "info": "t:sections.all.colors.has_cards_info",
+        "default": "scheme-1"
+      },
+      {
+        "type": "range",
+        "id": "products_per_column",
+        "min": 2,
+        "max": 36,
+        "step": 1,
+        "default": 4,
+        "label": "t:sections.main-collection-product-grid.settings.products_per_page.label"
+      },
+      {
+        "type": "range",
+        "id": "columns_show",
+        "min": 1,
+        "max": 6,
+        "step": 1,
+        "default": 4,
+        "label": "t:sections.main-collection-product-grid.settings.columns_desktop.label"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_secondary_image",
+        "default": false,
+        "label": "t:sections.featured-collection.settings.show_secondary_image.label"
+      },
+      {
+        "type": "checkbox",
+        "id": "quick_add",
+        "default": true,
+        "label": "t:sections.main-collection-product-grid.settings.quick_add.label"
+      },
+      {
+        "type": "checkbox",
+        "id": "shop_now",
+        "default": false,
+        "label": "Shop Now Button"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_desktop_slider",
+        "label": "t:sections.featured-collection.settings.enable_desktop_slider.label",
+        "default": false
+      }
+    ],
+    "presets": [
+      {
+        "name": "Related Products",
+        "category": "Product"
+      }
+    ]
+  }
+{% endschema %}
+  

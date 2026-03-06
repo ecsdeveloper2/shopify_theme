@@ -1,0 +1,96 @@
+<section class="main-newsletter-section section-{{ section.id }}-padding color-{{ section.settings.color_scheme }}">
+  <div class="page-container">
+    <div class="newsletter-wrapper d-flex align-items-center justify-content-center flex-wrap">
+      <div class="newsletter-content">
+        <div class="newsletter__text">
+          <h2 class="newsletter__heading">
+            {{ section.settings.title }}
+          </h2>
+          {% if section.settings.subtext != blank %}
+            <div class="newsletter__subtext">
+              {{ section.settings.subtext }}
+            </div>
+          {% endif %}
+        </div>
+        <div class="newsletter__form">
+          {% form 'customer', class: 'newsletter-form' %}
+            <input type="hidden" name="contact[tags]" value="newsletter">
+            <div class="newsletter-field d-flex flex-wrap">
+              <input
+                type="email"
+                name="contact[email]"
+                placeholder="Enter your email address"
+                required
+                class="newsletter-input"
+              >
+              <button type="submit" class="btn newsletter-button">
+                {{ section.settings.button_label }}
+              </button>
+            </div>
+            {% if form.posted_successfully? %}
+              <p class="newsletter-success">Thank you for subscribing!</p>
+            {% endif %}
+            {% if form.errors %}
+              <p class="newsletter-error">Please enter a valid email address.</p>
+            {% endif %}
+          {% endform %}
+        </div>
+      </div>
+      <div class="newsletter-img">
+        {% if section.settings.image != blank %}
+          <img
+            src="{{ section.settings.image | image_url: width: 600 }}"
+            alt="Newsletter Image"
+            loading="lazy"
+            width=""
+            height=""
+          >
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Newsletter Section",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Newsletter Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "New Sletter"
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "Subscribe to get special offers, free giveaways, and once-in-a-lifetime deals."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Subscribe"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-4"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Newsletter Section"
+    }
+  ]
+}
+{% endschema %}

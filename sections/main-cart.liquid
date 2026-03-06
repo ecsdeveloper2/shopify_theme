@@ -1,0 +1,200 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="color-{{ section.settings.color_scheme }}{% if cart == empty %} is-empty{% endif %} section-{{ section.id }}-padding">
+  <div class="page-container">
+    {% if cart != empty %}
+      <div class="cart-items d-flex align-items-center justify-content-between">
+        <h1 class="cart-items__title h2">
+          {{ 'sections.cart.title' | t }}
+        </h1>
+        <a href="{{ routes.all_products_collection_url }}" class="btn">{{ 'general.continue_shopping' | t }}</a>
+      </div>
+      <div class="cart--page">
+        <div class="cart-list">
+          <table class="cart-table-custom">
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Qty</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for item in cart.items %}
+                <tr class="cart-row">
+                  <td class="cart-product">
+                    <a href="{{ item.url }}" class="cart-product-link">
+                      {% if item.image %}
+                        <img
+                          src="{{ item.image | image_url: width: 120 }}"
+                          alt="{{ item.title | escape }}"
+                          class="cart-image"
+                        >
+                      {% endif %}
+                      <div>
+                        <div class="cart-title">
+                          {{ item.product.title }}
+                        </div>
+                        {% if item.variant.title != 'Default Title' %}
+                          <div class="cart-variant">
+                            {{ item.variant.title }}
+                          </div>
+                        {% endif %}
+                      </div>
+                    </a>
+                  </td>
+
+                  <td class="cart-price">
+                    {{ item.price | money }}
+                  </td>
+
+                  <td class="cart-qty">
+                    <div class="cart-quantity-wrapper">
+                      <!-- Decrease button -->
+                      <form method="post" action="/cart/change" class="qty-form">
+                        <input type="hidden" name="id" value="{{ item.key }}">
+                        <input type="hidden" name="quantity" value="{{ item.quantity | minus: 1 }}">
+                        <button
+                          type="submit"
+                          {% if item.quantity <= 1 %}
+                            disabled
+                          {% endif %}
+                        >
+                          −
+                        </button>
+                      </form>
+
+                      <!-- Current Quantity -->
+                      <span class="qty-number">{{ item.quantity }}</span>
+
+                      <!-- Increase button -->
+                      <form method="post" action="/cart/change" class="qty-form">
+                        <input type="hidden" name="id" value="{{ item.key }}">
+                        <input type="hidden" name="quantity" value="{{ item.quantity | plus: 1 }}">
+                        <button type="submit">+</button>
+                      </form>
+                    </div>
+                    <form method="post" action="/cart/change" class="cart-remove-form">
+                      <input type="hidden" name="id" value="{{ item.key }}">
+                      <input type="hidden" name="quantity" value="0">
+                      <button type="submit" class="cart-remove-btn">Remove</button>
+                    </form>
+                  </td>
+
+                  <td class="cart-total">
+                    {{ item.final_line_price | money }}
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        <div class="cart-summary">
+          <h3 class="subtotal-label">{{ section.settings.title }}</h3>
+          <!-- Subtotal -->
+          <div class="summary-row">
+            <span>Subtotal:</span>
+            <span>{{ cart.total_price | money }}</span>
+          </div>
+          <!-- Shipping -->
+          <div class="summary-row">
+            <span>Shipping:</span>
+            <span>00</span>
+          </div>
+          <!-- Total -->
+          <div class="total-row">
+            <span>Total:</span>
+            <span>{{ cart.total_price | money }}</span>
+          </div>
+          <form action="/checkout" method="post">
+            <button type="submit" class="checkout-btn btn">
+              {{ section.settings['btn-text'] }}
+            </button>
+          </form>
+        </div>
+      </div>
+    {% else %}
+      <div class="cart-items-empty d-flex align-items-center justify-content-between">
+        <h1 class="cart-items__title h2">
+          {{ 'sections.cart.empty' | t }}
+        </h1>
+        <a href="{{ routes.all_products_collection_url }}" class="btn">{{ 'general.continue_shopping' | t }}</a>
+      </div>
+      <div class="cart-empty-login d-flex flex-wrap justify-content-center">
+        {%- if shop.customer_accounts_enabled and customer == null -%}
+          <h2 class="cart__login-title h3 w-100 text-center">{{ 'sections.cart.login.title' | t }}</h2>
+          <p class="cart__login-paragraph">
+            {{ 'sections.cart.login.paragraph_html' | t: link: routes.account_login_url }}
+          </p>
+        {%- endif -%}
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.main-cart-items.name",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    },
+    {
+      "type": "header",
+      "content": "Order Detail"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Our Summary"
+    },
+    {
+      "type": "text",
+      "id": "btn-text",
+      "label": "Button Text",
+      "default": "Proceed to Checkout"
+    }
+  ]
+}
+{% endschema %}

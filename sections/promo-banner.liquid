@@ -1,0 +1,90 @@
+<div class="promo-banner-section color-{{ section.settings.color_scheme }}">
+    {% if section.settings.layout == 'grid' %}
+    <div class="page-container">
+    {% else %}
+    <div class="page-container-full">
+    {% endif %}
+        <div class="full-width-banner" style="background-image: url({{ section.settings.banner_image | image_url }}); background-size: cover;background-position: center;">
+            {% if section.settings.layout != 'grid' %}
+            <div class="page-container">
+            {% endif %}
+                <div class="promo-banner-row">
+                 <div class="promo-banner-content">
+                        <h2>{{ section.settings.heading }}</h2>
+                        {{ section.settings.description }}
+                        {% if section.settings.button_link and section.settings.button_text %}
+                            <a href="{{ section.settings.button_link }}" class="btn">{{ section.settings.button_text }}</a>
+                        {% endif %}
+                    </div>
+                    <div class="promo-banner-image">
+                        {% if section.settings.image != blank %}
+                            <img src="{{ section.settings.image |  image_url }}" alt="Image" />
+                        {% endif %}
+                    </div>
+                </div>
+            {% if section.settings.layout != 'grid' %}
+            </div>
+            {% endif %}
+        </div>
+    {% if section.settings.layout == 'grid' %}
+    </div>
+    {% else %}
+    </div>
+    {% endif %}
+</div>
+{% schema %}
+{
+    "name": "Promo Banner",
+    "tag": "section",
+    "class": "section",
+    "disabled_on": {
+        "groups": ["header", "footer"]
+    },
+    "settings": [
+        {
+            "type": "color_scheme",
+            "id": "color_scheme",
+            "label": "Color scheme",
+            "default": "scheme-1"
+        },
+        {
+            "type": "image_picker",
+            "id": "banner_image",
+            "label": "Banner Image"
+        },
+        {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+            "default": "Your Heading Here"
+        },
+        {
+            "type": "richtext",
+            "id": "description",
+            "label": "Description",
+            "default": "<p>lorem is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>"
+        },
+        {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button Link"
+        },
+        {
+            "type": "text",
+            "id": "button_text",
+            "label": "Button Text",
+            "default": "Shop Now"
+        },
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Promo Banner"
+        }
+    ]
+}
+{% endschema %}

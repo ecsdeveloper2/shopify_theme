@@ -1,0 +1,9 @@
+<div class="card-product-price">
+  <span id="variant-price" class="price-regular dark-text-white">
+    {{ product.price | money }}
+  </span>
+  <s id="variant-compare-price" class="price-sale"
+     style="{% if product.compare_at_price <= product.price %}display: none;{% endif %}">
+    {{ product.compare_at_price | money }}
+  </s>
+</div>

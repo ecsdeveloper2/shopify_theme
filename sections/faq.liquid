@@ -1,0 +1,77 @@
+<section class="main-faq-section section-{{ section.id }}-padding color-{{ section.settings.color_scheme }}">
+  <div class="page-container">
+    <div class="banner banner--split">
+      <div class="banner__text">
+        <h2 class="banner__heading faq__title">{{ section.settings.title }}</h2>
+      </div>
+      <div class="faq__content w-100">
+        {% for block in section.blocks %}
+          <div class="faq-item" {{ block.shopify_attributes }}>
+            <button class="faq-question p-0 justify-content-between d-flex align-items-center w-100 text-left cursor-pointer">
+              <span>{{ block.settings.question }}</span>
+              {{- 'icon-caret.svg' | inline_asset_content -}}
+            </button>
+            <div class="faq-answer">
+              {{ block.settings.answer }}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "FAQ Section",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+        "type": "text",
+        "id": "title",
+        "label": "FAQ Heading",
+        "default": "Frequently Asked Questions"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 20,
+  "presets": [
+    {
+      "name": "FAQ Section"
+    }
+  ]
+}
+{% endschema %}
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".faq-question").forEach(function (button) {
+      button.addEventListener("click", function () {
+        this.parentElement.classList.toggle("active");
+      });
+    });
+  });
+</script>

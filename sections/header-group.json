@@ -1,0 +1,106 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.header.name",
+  "type": "header",
+  "sections": {
+    "top_header": {
+      "type": "top-header",
+      "blocks": {
+        "top_menu": {
+          "type": "top-menu",
+          "disabled": true,
+          "settings": {
+            "top-menu": ""
+          }
+        },
+        "text_Dz6Jpj": {
+          "type": "text",
+          "settings": {
+            "announcement_text": "This is an announcement!",
+            "url": ""
+          }
+        }
+      },
+      "block_order": [
+        "top_menu",
+        "text_Dz6Jpj"
+      ],
+      "settings": {
+        "color_scheme": "scheme-2"
+      }
+    },
+    "header": {
+      "type": "header",
+      "settings": {
+        "logo_position": "middle-center",
+        "menu": "main-menu",
+        "menu_type_desktop": "mega",
+        "sticky_header_type": "on-scroll-up",
+        "color_scheme": "scheme-1",
+        "menu_color_scheme": "",
+        "enable_customer_avatar": true,
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    },
+    "usps_bar": {
+      "type": "usps-bar",
+      "blocks": {
+        "usp_block_1": {
+          "type": "usp_block",
+          "settings": {
+            "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-check-circle\"><path d=\"M12 1.5A10.5 10.5 0 1 1 1.5 12 10.5 10.5 0 0 1 12 1.5z\"></path><polyline points=\"9.75 11.25 11.25 12.75 14.25 9.75\"></polyline></svg>",
+            "heading": "Since 1995",
+            "description": "Our company has built an excellent reputation for home improvements."
+          }
+        },
+        "usp_block_2": {
+          "type": "usp_block",
+          "settings": {
+            "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-check-circle\"><path d=\"M12 1.5A10.5 10.5 0 1 1 1.5 12 10.5 10.5 0 0 1 12 1.5z\"></path><polyline points=\"9.75 11.25 11.25 12.75 14.25 9.75\"></polyline></svg>",
+            "heading": "Annual Inspection",
+            "description": "We offer inspections to make sure you are happy with your installations."
+          }
+        },
+        "usp_block_3": {
+          "type": "usp_block",
+          "settings": {
+            "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-check-circle\"><path d=\"M12 1.5A10.5 10.5 0 1 1 1.5 12 10.5 10.5 0 0 1 12 1.5z\"></path><polyline points=\"9.75 11.25 11.25 12.75 14.25 9.75\"></polyline></svg>",
+            "heading": "Installation Team",
+            "description": "Our local teams are perfectly placed to install, fit and finish."
+          }
+        },
+        "usp_block_4": {
+          "type": "usp_block",
+          "settings": {
+            "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-check-circle\"><path d=\"M12 1.5A10.5 10.5 0 1 1 1.5 12 10.5 10.5 0 0 1 12 1.5z\"></path><polyline points=\"9.75 11.25 11.25 12.75 14.25 9.75\"></polyline></svg>",
+            "heading": "Aftercare Service",
+            "description": "We offer the highest quality of service beyond your installation."
+          }
+        }
+      },
+      "block_order": [
+        "usp_block_1",
+        "usp_block_2",
+        "usp_block_3",
+        "usp_block_4"
+      ],
+      "settings": {
+        "color_scheme": "scheme-2"
+      }
+    }
+  },
+  "order": [
+    "top_header",
+    "header",
+    "usps_bar"
+  ]
+}

@@ -1,0 +1,96 @@
+.header {
+  display: grid;
+  grid-template-areas: "left-icons heading" "icons icons";
+  grid-template-columns: auto;
+  align-items: center;
+  gap: 20px;
+}
+.header__inline-menu {
+  grid-area: navigation;
+  display: none;
+}
+.header__heading,
+.header__heading-link {
+  grid-area: heading;
+}
+.header__icons {
+  display: flex;
+  grid-area: icons;
+  justify-content: end;
+  width: 100%;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.header__icon account-icon {
+  display: flex;
+}
+.header__icon.header__icon--cart::before {
+  content: "";
+  display: block;
+  width: 1px;
+  height: 20px;
+  background: #bfc3c8;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+.header > .header__search {
+  grid-area: left-icons;
+}
+.header--top-center header-drawer {
+  grid-area: left-icons;
+}
+.list-menu--top-center {
+  justify-content: center;
+}
+.header__icons .search-modal__content {
+  width: calc(100% - 128px);
+  padding-right: 15px;
+}
+@media screen and (min-width: 1100px) {
+  .header--middle-center {
+    grid-template-areas: "navigation heading icons" !important;
+  }
+}
+@media screen and (min-width: 990px) {
+  .header__inline-menu {
+    display: block;
+  }
+  .header--top-center .header__heading-link {
+    text-align: center;
+  }
+  .header {
+    grid-template-columns: auto;
+  }
+  .header--top-left {
+    grid-template-areas:
+      "heading icons"
+      "navigation navigation";
+    grid-template-columns: 1fr auto;
+  }
+  .header--top-center {
+    grid-template-areas:
+      "left-icons heading icons"
+      "navigation navigation navigation";
+  }
+  .header--middle-center {
+    grid-template-areas: "heading icons" "navigation navigation";
+  }
+  .header--middle-left {
+    grid-template-areas: "heading navigation icons";
+    grid-template-columns: auto auto 1fr;
+    column-gap: 2rem;
+  }
+}
+@media (max-width: 991px) {
+  .header__icons {
+    justify-content: space-between;
+  }
+}
+@media (max-width: 767px) {
+  .header__icons .search-modal__content {
+    width: 100%;
+    padding: 0;
+  }
+}

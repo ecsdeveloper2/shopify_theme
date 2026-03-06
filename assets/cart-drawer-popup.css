@@ -1,0 +1,28 @@
+.cart-popup,
+.cart-drawer {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  background: white;
+  border: 1px solid #ccc;
+}
+
+.cart-popup.active,
+.cart-drawer.open {
+  display: block;
+}
+
+.cart-popup {
+  top: 20%;
+  left: 30%;
+  width: 300px;
+  padding: 20px;
+}
+
+.cart-drawer {
+  right: 0;
+  top: 0;
+  width: 400px;
+  height: 100%;
+  overflow-y: auto;
+}

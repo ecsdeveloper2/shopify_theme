@@ -1,0 +1,50 @@
+{% if block.settings.picker_type == 'dropdown' %}
+    <div class="variant-dropdown-options" data-product-id="{{ product.id }}">
+        {% assign option_index = 0 %}
+        {% for option in product.options_with_values %}
+        {% if option.name == 'Color' or option.name == 'Size' %}
+            <div class="dropdown-group" data-option-index="{{ option_index }}">
+                <label for="Option-{{ option_index }}" class="h3">{{ option.name }}:</label>
+                <div class="select-with-icon">
+                    <select
+                        id="Option-{{ option_index }}"
+                        class="variant-dropdown h3"
+                        data-option-index="{{ option_index }}">
+                        {% for value in option.values %}
+                        <option value="{{ value }}" class="h3">{{ value }}</option>
+                        {% endfor %}
+                    </select>
+                    <span class="svg-wrapper">
+                    {{- 'icon-caret.svg' | inline_asset_content -}}
+                    </span>
+                </div>
+            </div>
+        {% endif %}
+        {% assign option_index = option_index | plus: 1 %}
+        {% endfor %}
+    </div>
+{% endif %}
+{% if block.settings.picker_type == 'button' %}
+    <div class="variant-swatch-options" data-product-id="{{ product.id }}">
+      {% assign option_index = 0 %}
+      {% for option in product.options_with_values %}
+        {% if option.name == 'Color' or option.name == 'Size' %}
+          <div class="swatch-group" data-option-index="{{ option_index }}">
+            <label class="h3">{{ option.name }}:</label>
+            <div class="swatch-group-buttons">
+                {% for value in option.values %}
+                <button
+                    type="button"
+                    class="swatch-button{% if forloop.first %} selected{% endif %}"
+                    data-value="{{ value }}"
+                    data-option-index="{{ option_index }}">
+                    {{ value }}
+                </button>
+                {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+        {% assign option_index = option_index | plus: 1 %}
+      {% endfor %}
+    </div>
+  {% endif %}

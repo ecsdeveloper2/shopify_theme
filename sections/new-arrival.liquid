@@ -1,0 +1,108 @@
+<div class="new-arrival-section color-{{ section.settings.color_scheme }}">
+  <div class="page-container">
+    <div class="new-arrival-row">
+      <div class="new-arrival-box">
+          <h2 class="h1">{{ section.settings.title }}</h2>
+        {% if section.settings.image %}
+          <img src="{{ section.settings.image | img_url: 'medium' }}" alt="New Arrival Image" />
+        {% endif %}
+      </div>
+      <div class="new-arrival-product">
+        <div class="new-arrival-slider swiper swiper-slider-{{ section.id }}">
+          <div class="swiper-wrapper">
+            {% assign new_arrivals = collections[section.settings.collection].products %}
+            {% for product in new_arrivals limit: section.settings.product_limit %}
+              <div class="swiper-slide">
+                <div class="card-product-item">
+                  {% render 'card-product',
+                  product:product,
+                  show-second-image: section.settings.show_secondary_image,
+                  quick-add: section.settings.quick_add,
+                  shop-now:section.settings.shop_now
+                  %}
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+          {% render 'slider-scroll-bar', section: section %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% render 'slider-js', section: section %}
+{% schema %}
+{
+  "name": "New Arrival Section",
+  "class": "new-arrival-section section",
+  "tag": "section",
+  "disabled_on": {
+      "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "New arrival"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "New Arrival Image"
+    },
+    {
+        "type": "color_scheme",
+        "id": "color_scheme",
+        "label": "Color scheme",
+        "default": "scheme-1"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Select Collection"
+    },
+    {
+        "type": "range",
+        "id": "columns_show",
+        "min": 1,
+        "max": 6,
+        "step": 0.1,
+        "default": 4,
+        "label": "t:sections.featured-collection.settings.columns_desktop.label"
+    },
+    {
+      "type": "range",
+      "id": "product_limit",
+      "label": "Number of Products",
+      "min": 1,
+      "max": 25,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "checkbox",
+      "id": "show_secondary_image",
+      "default": false,
+      "label": "t:sections.featured-collection.settings.show_secondary_image.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "quick_add",
+      "default": true,
+      "label": "t:sections.main-collection-product-grid.settings.quick_add.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "shop_now",
+      "default": false,
+      "label": "Shop Now Button"
+    }
+  ],
+  "presets": [
+    {
+      "name": "New Arrival Section"
+    }
+  ]
+}
+{% endschema %}

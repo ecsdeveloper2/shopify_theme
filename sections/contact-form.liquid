@@ -1,0 +1,162 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<section class="section-{{ section.id }}-padding">
+  <div class="page-container">
+    <div class="contact-detail-section d-flex">
+      <div class="contact-details color-{{ section.settings.color_scheme }}">
+        <h2 class="main-page-title contactus-title">
+          {{ page.title }}
+        </h2>
+        <div class="contact-item">
+          <div>{{ section.settings.desc }}</div>
+        </div>
+        <div class="contact-item d-flex">
+          <!-- Phone SVG -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.09 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.9.37 1.78.72 2.62a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.46-1.46a2 2 0 0 1 2.11-.45c.84.35 1.72.6 2.62.72A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          <div><a href="tel:{{ section.settings.phone }}" class="link">{{ section.settings.phone }}</a></div>
+        </div>
+
+        <div class="contact-item d-flex">
+          <!-- Email SVG -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 4h16v16H4z"/>
+            <path d="M22 6l-10 7L2 6"/>
+          </svg>
+          <div><a href="mailto:{{ section.settings.email }}" class="link">{{ section.settings.email }}</a></div>
+        </div>
+
+        <div class="contact-item d-flex">
+          <!-- Address SVG -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 21s-6-5.33-6-10a6 6 0 1 1 12 0c0 4.67-6 10-6 10z"/>
+            <circle cx="12" cy="11" r="2"/>
+          </svg>
+          <div>{{ section.settings.address }}</div>
+        </div>
+      </div>
+      <div class="contact-wrapper">
+        <h2 class="form-title">Get In Touch!</h2>
+
+        <div class="rte">
+          {{ page.content }}
+        </div>
+
+        {% form 'contact', class: 'contact-form' %}
+          {% if form.posted_successfully? %}
+            <p>Thanks for contacting us! We'll reply soon.</p>
+          {% endif %}
+
+          {{ form.errors | default_errors }}
+
+          <input
+            type="text"
+            name="contact[name]"
+            placeholder="Your Name"
+            required
+          >
+
+          <input
+            type="email"
+            name="contact[email]"
+            placeholder="Your Email"
+            required
+          >
+
+          <input
+            type="tel"
+            name="contact[phone]"
+            placeholder="Phone Number"
+          >
+
+          <textarea
+            name="contact[body]"
+            rows="6"
+            placeholder="Message"
+            required
+          ></textarea>
+
+          <button type="submit" class="btn">Submit</button>
+        {% endform %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Contact Us Page",
+  "tag": "section",
+  "class": "contact-page-section",
+  "settings": [
+      {
+      "type": "text",
+      "id": "desc",
+      "label": "Description",
+      "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    },
+     {
+      "type": "text",
+      "id": "phone",
+      "label": "Phone number",
+      "default": "123456789"
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Email",
+      "default": "support@example.com"
+    },
+    {
+      "type": "textarea",
+      "id": "address",
+      "label": "Address",
+      "default": "Your store address here"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default":"scheme-4"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 36
+    }
+  ],
+  "presets": [
+    {
+      "name": "Contact Us Page"
+    }
+  ]
+}
+{% endschema %}

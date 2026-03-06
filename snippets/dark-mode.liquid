@@ -1,0 +1,6 @@
+{% for scheme in settings.color_schemes -%}
+  body.dark-mode .color-{{ scheme.id }} {
+    color: var(--dark-mode-text-color) !important;
+    background-color: var(--dark-mode-background-color) !important;
+  }
+{% endfor %}

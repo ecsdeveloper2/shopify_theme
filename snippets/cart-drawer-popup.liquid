@@ -1,0 +1,10 @@
+{{ 'cart-drawer-popup.css' | asset_url | stylesheet_tag }}
+<div id="cart-popup" class="cart-popup">
+  <img class="cart-popup-image" src="" alt="" />
+  <p class="cart-popup-title"></p>
+  <button onclick="document.getElementById('cart-popup').classList.remove('active')">Close</button>
+</div>
+<div id="cart-drawer" class="cart-drawer">
+  <div class="cart-items"></div>
+  <button onclick="document.getElementById('cart-drawer').classList.remove('open')">Close</button>
+</div>

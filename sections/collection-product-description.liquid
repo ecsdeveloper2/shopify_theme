@@ -1,0 +1,79 @@
+{% if template contains 'collection' %}
+  {% if collection.description != blank %}
+    <div class="collection-page-description">
+      <div class="page-container">
+        <h2>{{ collection.title |  capitalize }}</h2>
+        {% assign description = collection.description %}
+        {% assign full_description = collection.description %}
+        {% assign short_description = description | slice: 0, 500 %}
+        <div id="CollectionDescription">
+          <div class="short-description" style="display: block;">
+            {{ short_description }}{% if description.size > 500 %}...{% endif %}
+          </div>
+          {% if description.size > 500 %}
+            <div class="full-description" style="display: none;">
+              {{ full_description }}
+            </div>
+            <a class="toggledescription read-more-btn btn" type="button">Read more</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+{% endif %}
+{% if template contains 'product' %}
+  {% if product.description != blank %}
+    <div class="collection-page-description">
+      <div class="page-container">
+        <h2>{{ product.title |  capitalize }}</h2>
+          {% assign description = product.description %}
+          {% assign full_description = product.description %}
+          {% assign short_description = description | slice: 0, 500 %}
+          <div id="CollectionDescription">
+            <div class="short-description" style="display: block;">
+              {{ short_description }}{% if description.size > 500 %}...{% endif %}
+            </div>
+            {% if description.size > 500 %}
+              <div class="full-description" style="display: none;">
+                {{ full_description }}
+              </div>
+              <a class="toggledescription read-more-btn" type="button">Read more</a>
+            {% endif %}
+          </div>
+      </div>
+    </div>
+  {% endif %}
+{% endif %}
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggleBtn = document.querySelector(".toggledescription");
+    const shortDesc = document.querySelector(".short-description");
+    const fullDesc = document.querySelector(".full-description");
+
+    if (toggleBtn && shortDesc && fullDesc) {
+      toggleBtn.addEventListener("click", function () {
+        const isExpanded = fullDesc.style.display === "block";
+
+        fullDesc.style.display = isExpanded ? "none" : "block";
+        shortDesc.style.display = isExpanded ? "block" : "none";
+        toggleBtn.textContent = isExpanded ? "Read more" : "Read less";
+      });
+    }
+  });
+</script>
+{%  schema  %} 
+{
+    "name": "Description Section",
+    "class": "description-section section",
+    "disabled_on": {
+        "groups": ["header", "footer"]
+    },
+    "settings": [],
+    "blocks": [],
+    "presets": [
+        {
+            "name": "Description"
+        }
+    ]
+}
+{% endschema %}
