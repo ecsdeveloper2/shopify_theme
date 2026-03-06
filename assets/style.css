@@ -2086,3 +2086,9 @@ body.dark-mode .faq-question{
 .search-section{
   padding: 40px 0;
 }
+
+/* Header Logo */
+
+.header__heading-logo-wrapper{
+  margin-top:-24px;
+}
