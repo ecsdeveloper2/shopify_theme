@@ -2092,3 +2092,15 @@ body.dark-mode .faq-question{
 .header__heading-logo-wrapper{
   margin-top:-24px;
 }
+
+/* Facet-Filter Box Shadow */
+
+form#FacetFiltersForm {
+    padding: 20px;
+    max-width: 400px;
+    text-align: center;
+    background: #ffffff;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 6px -3px #00000070;
+}
