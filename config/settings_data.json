@@ -11,7 +11,7 @@
   "current": {
     "logo": "shopify://shop_images/logo.webp",
     "dark_mode_logo": "shopify://shop_images/logo.webp",
-    "logo_width": 100,
+    "logo_width": 150,
     "heading_font_family": "roboto_n4",
     "heading_font_size": 50,
     "heading_font_weight": "700",
