@@ -2080,6 +2080,11 @@ body.dark-mode .faq-question{
       width:100%;
     }
   }
+  @media (max-width:430px){
+    .header__heading-logo-wrapper {
+       margin-top: -12px;
+    }
+  }
 /*contact us page css end */
 
 /* Search results CSS  */
@@ -2103,4 +2108,19 @@ form#FacetFiltersForm {
     width: 100%;
     border-radius: 10px;
     box-shadow: 0 0 6px -3px #00000070;
+}
+
+/* Collection Product */
+.card-product-item{
+  box-shadow: 0 0 6px -3px #00000070;
+  border-radius: 10px;
+}
+
+.card-product-content {
+    padding: 0px 20px;
+}
+
+.card-product-price_btn {
+    padding-left: 20px;
+    padding-bottom: 20px;
 }
