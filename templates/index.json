@@ -382,7 +382,7 @@
         "color_scheme": "",
         "border_radius": 10,
         "columns_show": 3,
-        "enable_desktop_slider": false,
+        "enable_desktop_slider": true,
         "title": "Our Testimonials",
         "description": "<p>See what our customers are saying about their experience with our products and services. We value every review and continuously strive to deliver quality, reliability, and excellent customer satisfaction.</p>"
       }
