@@ -2122,7 +2122,6 @@ form#FacetFiltersForm {
 
 .card-product-price_btn {
     padding-left: 20px;
-    padding-bottom: 20px;
 }
 
 /* Flip Collection product image */
@@ -2184,4 +2183,6 @@ form#FacetFiltersForm {
   h2,p{
       text-align: center;
   }
+.card-product-btn {
+    padding-bottom: 10px;
 }

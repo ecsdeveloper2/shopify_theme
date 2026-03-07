@@ -104,32 +104,36 @@
         "usp_block_EtydpN": {
           "type": "usp_block",
           "settings": {
+            "icon": "shopify://shop_images/free_shipping.svg",
             "icon_svg": "",
-            "heading": "🚚 Free Shipping",
+            "heading": "Free Shipping",
             "description": "Free shipping on all orders over $50 with fast and reliable delivery."
           }
         },
         "usp_block_B9BarC": {
           "type": "usp_block",
           "settings": {
+            "icon": "shopify://shop_images/easy_returns.svg",
             "icon_svg": "",
-            "heading": "🔄 Easy Returns",
+            "heading": "Easy Returns",
             "description": "Hassle-free returns within 30 days for a smooth shopping experience."
           }
         },
         "usp_block_p8gnLp": {
           "type": "usp_block",
           "settings": {
+            "icon": "shopify://shop_images/Security.svg",
             "icon_svg": "",
-            "heading": "🔒 Secure Checkout",
+            "heading": "Secure Checkout",
             "description": "Your payments are protected with advanced security and trusted gateways."
           }
         },
         "usp_block_Yn3KL4": {
           "type": "usp_block",
           "settings": {
+            "icon": "shopify://shop_images/Premium_quality.svg",
             "icon_svg": "",
-            "heading": "⭐ Premium Quality",
+            "heading": "Premium Quality",
             "description": "Carefully selected products made with high-quality materials."
           }
         }
