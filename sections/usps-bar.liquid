@@ -6,7 +6,7 @@
                     <div class="swiper-slide">
                         <div class="usp-item">
                             <div class="usps-bar-column">
-                                {% if block.settings.icon != blank and block.settings.icon_svg != blank %}
+                                {% if block.settings.icon != blank or block.settings.icon_svg != blank %}
                                     <div class="usp-icon">
                                         {% if block.settings.icon != blank %}
                                         <img src="{{ block.settings.icon | image_url }}" alt="{{ block.settings.heading }} Icon" class="usp-icon-image" width="" height="">
