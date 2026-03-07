@@ -2155,3 +2155,33 @@ form#FacetFiltersForm {
   transform: rotateY(0deg);
   opacity:1;
 }
+
+/* Testimonial section css */
+.testimonial-box {
+    width: 100% !important;
+}
+.testimonial-image img{
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    object-fit:cover;
+}
+.testimonial-text{
+    line-height:1.6;
+}
+.testimonial-name{
+    font-size:18px;
+    font-weight:600;
+}
+.testimonial-section{
+  .heading-navigation{
+      justify-content: center;
+  }
+  .section-heading{
+      max-width: 800px;
+      justify-content: center;
+  }
+  h2,p{
+      text-align: center;
+  }
+}

@@ -365,21 +365,14 @@
     });
   });
   document.addEventListener("DOMContentLoaded", function () {
-    const drawer = document.getElementById("FacetsDrawer");
-    const summary = drawer.querySelector("summary");
-    const closeButton = drawer.querySelector(".facets-drawer__close-button");
+    document.addEventListener("click", function(e){
+	  if(e.target.closest(".facets-drawer__close-button")){
+		const drawer = document.getElementById("FacetsDrawer");
+		if(drawer){
+		  drawer.removeAttribute("open");
+		}
+	  }
 
-    summary.addEventListener("click", function () {
-      setTimeout(function () {
-        if (drawer.hasAttribute("open")) {
-          document.body.style.overflow = "hidden";
-        }
-      }, 10);
-    });
-
-    closeButton.addEventListener("click", function () {
-      drawer.removeAttribute("open");
-      document.body.style.overflow = "visible";
-    });
+	});
   });
 </script>
