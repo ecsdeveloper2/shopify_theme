@@ -246,6 +246,19 @@
         "shop_now": false
       }
     },
+    "sale_countdown_TgA8rA": {
+      "type": "sale-countdown",
+      "name": "Sale Countdown",
+      "settings": {
+        "subheading": "Deal Ends Soon",
+        "heading": "SHOP THE SALE BEFORE IT ENDS",
+        "countdown_date": "2026-05-04",
+        "countdown_time": "23:59:59",
+        "button_label": "SHOP NOW",
+        "button_link": "",
+        "color_scheme": "scheme-d1d6ea59-e59b-4dca-84b0-47a0bed20039"
+      }
+    },
     "brand_logo_slider_btJUme": {
       "type": "brand-logo-slider",
       "blocks": {
@@ -403,6 +416,7 @@
     "our_categorys_Fyyicb",
     "promo_banner_ga9rbY",
     "collection_tabbing_jaXyeV",
+    "sale_countdown_TgA8rA",
     "brand_logo_slider_btJUme",
     "featured_blog_fUjFdM",
     "new_sletters_p3BQV6",
