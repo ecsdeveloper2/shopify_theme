@@ -2124,6 +2124,65 @@ form#FacetFiltersForm {
     padding-left: 20px;
 }
 
+/* Flip Collection product image */
+.card-product-img{
+  position: relative;
+  overflow: hidden;
+}
+
+.product-img-front,
+.product-img-back{
+  width:100%;
+  transition: transform 0.6s ease, opacity 0.6s ease;
+  backface-visibility: hidden;
+}
+
+.product-img-back{
+  position:absolute;
+  top:0;
+  left:0;
+  opacity:0;
+  transform: rotateY(180deg);
+}
+
+.card-product-item:hover .product-img-front{
+  transform: rotateY(180deg);
+  opacity:0;
+}
+
+.card-product-item:hover .product-img-back{
+  transform: rotateY(0deg);
+  opacity:1;
+}
+
+/* Testimonial section css */
+.testimonial-box {
+    width: 100% !important;
+}
+.testimonial-image img{
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    object-fit:cover;
+}
+.testimonial-text{
+    line-height:1.6;
+}
+.testimonial-name{
+    font-size:18px;
+    font-weight:600;
+}
+.testimonial-section{
+  .heading-navigation{
+      justify-content: center;
+  }
+  .section-heading{
+      max-width: 800px;
+      justify-content: center;
+  }
+  h2,p{
+      text-align: center;
+  }
 .card-product-btn {
     padding-bottom: 10px;
 }

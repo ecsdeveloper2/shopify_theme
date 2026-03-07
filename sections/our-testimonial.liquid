@@ -1,0 +1,173 @@
+{%- style -%}
+  :root {
+      --column-box-border-radius: {{ section.settings.border_radius }}px;
+    }
+{%- endstyle -%}
+{%- liquid
+  assign show_desktop_slider = false
+  if section.settings.enable_desktop_slider
+    assign show_desktop_slider = true
+  endif
+-%}
+<div class="column-box-section testimonial-section section-{{ section.id }}-padding color-{{ section.settings.color_scheme }}">
+  <div class="page-container">
+    {% render 'section-header' %}
+    <div class="column-box-item{% if show_desktop_slider %} swiper swiper-slider-{{ section.id }}{% else %} item-gap d-flex flex-wrap{% endif %}">
+      {% if show_desktop_slider %}
+        <div class="swiper-wrapper">
+      {% endif %}
+      {% for block in section.blocks %}
+        {% if show_desktop_slider %}
+          <div class="swiper-slide">
+        {% endif %}
+        <div class="column-box{% unless show_desktop_slider %} col-{{ section.settings.columns_show }} col-{{ section.settings.columns_show }}-lg col-{{ section.settings.columns_show }}-sm col-{{ section.settings.columns_show }}-xs{% endunless %}">
+          <div
+            class="column"
+            style="background: {% if block.settings.background_image %}url('{{ block.settings.background_image }}') no-repeat center/cover{% else %}var(--box-background){% endif %};"
+          >
+            <div class="testimonial-box">
+            <div class="d-flex align-items-center flex-wrap" style="gap: 12px;">
+              {% if block.settings.image %}
+                <div class="testimonial-image">
+                  <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.name }}" class="img-fluid" width="" height="">
+                </div>
+              {% endif %}
+
+              <div class="testimonial-content">
+                {% if block.settings.name %}
+                  <h4 class="testimonial-name">
+                    {{ block.settings.name }}
+                  </h4>
+                {% endif %}
+
+                {% if block.settings.designation %}
+                  <span class="testimonial-designation">
+                    {{ block.settings.designation }}
+                  </span>
+                {% endif %}
+              </div>
+              </div>
+
+              {% if block.settings.testimonial %}
+                <p class="testimonial-text">
+                {{ block.settings.testimonial }}
+                </p>
+                {% endif %}
+            </div>
+          </div>
+        </div>
+        {% if show_desktop_slider %}
+          </div>
+        {% endif %}
+      {% endfor %}
+      {% if show_desktop_slider %}
+        </div>
+      {% endif %}
+      {% if show_desktop_slider %}
+        {% render 'slider-scroll-bar', section: section %}
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% if show_desktop_slider %}
+  {% render 'slider-js', section: section %}
+{% endif %}
+{% schema %}
+{
+  "name": "Our Testimonial",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Border Radius",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "columns_show",
+      "max": 4,
+      "min": 1,
+      "default": 3,
+      "step": 0.1,
+      "label": "Column Show"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_desktop_slider",
+      "label": "t:sections.featured-collection.settings.enable_desktop_slider.label",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Our Testimonials"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Section Description",
+      "default": "<p>See what our customers are saying about their experience with our products and services. We value every review and continuously strive to deliver quality, reliability, and excellent customer satisfaction.</p>"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Customer Image"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Customer Name"
+        },
+        {
+          "type": "text",
+          "id": "designation",
+          "label": "Customer Designation"
+        },
+        {
+          "type": "textarea",
+          "id": "testimonial",
+          "label": "Testimonial Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Our Testimonial",
+      "blocks": [
+        {
+          "type": "testimonial"
+        },
+        {
+          "type": "testimonial"
+        },
+        {
+          "type": "testimonial"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
