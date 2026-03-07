@@ -145,7 +145,7 @@
     "our_categorys_Fyyicb": {
       "type": "our-categorys",
       "blocks": {
-        "column_LwWHbw": {
+        "column_Prh8QK": {
           "type": "column",
           "settings": {
             "subheading": "Nutrition",
@@ -169,7 +169,7 @@
         }
       },
       "block_order": [
-        "column_LwWHbw",
+        "column_Prh8QK",
         "column_BQpirU"
       ],
       "name": "Our Categories",
