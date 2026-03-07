@@ -335,7 +335,7 @@
       "name": "Newsletter Section",
       "settings": {
         "image": "shopify://shop_images/banner-image2.webp",
-        "title": "New Sletter",
+        "title": "News letter",
         "subtext": "Subscribe to get special offers, free giveaways, and once-in-a-lifetime deals.",
         "button_label": "Subscribe",
         "color_scheme": "scheme-d1d6ea59-e59b-4dca-84b0-47a0bed20039"
