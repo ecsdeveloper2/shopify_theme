@@ -199,6 +199,7 @@
 }
 .facets-container .facets__display-vertical--box fieldset ul {
   margin-top: 15px;
+  text-align: left;
 }
 .facets-container .facets__display-vertical--box fieldset ul li {
   padding: 10px 0;
