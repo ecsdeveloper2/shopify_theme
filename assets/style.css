@@ -2122,5 +2122,8 @@ form#FacetFiltersForm {
 
 .card-product-price_btn {
     padding-left: 20px;
-    padding-bottom: 20px;
+}
+
+.card-product-btn {
+    padding-bottom: 10px;
 }
