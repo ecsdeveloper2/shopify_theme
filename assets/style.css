@@ -728,8 +728,8 @@ summary.header__icon {
   gap: 10px;
 }
 .usps-bar-column .usp-icon {
-  aspect-ratio: 1;
-  width: 80px;
+  aspect-ratio: 2;
+  width: auto;
   height: 100%;
   min-width: 80px;
 }
@@ -2080,6 +2080,11 @@ body.dark-mode .faq-question{
       width:100%;
     }
   }
+  @media (max-width:430px){
+    .header__heading-logo-wrapper {
+       margin-top: -12px;
+    }
+  }
 /*contact us page css end */
 
 /* Search results CSS  */
@@ -2091,4 +2096,126 @@ body.dark-mode .faq-question{
 
 .header__heading-logo-wrapper{
   margin-top:-24px;
+}
+
+/* Facet-Filter Box Shadow */
+
+form#FacetFiltersForm {
+    padding: 20px;
+    max-width: 400px;
+    text-align: center;
+    background: #ffffff;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 6px -3px #00000070;
+}
+
+/* Collection Product */
+.card-product-item{
+  box-shadow: 0 0 6px -3px #00000070;
+  border-radius: 10px;
+}
+
+.card-product-content {
+    padding: 0px 20px;
+}
+
+.card-product-price_btn {
+    padding-left: 20px;
+}
+
+/* Flip Collection product image */
+.card-product-img{
+  position: relative;
+  overflow: hidden;
+}
+
+.product-img-front,
+.product-img-back{
+  width:100%;
+  transition: transform 0.6s ease, opacity 0.6s ease;
+  backface-visibility: hidden;
+}
+
+.product-img-back{
+  position:absolute;
+  top:0;
+  left:0;
+  opacity:0;
+  transform: rotateY(180deg);
+}
+
+.card-product-item:hover .product-img-front{
+  transform: rotateY(180deg);
+  opacity:0;
+}
+
+.card-product-item:hover .product-img-back{
+  transform: rotateY(0deg);
+  opacity:1;
+}
+.card-product-btn {
+    padding-bottom: 10px;
+}
+/* Testimonial section css */
+.testimonial-box {
+    width: 100% !important;
+}
+.testimonial-image img{
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    object-fit:cover;
+}
+.testimonial-text{
+    line-height:1.6;
+}
+.testimonial-name{
+    font-size:18px;
+    font-weight:600;
+}
+.testimonial-section{
+  .heading-navigation{
+      justify-content: center;
+  }
+  .section-heading{
+      max-width: 800px;
+      justify-content: center;
+  }
+  h2,p{
+      text-align: center;
+  }
+}
+/* Announcementbar */
+.top-header-item-block > p, .top-header-contact a {
+    font-weight: 600;
+}
+
+/* Countdown Section CSS */
+.sale-countdown-section{
+  padding: 30px 0;
+  text-align:center;
+}
+.countdown-heading{
+  margin-bottom:20px;
+}
+.countdown-timer{
+  display:flex;
+  justify-content:center;
+  gap:40px;
+  margin-bottom:20px;
+}
+.countdown-number{
+  font-size:48px;
+  font-weight:500;
+  display:block;
+}
+.countdown-label{
+  font-size:12px;
+  text-transform:uppercase;
+}
+@media(max-width:425px){
+  .countdown-timer{
+      gap: 25px;
+  }
 }

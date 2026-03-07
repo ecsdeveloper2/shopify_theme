@@ -176,7 +176,7 @@
       "settings": {
         "color_scheme": "",
         "border_radius": 10,
-        "columns_show": 2,
+        "columns_show": 1,
         "enable_desktop_slider": true,
         "title": "Our Categories",
         "description": "<p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.</p>",
@@ -193,6 +193,62 @@
         "button_link": "",
         "button_text": "Shop Now",
         "image": "shopify://shop_images/image-overlay.png"
+      }
+    },
+    "our_testimonial_miehcQ": {
+      "type": "our-testimonial",
+      "blocks": {
+        "testimonial_RR7wKf": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/Testimonial-image2.jpg",
+            "name": "Michael Brown",
+            "designation": "Verified Customer",
+            "testimonial": "Excellent product quality and very good support. Everything arrived in perfect condition and exactly as described. I’m extremely satisfied with my purchase."
+          }
+        },
+        "testimonial_yFxraC": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/Testimonial-image2.jpg",
+            "name": "John Carter",
+            "designation": "Happy Customer",
+            "testimonial": "Amazing quality and fast delivery. I am really happy with my purchase and will definitely shop again. The packaging was great and the product quality is exactly as described."
+          }
+        },
+        "testimonial_6ECVA3": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/Testimonial-image2.jpg",
+            "name": "John Carter",
+            "designation": "Happy Customer",
+            "testimonial": "Amazing quality and fast delivery. I am really happy with my purchase and will definitely shop again. The packaging was great and the product quality is exactly as described."
+          }
+        },
+        "testimonial_DEXadi": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/Testimonial-image2.jpg",
+            "name": "Emily Watson",
+            "designation": "Regular Buyer",
+            "testimonial": "Great customer service and beautiful products. The team was very helpful and answered all my questions quickly. I’m really impressed with the quality and overall experience."
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_RR7wKf",
+        "testimonial_yFxraC",
+        "testimonial_6ECVA3",
+        "testimonial_DEXadi"
+      ],
+      "name": "Our Testimonial",
+      "settings": {
+        "color_scheme": "",
+        "border_radius": 10,
+        "columns_show": 3,
+        "enable_desktop_slider": true,
+        "title": "Our Testimonials",
+        "description": "<p>See what our customers are saying about their experience with our products and services. We value every review and continuously strive to deliver quality, reliability, and excellent customer satisfaction.</p>"
       }
     },
     "collection_tabbing_jaXyeV": {
@@ -244,6 +300,19 @@
         "show_secondary_image": true,
         "quick_add": true,
         "shop_now": false
+      }
+    },
+    "sale_countdown_TgA8rA": {
+      "type": "sale-countdown",
+      "name": "Sale Countdown",
+      "settings": {
+        "subheading": "Deal Ends Soon",
+        "heading": "SHOP THE SALE BEFORE IT ENDS",
+        "countdown_date": "2026-04-05",
+        "countdown_time": "01:00:00",
+        "button_label": "SHOP NOW",
+        "button_link": "",
+        "color_scheme": "scheme-d1d6ea59-e59b-4dca-84b0-47a0bed20039"
       }
     },
     "brand_logo_slider_btJUme": {
@@ -335,7 +404,7 @@
       "name": "Newsletter Section",
       "settings": {
         "image": "shopify://shop_images/banner-image2.webp",
-        "title": "New Sletter",
+        "title": "News letter",
         "subtext": "Subscribe to get special offers, free giveaways, and once-in-a-lifetime deals.",
         "button_label": "Subscribe",
         "color_scheme": "scheme-d1d6ea59-e59b-4dca-84b0-47a0bed20039"
@@ -402,7 +471,9 @@
     "category_section_jKKYNt",
     "our_categorys_Fyyicb",
     "promo_banner_ga9rbY",
+    "our_testimonial_miehcQ",
     "collection_tabbing_jaXyeV",
+    "sale_countdown_TgA8rA",
     "brand_logo_slider_btJUme",
     "featured_blog_fUjFdM",
     "new_sletters_p3BQV6",

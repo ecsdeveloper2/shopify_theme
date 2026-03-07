@@ -16,7 +16,10 @@
       "blocks": {
         "logo_social": {
           "type": "logo_social",
-          "settings": {}
+          "settings": {
+            "description": "<p>We are a small team of designers and developers that love to create beautiful products.</p>",
+            "show_social": true
+          }
         },
         "menu": {
           "type": "menu",
@@ -33,7 +36,8 @@
         "newsletter": {
           "type": "newsletter",
           "settings": {
-            "contact-info-title": "contact-info"
+            "contact-info-title": "contact-info",
+            "newsletter_title": "News letter"
           }
         }
       },
