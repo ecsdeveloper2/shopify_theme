@@ -195,6 +195,52 @@
         "image": "shopify://shop_images/image-overlay.png"
       }
     },
+    "our_testimonial_miehcQ": {
+      "type": "our-testimonial",
+      "blocks": {
+        "testimonial_yFxraC": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/Testimonial-image2.jpg",
+            "name": "John Carter",
+            "designation": "Happy Customer",
+            "testimonial": "Amazing quality and fast delivery. I am really happy with my purchase and will definitely shop again. The packaging was great and the product quality is exactly as described."
+          }
+        },
+        "testimonial_DEXadi": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/Testimonial-image2.jpg",
+            "name": "Emily Watson",
+            "designation": "Regular Buyer",
+            "testimonial": "Great customer service and beautiful products. The team was very helpful and answered all my questions quickly. I’m really impressed with the quality and overall experience."
+          }
+        },
+        "testimonial_RR7wKf": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/Testimonial-image2.jpg",
+            "name": "Michael Brown",
+            "designation": "Verified Customer",
+            "testimonial": "Excellent product quality and very good support. Everything arrived in perfect condition and exactly as described. I’m extremely satisfied with my purchase."
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_yFxraC",
+        "testimonial_DEXadi",
+        "testimonial_RR7wKf"
+      ],
+      "name": "Our Testimonial",
+      "settings": {
+        "color_scheme": "",
+        "border_radius": 10,
+        "columns_show": 3,
+        "enable_desktop_slider": false,
+        "title": "Our Testimonials",
+        "description": "<p>See what our customers are saying about their experience with our products and services. We value every review and continuously strive to deliver quality, reliability, and excellent customer satisfaction.</p>"
+      }
+    },
     "collection_tabbing_jaXyeV": {
       "type": "collection-tabbing",
       "blocks": {
@@ -415,6 +461,7 @@
     "category_section_jKKYNt",
     "our_categorys_Fyyicb",
     "promo_banner_ga9rbY",
+    "our_testimonial_miehcQ",
     "collection_tabbing_jaXyeV",
     "sale_countdown_TgA8rA",
     "brand_logo_slider_btJUme",
