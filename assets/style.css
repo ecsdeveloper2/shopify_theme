@@ -2190,3 +2190,32 @@ form#FacetFiltersForm {
 .top-header-item-block > p, .top-header-contact a {
     font-weight: 600;
 }
+
+/* Countdown Section CSS */
+.sale-countdown-section{
+  padding: 30px 0;
+  text-align:center;
+}
+.countdown-heading{
+  margin-bottom:20px;
+}
+.countdown-timer{
+  display:flex;
+  justify-content:center;
+  gap:40px;
+  margin-bottom:20px;
+}
+.countdown-number{
+  font-size:48px;
+  font-weight:500;
+  display:block;
+}
+.countdown-label{
+  font-size:12px;
+  text-transform:uppercase;
+}
+@media(max-width:425px){
+  .countdown-timer{
+      gap: 25px;
+  }
+}

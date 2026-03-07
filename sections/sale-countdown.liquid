@@ -1,0 +1,121 @@
+<div class="sale-countdown-section section-{{ section.id }} color-{{ section.settings.color_scheme }}">
+  <div class="page-container countdown-wrapper">
+    {% if section.settings.subheading != blank %}
+      <p class="countdown-subheading text-center m-0">{{ section.settings.subheading }}</p>
+    {% endif %}
+
+    {% if section.settings.heading != blank %}
+      <h2 class="countdown-heading text-center">{{ section.settings.heading }}</h2>
+    {% endif %}
+
+    <div class="countdown-timer" data-date="{{ section.settings.countdown_date }}T{{ section.settings.countdown_time }}">
+      <div class="countdown-box">
+        <span class="countdown-number days">00</span>
+        <span class="countdown-label">Days</span>
+      </div>
+      <div class="countdown-box">
+        <span class="countdown-number hours">00</span>
+        <span class="countdown-label">Hours</span>
+      </div>
+      <div class="countdown-box">
+        <span class="countdown-number minutes">00</span>
+        <span class="countdown-label">Minutes</span>
+      </div>
+      <div class="countdown-box">
+        <span class="countdown-number seconds">00</span>
+        <span class="countdown-label">Seconds</span>
+      </div>
+    </div>
+    {% if section.settings.button_label != blank %}
+      <a href="{{ section.settings.button_link }}" class="countdown-btn btn">
+        {{ section.settings.button_label }}
+      </a>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Sale Countdown",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Sub Heading",
+      "default": "Deal Ends Soon"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "SHOP THE SALE BEFORE IT ENDS"
+    },
+    {
+        "type": "text",
+        "id": "countdown_date",
+        "label": "Countdown Date",
+        "default": "2026-04-02"
+    },
+    {
+        "type": "text",
+        "id": "countdown_time",
+        "label": "Countdown Time",
+        "default": "23:59:59"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "SHOP NOW"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-4"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sale Countdown"
+    }
+  ]
+}
+{% endschema %}
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+  const countdown = document.querySelector(".section-{{ section.id }} .countdown-timer");
+  if(!countdown) return;
+
+  const endDate = new Date(countdown.dataset.date).getTime();
+
+  function updateCountdown(){
+
+    const now = new Date().getTime();
+    const distance = endDate - now;
+
+    const days = Math.floor(distance / (1000*60*60*24));
+    const hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+    const minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
+    const seconds = Math.floor((distance % (1000*60)) / 1000);
+
+    countdown.querySelector(".days").innerHTML = days;
+    countdown.querySelector(".hours").innerHTML = hours;
+    countdown.querySelector(".minutes").innerHTML = minutes;
+    countdown.querySelector(".seconds").innerHTML = seconds;
+
+  }
+
+  setInterval(updateCountdown,1000);
+
+});
+</script>
