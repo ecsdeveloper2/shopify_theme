@@ -176,8 +176,8 @@
       "settings": {
         "color_scheme": "",
         "border_radius": 10,
-        "columns_show": 1,
-        "enable_desktop_slider": true,
+        "columns_show": 2,
+        "enable_desktop_slider": false,
         "title": "Our Categories",
         "description": "<p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.</p>",
         "view_all_link": ""
