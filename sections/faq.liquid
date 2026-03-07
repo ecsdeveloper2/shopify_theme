@@ -68,9 +68,16 @@
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    document.querySelectorAll(".faq-question").forEach(function (button) {
+    const faqItems = document.querySelectorAll(".faq-item");
+
+    faqItems.forEach(function (item) {
+      const button = item.querySelector(".faq-question");
+
       button.addEventListener("click", function () {
-        this.parentElement.classList.toggle("active");
+        faqItems.forEach(function (el) {
+          el.classList.remove("active");
+        });
+        item.classList.add("active");
       });
     });
   });
