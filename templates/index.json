@@ -201,7 +201,7 @@
         "testimonial_x6zLJJ": {
           "type": "testimonial",
           "settings": {
-            "image": "shopify://shop_images/Layer143.png",
+            "image": "shopify://shop_images/Testimonial-image2.jpg",
             "name": "John Carter",
             "designation": "Happy Customer",
             "testimonial": "Amazing quality and fast delivery. I am really happy with my purchase and will definitely shop again. The packaging was great and the product quality is exactly as described."
@@ -210,7 +210,7 @@
         "testimonial_EKpRKa": {
           "type": "testimonial",
           "settings": {
-            "image": "shopify://shop_images/swater-1.webp",
+            "image": "shopify://shop_images/Testimonial-image1.jpg",
             "name": "Emily Watson",
             "designation": "Regular Buyer",
             "testimonial": "Great customer service and beautiful products. The team was very helpful and answered all my questions quickly. I’m really impressed with the quality and overall experience."
@@ -219,7 +219,7 @@
         "testimonial_ndz3Gz": {
           "type": "testimonial",
           "settings": {
-            "image": "shopify://shop_images/new-collection.webp",
+            "image": "shopify://shop_images/Testimonial-image2.jpg",
             "name": "Michael Brown",
             "designation": "Verified Customer",
             "testimonial": "Excellent product quality and very good support. Everything arrived in perfect condition and exactly as described. I’m extremely satisfied with my purchase."
