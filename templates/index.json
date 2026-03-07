@@ -341,6 +341,52 @@
         "color_scheme": "scheme-d1d6ea59-e59b-4dca-84b0-47a0bed20039"
       }
     },
+    "our_testimonial_d4ajw4": {
+      "type": "our-testimonial",
+      "blocks": {
+        "testimonial_x6zLJJ": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/Layer143.png",
+            "name": "John Carter",
+            "designation": "Happy Customer",
+            "testimonial": "Amazing quality and fast delivery. I am really happy with my purchase and will definitely shop again. The packaging was great and the product quality is exactly as described."
+          }
+        },
+        "testimonial_EKpRKa": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/swater-1.webp",
+            "name": "Emily Watson",
+            "designation": "Regular Buyer",
+            "testimonial": "Great customer service and beautiful products. The team was very helpful and answered all my questions quickly. I’m really impressed with the quality and overall experience."
+          }
+        },
+        "testimonial_ndz3Gz": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/new-collection.webp",
+            "name": "Michael Brown",
+            "designation": "Verified Customer",
+            "testimonial": "Excellent product quality and very good support. Everything arrived in perfect condition and exactly as described. I’m extremely satisfied with my purchase."
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_x6zLJJ",
+        "testimonial_EKpRKa",
+        "testimonial_ndz3Gz"
+      ],
+      "name": "Our Testimonial",
+      "settings": {
+        "color_scheme": "",
+        "border_radius": 10,
+        "columns_show": 3,
+        "enable_desktop_slider": false,
+        "title": "Our Testimonials",
+        "description": "<p>See what our customers are saying about their experience with our products and services. We value every review and continuously strive to deliver quality, reliability, and excellent customer satisfaction.</p>"
+      }
+    },
     "faq_9htgiJ": {
       "type": "faq",
       "blocks": {
@@ -406,6 +452,7 @@
     "brand_logo_slider_btJUme",
     "featured_blog_fUjFdM",
     "new_sletters_p3BQV6",
+    "our_testimonial_d4ajw4",
     "faq_9htgiJ"
   ]
 }
