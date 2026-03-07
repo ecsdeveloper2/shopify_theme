@@ -1,7 +1,6 @@
 <div class="card-product-img">
     <a href="{{ product.url }}">
       <img
-        class="product-img-front"
         srcset="
           {%- if product.featured_media.width >= 165 -%}{{ product.featured_media | image_url: width: 165 }} 165w,{%- endif -%}
           {%- if product.featured_media.width >= 360 -%}{{ product.featured_media | image_url: width: 360 }} 360w,{%- endif -%}
@@ -19,7 +18,6 @@
       >
       {%- if product.media[1] != null and show-second-image -%}
         <img
-          class="product-img-back"
           srcset="
             {%- if product.media[1].width >= 165 -%}{{ product.media[1] | image_url: width: 165 }} 165w,{%- endif -%}
             {%- if product.media[1].width >= 360 -%}{{ product.media[1] | image_url: width: 360 }} 360w,{%- endif -%}
