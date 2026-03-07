@@ -728,8 +728,8 @@ summary.header__icon {
   gap: 10px;
 }
 .usps-bar-column .usp-icon {
-  aspect-ratio: 1;
-  width: 80px;
+  aspect-ratio: 2;
+  width: auto;
   height: 100%;
   min-width: 80px;
 }
