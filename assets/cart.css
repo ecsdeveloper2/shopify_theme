@@ -237,3 +237,8 @@
     top: 90px;
   }
 }
+@media(max-width: 400px){
+  .cart-drawer.active{
+    right: 0px;
+  }
+}
