@@ -226,7 +226,7 @@
                       </button>
                       <input
                         class="quantity__input"
-                        type="number"
+                        type="numeric"
                         name="quantity"
                         id="Quantity-{{ section.id }}"
                         min="1"
@@ -508,6 +508,37 @@
         this.value = min;
       }
     });
+  });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  const addToCartBtn = document.querySelector('#ProductSubmitButton-template--26137031442727__main');
+  if (!addToCartBtn) return;
+  addToCartBtn.addEventListener("click", function (e) {
+    const qtyInput = document.querySelector('input[name="quantity"]');
+    const variantInput = document.querySelector('input[name="id"]');
+    let selectedQty = qtyInput ? parseInt(qtyInput.value) : 1;
+    let currentVariantId = variantInput ? variantInput.value : null;
+    const cartItems = document.querySelectorAll('.drawer-qty');
+    for (let i = 0; i < cartItems.length; i++) {
+      let cartItem = cartItems[i];
+      let cartVariantId = cartItem.dataset.variantId;
+      if (cartVariantId == currentVariantId) {
+        let currentQty = parseInt(cartItem.querySelector('.qty-number').textContent.trim());
+        let maxQty = parseInt(cartItem.dataset.max);
+        if ((currentQty + selectedQty) > maxQty) {
+          e.preventDefault();
+          let remaining = maxQty - currentQty;
+          if (remaining > 0) {
+            alert("You can only add " + remaining + " more item.");
+          } else {
+            alert("Only " + maxQty + " products available.");
+          }
+          return false;
+        }
+        break; 
+      }
+    }
   });
 });
 </script>
