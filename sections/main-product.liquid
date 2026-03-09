@@ -225,21 +225,16 @@
                         {{- 'icon-minus.svg' | inline_asset_content -}}
                       </button>
                       <input
-                        class="quantity__input"
-                        type="number"
-                        name="quantity"
-                        id="Quantity-{{ section.id }}"
-                        data-cart-quantity="{{ cart_qty }}"
-                        data-min="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
-                        min="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
-                        {% if product.selected_or_first_available_variant.quantity_rule.max != null %}
-                          data-max="{{ product.selected_or_first_available_variant.quantity_rule.max }}"
-                          max="{{ product.selected_or_first_available_variant.quantity_rule.max }}"
-                        {% endif %}
-                        step="{{ product.selected_or_first_available_variant.quantity_rule.increment }}"
-                        value="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
-                        form="{{ product_form_id }}"
-                      >
+  class="quantity__input"
+  type="number"
+  name="quantity"
+  id="Quantity-{{ section.id }}"
+  min="1"
+  max="{{ product.selected_or_first_available_variant.inventory_quantity }}"
+  step="1"
+  value="1"
+  form="{{ product_form_id }}"
+>
                       <button class="quantity__button" name="plus" type="button">
                         {{- 'icon-plus.svg' | inline_asset_content -}}
                       </button>
