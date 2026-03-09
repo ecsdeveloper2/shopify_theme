@@ -207,15 +207,6 @@
             "testimonial": "Excellent product quality and very good support. Everything arrived in perfect condition and exactly as described. I’m extremely satisfied with my purchase."
           }
         },
-        "testimonial_yFxraC": {
-          "type": "testimonial",
-          "settings": {
-            "image": "shopify://shop_images/Testimonial-image2.jpg",
-            "name": "John Carter",
-            "designation": "Happy Customer",
-            "testimonial": "Amazing quality and fast delivery. I am really happy with my purchase and will definitely shop again. The packaging was great and the product quality is exactly as described."
-          }
-        },
         "testimonial_6ECVA3": {
           "type": "testimonial",
           "settings": {
@@ -233,13 +224,22 @@
             "designation": "Regular Buyer",
             "testimonial": "Great customer service and beautiful products. The team was very helpful and answered all my questions quickly. I’m really impressed with the quality and overall experience."
           }
+        },
+        "testimonial_yFxraC": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/Testimonial-image2.jpg",
+            "name": "John Carter",
+            "designation": "Happy Customer",
+            "testimonial": "Amazing quality and fast delivery. I am really happy with my purchase and will definitely shop again. The packaging was great and the product quality is exactly as described."
+          }
         }
       },
       "block_order": [
         "testimonial_RR7wKf",
-        "testimonial_yFxraC",
         "testimonial_6ECVA3",
-        "testimonial_DEXadi"
+        "testimonial_DEXadi",
+        "testimonial_yFxraC"
       ],
       "name": "Our Testimonial",
       "settings": {
