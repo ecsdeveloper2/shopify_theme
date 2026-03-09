@@ -494,51 +494,31 @@
     {% endif %}
   {% endif %}
 {% endfor %}
-{% comment %} <script>
-  document.addEventListener("DOMContentLoaded", function () {
+<script>
+ document.addEventListener("DOMContentLoaded", function () {
 
-  const quantityInput = document.querySelector(".quantity__input");
-  const plusBtn = document.querySelector('button[name="plus"]');
-  const minusBtn = document.querySelector('button[name="minus"]');
+  document.querySelectorAll(".quantity__input").forEach(function(input){
 
-  if (!quantityInput) return;
+    input.addEventListener("change", function(){
 
-  const maxQty = parseInt(quantityInput.getAttribute("max"));
-  const minQty = parseInt(quantityInput.getAttribute("min")) || 1;
+      let max = parseInt(this.getAttribute("max"));
+      let min = parseInt(this.getAttribute("min")) || 1;
+      let value = parseInt(this.value);
 
-  // Typing validation
-  quantityInput.addEventListener("input", function () {
-    let value = parseInt(this.value);
+      if(value > max){
+        this.value = max;
+      }
 
-    if (value > maxQty) {
-      this.value = maxQty;
-    }
+      if(value < min || isNaN(value)){
+        this.value = min;
+      }
 
-    if (value < minQty || isNaN(value)) {
-      this.value = minQty;
-    }
-  });
+    });
 
-  // Plus button
-  plusBtn.addEventListener("click", function () {
-    let value = parseInt(quantityInput.value);
-
-    if (value < maxQty) {
-      quantityInput.value = value + 1;
-    }
-  });
-
-  // Minus button
-  minusBtn.addEventListener("click", function () {
-    let value = parseInt(quantityInput.value);
-
-    if (value > minQty) {
-      quantityInput.value = value - 1;
-    }
   });
 
 });
-</script> {% endcomment %}
+</script>
 {% schema %}
 {
   "name": "t:sections.main-product.name",
