@@ -311,7 +311,7 @@
         "countdown_date": "2026-04-05",
         "countdown_time": "01:00:00",
         "button_label": "SHOP NOW",
-        "button_link": "",
+        "button_link": "shopify://collections/all",
         "color_scheme": "scheme-d1d6ea59-e59b-4dca-84b0-47a0bed20039"
       }
     },
