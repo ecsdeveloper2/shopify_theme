@@ -148,23 +148,23 @@
         "column_Prh8QK": {
           "type": "column",
           "settings": {
-            "subheading": "Nutrition",
-            "heading": "Essentials",
-            "description": "<p>Explore our collection of essential items that.</p>",
-            "button_url": "",
+            "subheading": "best",
+            "heading": "Cosmetics",
+            "description": "<p>Explore our collection of cosmetics.</p>",
+            "button_url": "shopify://collections/lakeme",
             "button_label": "Shop Now",
-            "image": "shopify://shop_images/category_image1.png"
+            "image": "shopify://shop_images/lakme-beauty-kit-for-parlour-use-003.jpg"
           }
         },
         "column_BQpirU": {
           "type": "column",
           "settings": {
-            "subheading": "Nutrition",
-            "heading": "Essentials",
-            "description": "<p>Explore our collection of essential items that.</p>",
-            "button_url": "",
+            "subheading": "best",
+            "heading": "Perfumes",
+            "description": "<p>Explore our collection of perfumes.</p>",
+            "button_url": "shopify://collections/bella-vita",
             "button_label": "Shop Now",
-            "image": "shopify://shop_images/home3_slide-item.webp"
+            "image": "shopify://shop_images/LuxuryPerfumeforMenandWomenIPerfumeGiftSet-BellaVitaLuxury.png"
           }
         }
       },
