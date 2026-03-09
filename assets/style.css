@@ -2117,11 +2117,11 @@ form#FacetFiltersForm {
     padding: 10px 14px;
 }
 
-@media (max-width:768px){
+/* @media (max-width:768px){
   form#FacetFiltersForm {
     max-width: 100%;
   }
-}
+} */
 /* Collection Product */
 .card-product-item{
   box-shadow: 0 0 6px -3px #00000070;

@@ -396,6 +396,9 @@
   }
 }
 @media (max-width: 576px) {
+  .sorting-filter__field{
+    padding: 10px;
+  }
   .main-collection-banner .banner__image img {
     max-height: 400px;
   }
