@@ -41,7 +41,7 @@
                         <img
                           src="{{ item.image | image_url: width: 120 }}"
                           alt="{{ item.title | escape }}"
-                          class="cart-image"
+                          class="cart-image" width="" height=""
                         >
                       {% endif %}
                       <div>
@@ -84,7 +84,11 @@
                       <form method="post" action="/cart/change" class="qty-form">
                         <input type="hidden" name="id" value="{{ item.key }}">
                         <input type="hidden" name="quantity" value="{{ item.quantity | plus: 1 }}">
-                        <button type="submit">+</button>
+                        <button 
+                          type="submit" 
+                          {% if item.quantity >= item.variant.inventory_quantity %}
+                            disabled
+                          {% endif %}>+</button>
                       </form>
                     </div>
                     <form method="post" action="/cart/change" class="cart-remove-form">
