@@ -849,7 +849,7 @@ summary.header__icon {
   display: inline-block;
 }
 .column-box-section .column > div img {
-  max-height: 250px;
+  max-height: 190px;
 }
 .column-box-section .column .column-content {
   padding-bottom: 65px;
@@ -2117,11 +2117,6 @@ form#FacetFiltersForm {
     padding: 10px 14px;
 }
 
-/* @media (max-width:768px){
-  form#FacetFiltersForm {
-    max-width: 100%;
-  }
-} */
 /* Collection Product */
 .card-product-item{
   box-shadow: 0 0 6px -3px #00000070;
@@ -2230,5 +2225,17 @@ form#FacetFiltersForm {
 @media(max-width:425px){
   .countdown-timer{
       gap: 25px;
+  }
+}
+
+/* Footer Design */
+@media (max-width:430px){
+  .footer__row {
+    flex-direction: column;
+  }
+}
+@media(max-width:768px){
+  .footer__logo .header__heading-logo-wrapper {
+        text-align: start;
   }
 }
