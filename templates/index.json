@@ -45,7 +45,7 @@
       "type": "new-arrival",
       "settings": {
         "title": "New arrival",
-        "image": "shopify://shop_images/jacket.webp",
+        "image": "shopify://shop_images/White-jacket.png",
         "color_scheme": "scheme-1",
         "collection": "puffer-coat",
         "columns_show": 3.5,
