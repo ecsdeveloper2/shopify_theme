@@ -330,24 +330,24 @@
             "image": "shopify://shop_images/Bellavita.png"
           }
         },
-        "logo_zn6rdr": {
+        "logo_3jk63G": {
           "type": "logo",
           "settings": {
-            "image": "shopify://shop_images/Max.png"
+            "image": "shopify://shop_images/Lakeme.jpg"
           }
         },
-        "logo_LxMprJ": {
+        "logo_YMzhdf": {
           "type": "logo",
           "settings": {
-            "image": "shopify://shop_images/Nike_61c5d51c-edb1-44b7-86fe-b2ec342dc00d.png"
+            "image": "shopify://shop_images/Bellavita.png"
           }
         }
       },
       "block_order": [
         "logo_pVdyA9",
         "logo_LLemYT",
-        "logo_zn6rdr",
-        "logo_LxMprJ"
+        "logo_3jk63G",
+        "logo_YMzhdf"
       ],
       "settings": {
         "title": "Shop by Brand",
