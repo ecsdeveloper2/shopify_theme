@@ -2102,7 +2102,7 @@ body.dark-mode .faq-question{
 
 form#FacetFiltersForm {
     padding: 20px;
-    max-width: 400px;
+    /* max-width: 400px; */
     text-align: center;
     background: #ffffff;
     width: 100%;
