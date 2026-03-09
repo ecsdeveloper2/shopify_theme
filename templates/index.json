@@ -45,9 +45,9 @@
       "type": "new-arrival",
       "settings": {
         "title": "New arrival",
-        "image": "shopify://shop_images/Maroon-Jacket.png",
+        "image": "shopify://shop_images/Bella-vita-wonder-women.jpg",
         "color_scheme": "scheme-1",
-        "collection": "puffer-coat",
+        "collection": "bella-vita",
         "columns_show": 3.5,
         "product_limit": 8,
         "show_secondary_image": true,
