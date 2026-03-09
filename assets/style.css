@@ -2110,7 +2110,7 @@ form#FacetFiltersForm {
     box-shadow: 0 0 6px -3px #00000070;
 }
 .facet-filters__sort {
-    padding: 8px 12px;
+    padding: 0px 12px;
 }
 
 .facet-filters__sort option {
