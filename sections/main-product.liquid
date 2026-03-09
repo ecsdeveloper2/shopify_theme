@@ -494,6 +494,23 @@
     {% endif %}
   {% endif %}
 {% endfor %}
+<script>
+ document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll(".quantity__input").forEach(function(input){
+    input.addEventListener("change", function(){
+      let max = parseInt(this.getAttribute("max"));
+      let min = parseInt(this.getAttribute("min")) || 1;
+      let value = parseInt(this.value);
+      if(value > max){
+        this.value = max;
+      }
+      if(value < min || isNaN(value)){
+        this.value = min;
+      }
+    });
+  });
+});
+</script>
 {% schema %}
 {
   "name": "t:sections.main-product.name",
