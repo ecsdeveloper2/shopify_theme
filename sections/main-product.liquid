@@ -510,6 +510,30 @@
     });
   });
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  const addToCartBtn = document.querySelector('#ProductSubmitButton-template--26137031442727__main');
+  if (!addToCartBtn) return;
+  addToCartBtn.addEventListener("click", function (e) {
+    const cartItem = document.querySelector('.drawer-qty');
+    const qtyInput = document.querySelector('input[name="quantity"]');
+    let selectedQty = qtyInput ? parseInt(qtyInput.value) : 1;
+    if (cartItem) {
+      let currentQty = parseInt(cartItem.querySelector('.qty-number').textContent.trim());
+      let maxQty = parseInt(cartItem.dataset.max);
+      if ((currentQty + selectedQty) > maxQty) {
+        e.preventDefault();
+        let remaining = maxQty - currentQty;
+        if (remaining > 0) {
+          alert("You can only add " + remaining + " more item.");
+        } else {
+          alert("Only " + maxQty + " products available.");
+        }
+        return false;
+      }
+    }
+  });
+});
 </script>
 {% schema %}
 {
