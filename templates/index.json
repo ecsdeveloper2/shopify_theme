@@ -318,70 +318,42 @@
     "brand_logo_slider_btJUme": {
       "type": "brand-logo-slider",
       "blocks": {
-        "logo_rci36P": {
+        "logo_pVdyA9": {
           "type": "logo",
           "settings": {
-            "image": "shopify://shop_images/logo.webp"
+            "image": "shopify://shop_images/Lakeme.jpg"
           }
         },
-        "logo_44pdjb": {
+        "logo_LLemYT": {
           "type": "logo",
           "settings": {
-            "image": "shopify://shop_images/logo.webp"
+            "image": "shopify://shop_images/Bellavita.png"
           }
         },
-        "logo_KFrQrY": {
+        "logo_zn6rdr": {
           "type": "logo",
           "settings": {
-            "image": "shopify://shop_images/logo.webp"
+            "image": "shopify://shop_images/Max.png"
           }
         },
-        "logo_TpKUU9": {
+        "logo_LxMprJ": {
           "type": "logo",
           "settings": {
-            "image": "shopify://shop_images/logo.webp"
-          }
-        },
-        "logo_pcmBMP": {
-          "type": "logo",
-          "settings": {
-            "image": "shopify://shop_images/logo.webp"
-          }
-        },
-        "logo_cKCkrh": {
-          "type": "logo",
-          "settings": {
-            "image": "shopify://shop_images/logo.webp"
-          }
-        },
-        "logo_y8KPfP": {
-          "type": "logo",
-          "settings": {
-            "image": "shopify://shop_images/logo.webp"
-          }
-        },
-        "logo_T3UHpT": {
-          "type": "logo",
-          "settings": {
-            "image": "shopify://shop_images/logo.webp"
+            "image": "shopify://shop_images/Nike_61c5d51c-edb1-44b7-86fe-b2ec342dc00d.png"
           }
         }
       },
       "block_order": [
-        "logo_rci36P",
-        "logo_44pdjb",
-        "logo_KFrQrY",
-        "logo_TpKUU9",
-        "logo_pcmBMP",
-        "logo_cKCkrh",
-        "logo_y8KPfP",
-        "logo_T3UHpT"
+        "logo_pVdyA9",
+        "logo_LLemYT",
+        "logo_zn6rdr",
+        "logo_LxMprJ"
       ],
       "settings": {
         "title": "Shop by Brand",
         "description": "<p>Discover your favorite brands all in one place. From trusted names to emerging labels, shop by brand to find the styles and quality you love.</p>",
         "view_all_link": "",
-        "color_scheme": "",
+        "color_scheme": "scheme-1",
         "columns_show": 4,
         "enable_desktop_slider": true
       }
