@@ -312,7 +312,7 @@ body.dark-mode .light-mode-logo {
 }
 .image-box img {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   object-fit: contain;
 }
 span.price-regular {
