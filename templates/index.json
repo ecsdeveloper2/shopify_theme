@@ -148,7 +148,7 @@
         "column_Prh8QK": {
           "type": "column",
           "settings": {
-            "subheading": "best",
+            "subheading": "Trending",
             "heading": "Cosmetics",
             "description": "<p>Explore our collection of cosmetics.</p>",
             "button_url": "shopify://collections/lakeme",
@@ -159,7 +159,7 @@
         "column_BQpirU": {
           "type": "column",
           "settings": {
-            "subheading": "best",
+            "subheading": "Luxury",
             "heading": "Perfumes",
             "description": "<p>Explore our collection of perfumes.</p>",
             "button_url": "shopify://collections/bella-vita",
