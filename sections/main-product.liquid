@@ -499,7 +499,8 @@
     {% endif %}
   {% endif %}
 {% endfor %}
-document.addEventListener("DOMContentLoaded", function () {
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
 
   const quantityInput = document.querySelector(".quantity__input");
   const plusBtn = document.querySelector('button[name="plus"]');
@@ -542,6 +543,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 });
+</script>
 {% schema %}
 {
   "name": "t:sections.main-product.name",
