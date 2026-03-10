@@ -41,7 +41,7 @@
     "social_linkedin_link": "#",
     "social_snapchat_link": "#",
     "input_border": "#313131",
-    "input_text": "#313131",
+    "input_text": "#000000",
     "input_placeholder_text": "#313131",
     "input_border_radius": 8,
     "main_button_border_radius": 10,
