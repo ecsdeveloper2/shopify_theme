@@ -341,20 +341,34 @@
           "settings": {
             "image": "shopify://shop_images/Bellavita.png"
           }
+        },
+        "logo_aBMqHB": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Lakeme.jpg"
+          }
+        },
+        "logo_TaAMEG": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Bellavita.png"
+          }
         }
       },
       "block_order": [
         "logo_pVdyA9",
         "logo_LLemYT",
         "logo_3jk63G",
-        "logo_YMzhdf"
+        "logo_YMzhdf",
+        "logo_aBMqHB",
+        "logo_TaAMEG"
       ],
       "settings": {
         "title": "Shop by Brand",
         "description": "<p>Discover your favorite brands all in one place. From trusted names to emerging labels, shop by brand to find the styles and quality you love.</p>",
         "view_all_link": "",
         "color_scheme": "scheme-1",
-        "columns_show": 4,
+        "columns_show": 3,
         "enable_desktop_slider": true
       }
     },
