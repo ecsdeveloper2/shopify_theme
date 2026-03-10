@@ -2239,3 +2239,69 @@ form#FacetFiltersForm {
         text-align: start;
   }
 }
+
+/* WIshlist Css */
+.card-product-item{
+  position:relative;
+}
+.wishlist-icon{
+  position:absolute;
+  top:10px;
+  right:10px;
+  width:36px;
+  height:36px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: var(--icon-color);
+  border-radius:50%;
+  cursor:pointer;
+  opacity:0;
+  transform:scale(.8);
+  transition:.3s ease;
+}
+.wishlist-icon svg{
+  width:20px;
+  height:20px;
+}
+.card-product-item:hover .wishlist-icon{
+  opacity:1;
+  transform:scale(1);
+}
+.wishlist-icon.active svg{
+  fill:red;
+  stroke:red;
+}
+.all-wishlist-products{
+  gap: var(--spacing_blocks);
+}
+.wishlist-product{
+  position: relative;
+  width: calc(25% - 18px);
+  box-shadow: 0 0 6px -3px #00000070;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.wishlist-product-image{
+  aspect-ratio: 14 / 16;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  width: 100%;
+  overflow: hidden;
+}
+.wishlist-product h3{
+  margin: 20px;
+}
+.wishlist-product h3 a{
+  color: var(--link-color);
+  text-decoration: none;
+}
+.wishlist-product h3 a:hover{
+  color: var(--link-hover-color);
+}
+.wishlist-product:hover .wishlist-icon{
+  opacity:1;
+  transform:scale(1);
+}

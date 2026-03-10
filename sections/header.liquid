@@ -1,4 +1,4 @@
- {{ 'header.css' | asset_url | stylesheet_tag }}
+{{ 'header.css' | asset_url | stylesheet_tag }}
 <style>
   {%- if section.settings.sticky_header_type == 'reduce-logo-size' -%}
     .scrolled-past-header .header__heading-logo-wrapper {
@@ -15,15 +15,15 @@
   {%- endif -%}
 </style>
 {%- style -%}
-.section-header {
-    position: sticky;
-    z-index: 2;
-    box-shadow: 0px 0px 6px -3px #00000070;
-  }
-  .header {
-    padding-top: {{ section.settings.padding_top }}px;
-    padding-bottom: {{ section.settings.padding_bottom }}px;
-  }
+  .section-header {
+      position: sticky;
+      z-index: 2;
+      box-shadow: 0px 0px 6px -3px #00000070;
+    }
+    .header {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
 {%- endstyle -%}
 {%- liquid
   for block in section.blocks
@@ -148,6 +148,30 @@
 
     <div class="header__icons">
       {% render 'header-search-field', input_id: 'Search-In-Modal' %}
+
+      <a
+        href="/pages/wishlist"
+        class="header__icon header__icon--wishlist link focus-inset d-none-sm"
+        id="wishlist-icon"
+      >
+        <span class="svg-wrapper">
+          <svg
+            viewBox="0 0 64 64"
+            width="22"
+            height="22"
+            xmlns="http://www.w3.org/2000/svg"
+            stroke-width="0"
+            stroke="#000"
+            fill="none"
+          >
+            <path d="M9.06,25C7.68,17.3,12.78,10.63,20.73,10c7-.55,10.47,7.93,11.17,9.55a.13.13,0,0,0,.25,0c3.25-8.91,9.17-9.29,11.25-9.5C49,9.45,56.51,13.78,55,23.87c-2.16,14-23.12,29.81-23.12,29.81S11.79,40.05,9.06,25Z"/>
+          </svg>
+        </span>
+        <span class="visually-hidden">Wishlist</span>
+        <div class="wishlist-count-bubble " style="display:none;">
+          <span aria-hidden="true" style="color: white;">0</span>
+        </div>
+      </a>
       {%- if shop.customer_accounts_enabled -%}
         <a
           href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
@@ -184,7 +208,11 @@
         {%- endcase -%}
       {%- endfor -%}
 
-      <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset d-none-sm" id="cart-icon-bubble">
+      <a
+        href="{{ routes.cart_url }}"
+        class="header__icon header__icon--cart link focus-inset d-none-sm"
+        id="cart-icon-bubble"
+      >
         {% if cart == empty %}
           <span class="svg-wrapper">{{ 'icon-cart.svg' | inline_asset_content }}</span>
         {% else %}
@@ -307,20 +335,30 @@
   customElements.define('sticky-header', StickyHeader);
 {% endjavascript %}
 <script>
-if (window.innerWidth >= 990) {
-  document.querySelectorAll('header details.mega-menu').forEach(function(menu) {
+  if (window.innerWidth >= 990) {
+    document.querySelectorAll('header details.mega-menu').forEach(function (menu) {
+      menu.addEventListener('mouseenter', function () {
+        menu.setAttribute('open', '');
+      });
 
-    menu.addEventListener('mouseenter', function() {
-      menu.setAttribute('open', '');
+      menu.addEventListener('mouseleave', function () {
+        menu.removeAttribute('open');
+      });
     });
-
-    menu.addEventListener('mouseleave', function() {
-      menu.removeAttribute('open');
-    });
-
-  });
-}
+  }
 </script>
+{% comment %} <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+    let bubble = document.querySelector('.wishlist-count-bubble span');
+    let bubbleWrap = document.querySelector('.wishlist-count-bubble');
+    if (!bubble) return;
+    if (wishlist.length > 0) {
+      bubbleWrap.style.display = 'block';
+      bubble.textContent = wishlist.length;
+    }
+  });
+</script> {% endcomment %}
 <script type="application/ld+json">
   {
     "@context": "http://schema.org",
