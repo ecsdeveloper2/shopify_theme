@@ -47,7 +47,7 @@
         "title": "New arrival",
         "image": "shopify://shop_images/Bella-vita-wonder-women.jpg",
         "color_scheme": "scheme-1",
-        "collection": "bella-vita",
+        "collection": "new-arrival",
         "columns_show": 3.5,
         "product_limit": 8,
         "show_secondary_image": true,
@@ -173,45 +173,6 @@
         "column_BQpirU"
       ],
       "name": "Our Categories",
-      "settings": {
-        "color_scheme": "",
-        "border_radius": 10,
-        "columns_show": 2,
-        "enable_desktop_slider": false,
-        "title": "Our Categories",
-        "description": "<p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.</p>",
-        "view_all_link": ""
-      }
-    },
-    "our_categories_XPa7bK": {
-      "type": "our-categories",
-      "blocks": {
-        "column_KdwFQa": {
-          "type": "column",
-          "settings": {
-            "background_image": "shopify://shop_images/Catogery_section.jpg",
-            "heading": "Womens Jackets",
-            "description": "<p>Style that keeps you warm.</p>",
-            "button_url": "shopify://collections/jacket",
-            "button_label": "Shop Now"
-          }
-        },
-        "column_HmnmHX": {
-          "type": "column",
-          "settings": {
-            "background_image": "shopify://shop_images/perfume-bottle-silk-fabric-and-dried-flowers-photo.jpg",
-            "heading": "Luxury Perfumes",
-            "description": "<p>Fragrance that lasts.</p>",
-            "button_url": "shopify://collections/bella-vita",
-            "button_label": "Shop Now"
-          }
-        }
-      },
-      "block_order": [
-        "column_KdwFQa",
-        "column_HmnmHX"
-      ],
-      "name": "Our Category",
       "settings": {
         "color_scheme": "",
         "border_radius": 10,
@@ -495,7 +456,6 @@
     "image_banner_rkMCY8",
     "category_section_jKKYNt",
     "our_categorys_Fyyicb",
-    "our_categories_XPa7bK",
     "promo_banner_ga9rbY",
     "our_testimonial_miehcQ",
     "collection_tabbing_jaXyeV",
