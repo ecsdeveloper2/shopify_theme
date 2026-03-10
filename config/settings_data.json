@@ -45,6 +45,7 @@
     "input_placeholder_text": "#313131",
     "input_border_radius": 8,
     "main_button_border_radius": 10,
+    "original_price_color": "#000000",
     "cart_type": "popup",
     "subheading_text_color": "#000000",
     "content_for_index": [],
