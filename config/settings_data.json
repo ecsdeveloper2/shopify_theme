@@ -29,6 +29,7 @@
     "body_font_size": 16,
     "body-alignment": "left",
     "link_color": "#FFFFFF",
+    "link_hover_color": "rgba(0,0,0,0)",
     "spacing_sections": 50,
     "spacing_sections_tablet": 40,
     "spacing_sections_mobile": 30,
