@@ -82,7 +82,7 @@
           "dark_mode_button_border": "#ffffff",
           "dark_mode_button_hover_background": "#121212",
           "dark_mode_button_hover_text": "#ffffff",
-          "dark_mode_button_hover_border_color": "#121212"
+          "dark_mode_button_hover_border_color": "rgba(0,0,0,0)"
         }
       },
       "scheme-2": {
