@@ -40,10 +40,10 @@
     "header": {
       "type": "header",
       "settings": {
-        "logo_position": "top-center",
+        "logo_position": "middle-center",
         "menu": "main-menu",
         "menu_type_desktop": "mega",
-        "sticky_header_type": "on-scroll-up",
+        "sticky_header_type": "always",
         "color_scheme": "scheme-1",
         "menu_color_scheme": "",
         "enable_customer_avatar": true,
