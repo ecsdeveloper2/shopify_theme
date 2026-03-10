@@ -18,7 +18,7 @@
             <div class="drawer-item-info">
               <p class="drawer-title">{{ item.product.title }}</p>
               <p>{{ item.price | money }}</p>
-              <div class="drawer-qty" data-key="{{ item.key }}"  data-variant-id="{{ item.variant.id }}">
+              <div class="drawer-qty" data-key="{{ item.key }}"  data-variant-id="{{ item.variant.id }}" data-max="{{ item.variant.inventory_quantity }}">
                 <button type="button" class="qty-minus">-</button>
                 <span class="qty-number"> {{ item.quantity }} </span>
                 <button type="button" class="qty-plus">+</button>
@@ -64,7 +64,7 @@
               <p class="drawer-title">{{ item.product.title }}</p>
               <p>{{ item.price | money }}</p>
               <div class="drawer-qty" data-key="{{ item.key }}" data-variant-id="{{ item.variant.id }}">
-                <button type= "button" class="qty-minus">-</button>
+                <button type="button" class="qty-minus">-</button>
                 <span class="qty-number"> {{ item.quantity }} </span>
                 <button type="button" class="qty-plus">+</button>
                 <button type="button" class="cart-remove-btn" data-key="{{ item.key }}">Remove</button>
