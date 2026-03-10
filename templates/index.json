@@ -186,16 +186,6 @@
     "our_categories_XPa7bK": {
       "type": "our-categories",
       "blocks": {
-        "column_HmnmHX": {
-          "type": "column",
-          "settings": {
-            "background_image": "shopify://shop_images/perfume-bottle-silk-fabric-and-dried-flowers-photo.jpg",
-            "heading": "Luxury Perfumes",
-            "description": "<p>Fragrance that lasts.</p>",
-            "button_url": "shopify://collections/bella-vita",
-            "button_label": "Shop Now"
-          }
-        },
         "column_KdwFQa": {
           "type": "column",
           "settings": {
@@ -205,11 +195,21 @@
             "button_url": "shopify://collections/jacket",
             "button_label": "Shop Now"
           }
+        },
+        "column_HmnmHX": {
+          "type": "column",
+          "settings": {
+            "background_image": "shopify://shop_images/perfume-bottle-silk-fabric-and-dried-flowers-photo.jpg",
+            "heading": "Luxury Perfumes",
+            "description": "<p>Fragrance that lasts.</p>",
+            "button_url": "shopify://collections/bella-vita",
+            "button_label": "Shop Now"
+          }
         }
       },
       "block_order": [
-        "column_HmnmHX",
-        "column_KdwFQa"
+        "column_KdwFQa",
+        "column_HmnmHX"
       ],
       "name": "Our Category",
       "settings": {
