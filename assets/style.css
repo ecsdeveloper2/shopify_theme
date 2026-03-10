@@ -658,7 +658,8 @@ summary.header__icon {
   top: -10px;
   right: 0px;
 }
-.header__icon.header__icon--cart:hover .cart-count-bubble {
+.header__icon.header__icon--cart:hover .cart-count-bubble,
+.header__icon.header__icon--wishlist:hover .wishlist-count-bubble {
   background-color: var(--button-hover-background-color);
   color: var(--button-hover-text-color);
 }
@@ -2320,4 +2321,19 @@ form#FacetFiltersForm {
 .wishlist-product:hover .wishlist-icon{
   opacity:1;
   transform:scale(1);
+}
+@media(max-width: 1024px){
+  .wishlist-product{
+    width: calc(33.333% - 16px);
+  }
+}
+@media(max-width: 768px){
+  .wishlist-product{
+    width: calc(50% - 12px);
+  }
+}
+@media(max-width: 425px){
+  .wishlist-product{
+    width: 100%;
+  }
 }
