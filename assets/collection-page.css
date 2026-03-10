@@ -96,11 +96,12 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 15px;
-  border: 1px solid;
+  border: none;
   justify-content: center;
   padding: 10px 20px;
   border-radius: 10px;
   height: fit-content;
+  box-shadow: var(--box-shadow-new);
 }
 .sorting-filter__field .select {
   position: relative;
@@ -407,5 +408,10 @@
     .facets__form-vertical
     .facet-filters.sorting.caption {
     width: 100%;
+  }
+}
+@media (max-width:768px){
+  .sorting-filter__field{
+    border:1px solid #000000;
   }
 }
