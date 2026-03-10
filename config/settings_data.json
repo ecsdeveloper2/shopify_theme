@@ -60,7 +60,7 @@
           "shadow": "#313131",
           "link": "rgba(0,0,0,0)",
           "link_hover": "#f48120",
-          "link_active": "rgba(0,0,0,0)",
+          "link_active": "#ffffff",
           "link_active_hover": "#f48120",
           "link_dark_mode_color": "#ffffff",
           "link_dark_mode_hover_color": "#28a745",
