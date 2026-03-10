@@ -43,7 +43,7 @@
         "logo_position": "middle-center",
         "menu": "main-menu",
         "menu_type_desktop": "mega",
-        "sticky_header_type": "always",
+        "sticky_header_type": "on-scroll-up",
         "color_scheme": "scheme-1",
         "menu_color_scheme": "",
         "enable_customer_avatar": true,
