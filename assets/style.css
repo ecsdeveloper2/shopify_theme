@@ -1065,7 +1065,6 @@ ul.slick-dots {
 }
 .category-item {
   border-radius: var(--column-box-border-radius);
-  background: rgba(var(--color-foreground), 1);
   overflow: hidden;
   height: inherit;
 }
@@ -1494,9 +1493,6 @@ body.dark-mode .blog-item-block .blog-content-box h3 a {
   font-size: 44px;
   line-height: 100%;
 }
-.promo-banner-section .promo-banner-content p {
-  font-size: 20px;
-}
 .promo-banner-image img {
   max-width: 100%;
 }
@@ -1540,7 +1536,7 @@ footer .footer__row {
   gap: 30px;
 }
 footer .footer__heading {
-  margin: 0 0 20px;
+  margin: 0 0 10px;
 }
 .footer__contact.top-header-contact {
   gap: 10px;
@@ -1992,7 +1988,7 @@ body.dark-mode .faq-question{
 }
 .faq-answer p{
   margin: 0;
-  color: #474747;
+  color: #000000;
 }
 .faq-item.active .faq-answer {
   display: block;
