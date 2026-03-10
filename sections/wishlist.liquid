@@ -98,19 +98,27 @@
         );
     });
   });
+function checkWishlistEmpty() {
+  const c = document.getElementById('wishlist-products');
+  const e = document.querySelector('.empty_wishlist_message');
 
-  // Remove product from wishlist
-  document.addEventListener('click', (e) => {
-    const icon = e.target.closest('.wishlist-icon');
-    if (!icon) return;
-    let w = JSON.parse(localStorage.getItem('wishlist')) || [],
-      h = icon.dataset.productHandle;
-    w = w.filter((x) => x !== h);
-    localStorage.setItem('wishlist', JSON.stringify(w));
-    icon.closest('.wishlist-product')?.remove();
-    /* update bubble */
-    document.querySelectorAll('.wishlist-count-bubble span').forEach((b) => {
-      b.textContent = w.length;
-    });
-  });
+  if (!c.children.length) {
+    e.style.display = 'block';
+  }
+}
+// Remove product
+  document.addEventListener('click', function (event) {
+  if (event.target.closest('.wishlist-icon')) {
+    const handle = event.target.closest('.wishlist-icon').dataset.productHandle;
+
+    let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+    wishlist = wishlist.filter(item => item !== handle);
+
+    localStorage.setItem('wishlist', JSON.stringify(wishlist));
+
+    event.target.closest('.wishlist-product').remove();
+
+    checkWishlistEmpty(); // 👈 important
+  }
+});
 </script>
