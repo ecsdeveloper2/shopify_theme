@@ -1503,6 +1503,7 @@ body.dark-mode .blog-item-block .blog-content-box h3 a {
 }
 .promo-banner-image img {
   max-width: 100%;
+  width:100%;
 }
 .promo-banner-content {
   width: calc(60% - 10px);
