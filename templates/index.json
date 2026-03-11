@@ -183,6 +183,45 @@
         "view_all_link": ""
       }
     },
+    "our_categories_yatziP": {
+      "type": "our-categories",
+      "blocks": {
+        "column_NCkCKY": {
+          "type": "column",
+          "settings": {
+            "background_image": "shopify://shop_images/Catogery_section.jpg",
+            "heading": "Heading",
+            "description": "<p>Description</p>",
+            "button_url": "",
+            "button_label": "Shop Now"
+          }
+        },
+        "column_iqExeY": {
+          "type": "column",
+          "settings": {
+            "background_image": "shopify://shop_images/perfume-bottle-silk-fabric-and-dried-flowers-photo.jpg",
+            "heading": "Heading",
+            "description": "<p>Description</p>",
+            "button_url": "",
+            "button_label": "Shop Now"
+          }
+        }
+      },
+      "block_order": [
+        "column_NCkCKY",
+        "column_iqExeY"
+      ],
+      "name": "Our Category",
+      "settings": {
+        "color_scheme": "",
+        "border_radius": 10,
+        "columns_show": 2,
+        "enable_desktop_slider": false,
+        "title": "Our Categories",
+        "description": "<p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.</p>",
+        "view_all_link": ""
+      }
+    },
     "promo_banner_ga9rbY": {
       "type": "promo-banner",
       "name": "Promo Banner",
@@ -456,6 +495,7 @@
     "image_banner_rkMCY8",
     "category_section_jKKYNt",
     "our_categorys_Fyyicb",
+    "our_categories_yatziP",
     "promo_banner_ga9rbY",
     "our_testimonial_miehcQ",
     "collection_tabbing_jaXyeV",
