@@ -12,6 +12,18 @@
     "banner_slider": {
       "type": "banner-slider",
       "blocks": {
+        "banner_slider_item_yRRLRA": {
+          "type": "banner-slider-item",
+          "name": "Banner Slider item",
+          "settings": {
+            "color_scheme": "",
+            "image": "shopify://shop_images/New-arrival.png",
+            "image-mobile": "shopify://shop_images/New-arrival.png",
+            "image_opacity": 40,
+            "link": ""
+          },
+          "blocks": {}
+        },
         "banner_slider_item_kUCpHC": {
           "type": "banner-slider-item",
           "settings": {
@@ -36,6 +48,7 @@
         }
       },
       "block_order": [
+        "banner_slider_item_yRRLRA",
         "banner_slider_item_kUCpHC",
         "banner_slider_item"
       ],
