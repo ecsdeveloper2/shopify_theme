@@ -19,7 +19,7 @@
             "color_scheme": "",
             "image": "shopify://shop_images/New-arrival.png",
             "image-mobile": "shopify://shop_images/New-arrival.png",
-            "image_opacity": 40,
+            "image_opacity": 10,
             "link": ""
           },
           "blocks": {}
