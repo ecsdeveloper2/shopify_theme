@@ -1252,8 +1252,9 @@ ul.slick-dots {
   overflow: hidden;
 }
 .card-product-img a img {
+  width:auto;
   max-width: 100%;
-  max-height: max-content;
+  max-height: 100%;
   transition: opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), height 1s ease,
     width 1s ease;
   display: block;
