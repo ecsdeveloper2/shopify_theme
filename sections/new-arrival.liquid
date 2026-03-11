@@ -2,7 +2,10 @@
   <div class="page-container">
     <div class="new-arrival-row">
       <div class="new-arrival-box">
+        <div>
           <h2 class="h1">{{ section.settings.title }}</h2>
+          <p>{{ section.settings.discription }}</p>
+        </div>
         {% if section.settings.image %}
           <img src="{{ section.settings.image | img_url: 'medium' }}" alt="New Arrival Image" />
         {% endif %}
@@ -45,6 +48,12 @@
       "id": "title",
       "label": "Heading",
       "default": "New arrival"
+    },
+    {
+      "type": "textarea",
+      "id": "discription",
+      "label": "Description",
+      "default": "Introducing our newest arrivals — where modern design meets refined sophistication."
     },
     {
       "type": "image_picker",
