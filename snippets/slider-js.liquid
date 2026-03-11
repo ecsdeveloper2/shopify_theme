@@ -1,6 +1,15 @@
 <script>
   var swiper = new Swiper(".swiper-slider-{{ block.id | default: section.id }}", {
     spaceBetween: 20,
+
+    {% if section.settings.enable_autoplay %}
+    autoplay: {
+      delay: {{ section.settings.autoplay_speed }},
+      disableOnInteraction: false,
+    },
+    loop: true,
+    {% endif %}
+
     slidesPerView: {% if row %}
       {{ section.settings.columns_show | minus: 3 }}
     {% elsif section.settings.columns_show == 1 %}

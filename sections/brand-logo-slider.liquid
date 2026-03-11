@@ -27,7 +27,7 @@
       {% if show_desktop_slider %}
       </div>
       {% endif %}
-      {% if show_desktop_slider %}
+      {% if show_desktop_slider and section.settings.enable_autoplay == false %}
         {% render 'slider-scroll-bar', section: section %}
       {% endif %}
     </div>
@@ -78,6 +78,22 @@
         "step": 0.1,
         "default": 4,
         "label": "t:sections.featured-collection.settings.columns_desktop.label"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_autoplay",
+        "label": "Enable Auto Slide",
+        "default": false
+      },
+      {
+        "type": "range",
+        "id": "autoplay_speed",
+        "min": 1000,
+        "max": 5000,
+        "step": 500,
+        "unit": "ms",
+        "label": "Autoplay Speed",
+        "default": 3000
       },
       {
         "type": "checkbox",

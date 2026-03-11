@@ -940,9 +940,9 @@ summary.header__icon {
   border-radius: var(--column-box-border-radius);
   display: flex;
   flex-wrap: wrap;
-  align-content: space-between;
+  align-content: space-between; 
   justify-content: center;
-  gap: 48px;
+  gap: 20px;
 }
 .new-arrival-box h2 {
   color: var(--dark-mode-text-color);
@@ -1312,6 +1312,9 @@ ul.slick-dots {
   margin-top: 0px;
   z-index: 1;
 }
+.card-product-item:hover{
+  border: 1px solid var(--button-background-color);
+}
 .card-product-content {
   margin-top: 20px;
 }
@@ -1479,15 +1482,15 @@ body.dark-mode .blog-item-block .blog-content-box h3 a {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   width: 100%;
-  gap: 80px;
+  gap: 20px;
   padding: 32px;
   position: relative;
   z-index: 1;
 }
 .promo-banner-image {
-  width: calc(40% - 40px);
+  width: calc(40% - 10px);
   text-align: center;
 }
 .promo-banner-section .promo-banner-content h2 {
@@ -1498,12 +1501,12 @@ body.dark-mode .blog-item-block .blog-content-box h3 a {
   max-width: 100%;
 }
 .promo-banner-content {
-  width: calc(60% - 40px);
+  width: calc(60% - 10px);
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
   background: rgba(255, 255, 255, 0.5);
-  padding: 32px 48px 40px 48px;
+  padding: 32px 40px 32px 20px;
   border-radius: 0;
 }
 .promo-banner-content P {
@@ -2368,4 +2371,38 @@ form#FacetFiltersForm {
  .column-category h2 a, .column-category .btn.btn-secondary{
   text-decoration: none;
   color: unset;
+}
+@media(max-width:425px){
+  .column-category .column-content{
+    width: 100%;
+  }
+}
+
+/* Image Overlay CSS */
+.image-full-width {
+  position: relative;
+  background: var(--button-background-color);
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-attachment: fixed;
+}
+.image-full-width:before{
+  position: absolute;
+  content:"";
+      width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 30%);
+}
+.image-overlay-content {
+  text-align: center;
+  max-width: 850px;
+  margin: 0 auto;
+  color: #fff;
+  z-index: 1;
+  position: relative;
+}
+.image-overlay-content .btn{
+  margin-top: 20px;
 }
