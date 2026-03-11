@@ -15,6 +15,7 @@
         "banner_slider_item_yRRLRA": {
           "type": "banner-slider-item",
           "name": "Banner Slider item",
+          "disabled": true,
           "settings": {
             "color_scheme": "",
             "image": "shopify://shop_images/New-arrival.png",
