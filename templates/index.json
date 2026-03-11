@@ -190,8 +190,8 @@
           "type": "column",
           "settings": {
             "background_image": "shopify://shop_images/Catogery_section.jpg",
-            "heading": "Heading",
-            "description": "<p>Description</p>",
+            "heading": "Ladies Jackets",
+            "description": "<p>Style that keeps you warm.</p>",
             "button_url": "shopify://collections/jacket",
             "button_label": "Shop Now"
           }
@@ -200,8 +200,8 @@
           "type": "column",
           "settings": {
             "background_image": "shopify://shop_images/perfume-bottle-silk-fabric-and-dried-flowers-photo.jpg",
-            "heading": "Heading",
-            "description": "<p>Description</p>",
+            "heading": "Perfumes",
+            "description": "<p>Scents that define you.</p>",
             "button_url": "shopify://collections/bella-vita",
             "button_label": "Shop Now"
           }
