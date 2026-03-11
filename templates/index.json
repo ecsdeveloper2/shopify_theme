@@ -286,8 +286,22 @@
         "border_radius": 10,
         "columns_show": 3,
         "enable_desktop_slider": true,
+        "enable_autoplay": false,
+        "autoplay_speed": 3000,
         "title": "Our Testimonials",
         "description": "<p>See what our customers are saying about their experience with our products and services. We value every review and continuously strive to deliver quality, reliability, and excellent customer satisfaction.</p>"
+      }
+    },
+    "image_overlay_banner_kMTWqi": {
+      "type": "image-overlay-banner",
+      "name": "Image overlay Hero",
+      "settings": {
+        "color_scheme": "",
+        "banner_image": "shopify://shop_images/image-overlay-banner.jpg",
+        "heading": "OUR INSPIRATION",
+        "description": "Modern fashion can be stylish and sustainable—looking good shouldn’t cost the planet.",
+        "button_link": "shopify://collections/jacket",
+        "button_text": "Shop Now"
       }
     },
     "collection_tabbing_jaXyeV": {
@@ -408,6 +422,8 @@
         "view_all_link": "",
         "color_scheme": "scheme-1",
         "columns_show": 3,
+        "enable_autoplay": false,
+        "autoplay_speed": 3000,
         "enable_desktop_slider": true
       }
     },
@@ -498,6 +514,7 @@
     "our_categories_yatziP",
     "promo_banner_ga9rbY",
     "our_testimonial_miehcQ",
+    "image_overlay_banner_kMTWqi",
     "collection_tabbing_jaXyeV",
     "sale_countdown_TgA8rA",
     "brand_logo_slider_btJUme",
