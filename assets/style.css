@@ -1226,6 +1226,10 @@ ul.slick-dots {
 .best-selling-box .dark-text-white{
   color: var(--button-text-color);
   text-align: center;
+  margin-top: 20px;
+}
+.best-selling-box h2 {
+    padding-bottom: 20px;
 }
 .best-selling-box .btn{
   background-color: var(--button-hover-background-color);
@@ -1499,6 +1503,7 @@ body.dark-mode .blog-item-block .blog-content-box h3 a {
 }
 .promo-banner-image img {
   max-width: 100%;
+  width:100%;
 }
 .promo-banner-content {
   width: calc(60% - 10px);
