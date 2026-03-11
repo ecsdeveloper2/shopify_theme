@@ -12,19 +12,6 @@
     "banner_slider": {
       "type": "banner-slider",
       "blocks": {
-        "banner_slider_item_yRRLRA": {
-          "type": "banner-slider-item",
-          "name": "Banner Slider item",
-          "disabled": true,
-          "settings": {
-            "color_scheme": "",
-            "image": "shopify://shop_images/New-arrival.png",
-            "image-mobile": "shopify://shop_images/New-arrival.png",
-            "image_opacity": 10,
-            "link": ""
-          },
-          "blocks": {}
-        },
         "banner_slider_item_kUCpHC": {
           "type": "banner-slider-item",
           "settings": {
@@ -49,7 +36,6 @@
         }
       },
       "block_order": [
-        "banner_slider_item_yRRLRA",
         "banner_slider_item_kUCpHC",
         "banner_slider_item"
       ],
@@ -59,7 +45,7 @@
       "type": "new-arrival",
       "settings": {
         "title": "New arrival",
-        "image": "shopify://shop_images/watch.webp",
+        "image": "shopify://shop_images/stylish-golden-watch-white-surface.jpg",
         "color_scheme": "scheme-1",
         "collection": "new-arrival",
         "columns_show": 3.5,
@@ -307,6 +293,18 @@
     "collection_tabbing_jaXyeV": {
       "type": "collection-tabbing",
       "blocks": {
+        "tab_catKP4": {
+          "type": "tab",
+          "settings": {
+            "collection": "bella-vita"
+          }
+        },
+        "tab_VpkPc6": {
+          "type": "tab",
+          "settings": {
+            "collection": "lakeme"
+          }
+        },
         "tab_NxqFGT": {
           "type": "tab",
           "settings": {
@@ -339,6 +337,8 @@
         }
       },
       "block_order": [
+        "tab_catKP4",
+        "tab_VpkPc6",
         "tab_NxqFGT",
         "tab_GwJGfe",
         "tab_VCErDK",
