@@ -1226,6 +1226,10 @@ ul.slick-dots {
 .best-selling-box .dark-text-white{
   color: var(--button-text-color);
   text-align: center;
+  margin-top: 20px;
+}
+.best-selling-box h2 {
+    padding-bottom: 20px;
 }
 .best-selling-box .btn{
   background-color: var(--button-hover-background-color);
