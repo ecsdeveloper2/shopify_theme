@@ -305,12 +305,6 @@
             "collection": "lakeme"
           }
         },
-        "tab_NxqFGT": {
-          "type": "tab",
-          "settings": {
-            "collection": "jacket"
-          }
-        },
         "tab_GwJGfe": {
           "type": "tab",
           "settings": {
@@ -339,7 +333,6 @@
       "block_order": [
         "tab_catKP4",
         "tab_VpkPc6",
-        "tab_NxqFGT",
         "tab_GwJGfe",
         "tab_VCErDK",
         "tab_y9PcyP",
