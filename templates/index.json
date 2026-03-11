@@ -389,12 +389,6 @@
             "image": "shopify://shop_images/Zara-log.png"
           }
         },
-        "logo_YMzhdf": {
-          "type": "logo",
-          "settings": {
-            "image": "shopify://shop_images/Fastrack-Logo.png"
-          }
-        },
         "logo_aBMqHB": {
           "type": "logo",
           "settings": {
@@ -412,7 +406,6 @@
         "logo_pVdyA9",
         "logo_LLemYT",
         "logo_3jk63G",
-        "logo_YMzhdf",
         "logo_aBMqHB",
         "logo_TaAMEG"
       ],
