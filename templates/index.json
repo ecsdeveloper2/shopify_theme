@@ -371,16 +371,16 @@
     "brand_logo_slider_btJUme": {
       "type": "brand-logo-slider",
       "blocks": {
-        "logo_pVdyA9": {
-          "type": "logo",
-          "settings": {
-            "image": "shopify://shop_images/Lakeme.jpg"
-          }
-        },
         "logo_LLemYT": {
           "type": "logo",
           "settings": {
-            "image": "shopify://shop_images/Bellavita.png"
+            "image": "shopify://shop_images/Lakme_logo.png"
+          }
+        },
+        "logo_pVdyA9": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Pantaloons-logo.png"
           }
         },
         "logo_3jk63G": {
@@ -403,8 +403,8 @@
         }
       },
       "block_order": [
-        "logo_pVdyA9",
         "logo_LLemYT",
+        "logo_pVdyA9",
         "logo_3jk63G",
         "logo_aBMqHB",
         "logo_TaAMEG"
