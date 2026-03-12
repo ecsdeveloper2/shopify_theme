@@ -172,6 +172,7 @@
         "column_Prh8QK",
         "column_BQpirU"
       ],
+      "disabled": true,
       "name": "Our Categories",
       "settings": {
         "color_scheme": "",
@@ -286,7 +287,7 @@
         "border_radius": 10,
         "columns_show": 3,
         "enable_desktop_slider": true,
-        "enable_autoplay": false,
+        "enable_autoplay": true,
         "autoplay_speed": 3000,
         "title": "Our Testimonials",
         "description": "<p>See what our customers are saying about their experience with our products and services. We value every review and continuously strive to deliver quality, reliability, and excellent customer satisfaction.</p>"
@@ -421,9 +422,9 @@
         "description": "<p>Discover your favorite brands all in one place. From trusted names to emerging labels, shop by brand to find the styles and quality you love.</p>",
         "view_all_link": "",
         "color_scheme": "scheme-1",
-        "columns_show": 3,
-        "enable_autoplay": false,
-        "autoplay_speed": 3000,
+        "columns_show": 4,
+        "enable_autoplay": true,
+        "autoplay_speed": 1000,
         "enable_desktop_slider": true
       }
     },

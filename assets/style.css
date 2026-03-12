@@ -1230,6 +1230,10 @@ ul.slick-dots {
 .best-selling-box .dark-text-white{
   color: var(--button-text-color);
   text-align: center;
+  margin-top: 20px;
+}
+.best-selling-box h2 {
+    padding-bottom: 20px;
 }
 .best-selling-box .btn{
   background-color: var(--button-hover-background-color);
@@ -1503,6 +1507,7 @@ body.dark-mode .blog-item-block .blog-content-box h3 a {
 }
 .promo-banner-image img {
   max-width: 100%;
+  width:100%;
 }
 .promo-banner-content {
   width: calc(60% - 10px);
@@ -1872,6 +1877,7 @@ footer .footer-social-icon {
   }
   .promo-banner-row {
     padding: 20px;
+    gap: 0px;
   }
 }
 
@@ -2034,7 +2040,7 @@ body.dark-mode .faq-question{
 .newsletter-img img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   display: block;
 }
 .newsletter-content {
@@ -2249,6 +2255,9 @@ form#FacetFiltersForm {
   .footer__row {
     flex-direction: column;
   }
+   .newsletter-button{
+    margin:0 auto;
+  }
 }
 @media(max-width:768px){
   .footer__logo .header__heading-logo-wrapper {
@@ -2404,4 +2413,29 @@ form#FacetFiltersForm {
 }
 .image-overlay-content .btn{
   margin-top: 20px;
+}
+@media (max-width:320px){
+  .header__icon .svg-wrapper {
+    width: 18px;
+  }
+  .top-header-item-block .header__icons {
+    width: 35%;
+  }
+  .top-header-item-block.justify-content-between {
+    justify-content:space-around;
+  }
+  .header__icon.header__icon--wishlist .wishlist-count-bubble{
+    top: -6px;
+    right: 2px;
+  }
+   .contact-detail-info svg{
+    width:20px;
+    height:20px;
+  }
+  .top-header-contact a {
+    gap: 10px;
+  }
+}
+.best-selling-row{
+  align-items: center;
 }
