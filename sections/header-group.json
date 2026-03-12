@@ -40,7 +40,7 @@
     "header": {
       "type": "header",
       "settings": {
-        "logo_position": "middle-center",
+        "logo_position": "middle-left",
         "menu": "main-menu",
         "menu_type_desktop": "mega",
         "sticky_header_type": "on-scroll-up",
@@ -144,6 +144,7 @@
         "usp_block_p8gnLp",
         "usp_block_Yn3KL4"
       ],
+      "disabled": true,
       "name": "USPs Bar",
       "settings": {
         "color_scheme": ""

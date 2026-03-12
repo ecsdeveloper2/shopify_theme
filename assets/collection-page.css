@@ -4,7 +4,7 @@
   background-position: center;
 }
 .main-collection-banner .banner__text .banner__description {
-  margin: 20px 0;
+  margin: 10px 0;
 }
 .main-collection-banner .banner__text a {
   display: flex;
@@ -96,11 +96,12 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 15px;
-  border: 1px solid;
+  border: none;
   justify-content: center;
   padding: 10px 20px;
   border-radius: 10px;
   height: fit-content;
+  box-shadow: var(--box-shadow-new);
 }
 .sorting-filter__field .select {
   position: relative;
@@ -396,6 +397,9 @@
   }
 }
 @media (max-width: 576px) {
+  .sorting-filter__field{
+    padding: 10px;
+  }
   .main-collection-banner .banner__image img {
     max-height: 400px;
   }
@@ -404,5 +408,10 @@
     .facets__form-vertical
     .facet-filters.sorting.caption {
     width: 100%;
+  }
+}
+@media (max-width:768px){
+  .sorting-filter__field{
+    border:1px solid #000000;
   }
 }

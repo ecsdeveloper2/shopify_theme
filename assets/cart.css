@@ -180,7 +180,6 @@
 .scrolled-past-header ~ .cart-drawer{
   top: 85px;
 }
-
 .cart-drawer-header{
 	border-bottom: 1px solid #eee;
 }
@@ -188,11 +187,9 @@
 .cart-drawer-footer {
   padding: 15px;
 }
-
 .cart-drawer-body {
   padding: 15px;
 }
-
 .drawer-item {
   display: flex;
   gap: 20px;
@@ -222,6 +219,7 @@
 }
 .cart-drawer-body .cart-items__title{
   color: #000000;
+  margin-bottom: 20px;
 }
 @media(max-width: 989px){
   .cart-drawer.active{

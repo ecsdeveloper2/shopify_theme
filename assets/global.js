@@ -140,18 +140,15 @@ class ProductRecommendations extends HTMLElement {
         const html = document.createElement("div");
         html.innerHTML = text;
         const recommendations = html.querySelector("product-recommendations");
-
         if (recommendations?.innerHTML.trim().length) {
           this.innerHTML = recommendations.innerHTML;
         }
-
         if (
           !this.querySelector("slideshow-component") &&
           this.classList.contains("complementary-products")
         ) {
           this.remove();
         }
-
         if (
           html.querySelector(".grid__item") ||
           this.querySelector(".card-product-item")
@@ -164,9 +161,42 @@ class ProductRecommendations extends HTMLElement {
       });
   }
 }
-
 document.addEventListener("DOMContentLoaded", () => {
   if (!customElements.get("product-recommendations")) {
     customElements.define("product-recommendations", ProductRecommendations);
   }
+});
+
+// Wishlist Script
+document.addEventListener("DOMContentLoaded",()=>{
+let w=JSON.parse(localStorage.getItem("wishlist"))||[];
+const update=()=>{
+  document.querySelectorAll(".wishlist-count-bubble").forEach(bw=>{
+    const b=bw.querySelector("span");
+    if(!b) return;
+    if(w.length){
+      bw.style.display="block";
+      b.textContent=w.length;
+    }else{
+      bw.style.display="none";
+    }
+  });
+};
+update();
+
+document.querySelectorAll(".wishlist-icon").forEach(i=>{
+  if(w.includes(i.dataset.productHandle)){
+    i.classList.add("active");
+  }
+});
+document.addEventListener("click",e=>{
+  const i=e.target.closest(".wishlist-icon");
+  if(!i) return;
+  const h=i.dataset.productHandle;
+  w.includes(h)
+  ? (w=w.filter(x=>x!==h), i.classList.remove("active"))
+  : (w.push(h), i.classList.add("active"));
+  localStorage.setItem("wishlist",JSON.stringify(w));
+  update();
+});
 });

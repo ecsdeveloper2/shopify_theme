@@ -1,28 +1,124 @@
-<div class="page-container wishlist_page_heading">
-  <div class="title_wrapper_with_link">
-    <h1 class="title title--primary">Your Wishlist</h1>
-    <a href="{{ routes.all_products_collection_url }}" class="underlined-link">
-      {{- 'general.continue_shopping' | t -}}
-    </a>
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+<div class="color-{{ section.settings.color_scheme }}">
+  <div class="page-container">
+    <div id="wishlist-products" class="all-wishlist-products d-flex flex-wrap"></div>
+    <div class="cart__warnings empty_wishlist_message" style="display:none;">
+      <div class="d-flex justify-content-between flex-wrap">
+        <h2 class="cart__empty-text-wishlist text-center">Your Wishlist is empty</h2>
+        <a href="{{ routes.all_products_collection_url }}" class="btn"> Continue shopping </a>
+      </div>
+      {%- if shop.customer_accounts_enabled and customer == null -%}
+        <div class="text-center" style="padding-top: 30px;">
+          <h3 class="cart__login-title text-center">{{ 'sections.cart.login.title' | t }}</h3>
+          <p class="cart__login-paragraph m-0 text-center">
+            {{ 'sections.cart.login.paragraph_html' | t: link: routes.account_login_url }}
+          </p>
+        </div>
+      {%- endif -%}
+    </div>
   </div>
 </div>
-{% comment %} <div class="skeleton_container" style="display:none !important"></div>
-<div
-  class="page-width wishlist_product_container"
-  shop-currency="{{ shop.money_format }}"
-  currency-data="{{ shop.currency }}"></div>
-<div class="text-center mt-5 txt empty_wishlist_message_wrapper">
-  <div class="cart__warnings empty_wishlist_message">
-    <h1 class="cart__empty-text-wishlist">Your Wishlist is empty</h1>
-    <a href="{{ routes.all_products_collection_url }}" class="button">
-      Continue shopping
-    </a>
+{% schema %}
+{
+  "name": "t:sections.main-cart-items.name",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ]
+}
+{% endschema %}
 
-    {%- if shop.customer_accounts_enabled and customer == null -%}
-      <h2 class="cart__login-title">{{ 'sections.cart.login.title' | t }}</h2>
-      <p class="cart__login-paragraph">
-        {{ 'sections.cart.login.paragraph_html' | t: link: routes.account_login_url }}
-      </p>
-    {%- endif -%}
-  </div>
-</div> {% endcomment %}
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    let w = JSON.parse(localStorage.getItem('wishlist')) || [],
+      c = document.getElementById('wishlist-products'),
+      e = document.querySelector('.empty_wishlist_message');
+    if (!c) return;
+    if (!w.length) {
+      e.style.display = 'block';
+      return;
+    }
+    w.forEach((h) => {
+      fetch(`/products/${h}.js`)
+        .then((r) => r.json())
+        .then((p) =>
+          c.insertAdjacentHTML(
+            'beforeend',
+            `<div class="wishlist-product">
+              <a href="/products/${p.handle}" class="wishlist-product-image">
+              <img src="${p.images[0]}" class="w-100">
+              </a>
+              <h3><a href="/products/${p.handle}">${p.title}</a></h3>
+              <span class="wishlist-icon" data-product-handle="${p.handle}"">
+                <svg width="800px" height="800px" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" stroke-width="3" stroke="white" fill="none"><path d="M9.06,25C7.68,17.3,12.78,10.63,20.73,10c7-.55,10.47,7.93,11.17,9.55a.13.13,0,0,0,.25,0c3.25-8.91,9.17-9.29,11.25-9.5C49,9.45,56.51,13.78,55,23.87c-2.16,14-23.12,29.81-23.12,29.81S11.79,40.05,9.06,25Z"/></svg>
+              </span>
+              </div>`
+          )
+        );
+    });
+  });
+function checkWishlistEmpty() {
+  const c = document.getElementById('wishlist-products');
+  const e = document.querySelector('.empty_wishlist_message');
+
+  if (!c.children.length) {
+    e.style.display = 'block';
+  }
+}
+// Remove product
+  document.addEventListener('click', function (event) {
+  if (event.target.closest('.wishlist-icon')) {
+    const handle = event.target.closest('.wishlist-icon').dataset.productHandle;
+
+    let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+    wishlist = wishlist.filter(item => item !== handle);
+
+    localStorage.setItem('wishlist', JSON.stringify(wishlist));
+
+    event.target.closest('.wishlist-product').remove();
+
+    checkWishlistEmpty(); // 👈 important
+  }
+});
+</script>

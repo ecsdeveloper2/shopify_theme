@@ -41,13 +41,65 @@
       ],
       "settings": {}
     },
+    "usps_bar_xG88fH": {
+      "type": "usps-bar",
+      "blocks": {
+        "usp_block_Wxz43C": {
+          "type": "usp_block",
+          "settings": {
+            "icon": "shopify://shop_images/free_shipping.svg",
+            "icon_svg": "",
+            "heading": "Free Shipping",
+            "description": "Free shipping on all orders over $50 with fast and reliable delivery."
+          }
+        },
+        "usp_block_TCh4CA": {
+          "type": "usp_block",
+          "settings": {
+            "icon": "shopify://shop_images/easy_returns.svg",
+            "icon_svg": "",
+            "heading": "Easy Returns",
+            "description": "Hassle-free returns within 30 days for a smooth shopping experience."
+          }
+        },
+        "usp_block_dC493n": {
+          "type": "usp_block",
+          "settings": {
+            "icon": "shopify://shop_images/Security.svg",
+            "icon_svg": "",
+            "heading": "Secure Checkout",
+            "description": "Your payments are protected with advanced security and trusted gateways."
+          }
+        },
+        "usp_block_ikdq66": {
+          "type": "usp_block",
+          "settings": {
+            "icon": "shopify://shop_images/Premium_quality.svg",
+            "icon_svg": "",
+            "heading": "Premium Quality",
+            "description": "Carefully selected products made with high-quality materials."
+          }
+        }
+      },
+      "block_order": [
+        "usp_block_Wxz43C",
+        "usp_block_TCh4CA",
+        "usp_block_dC493n",
+        "usp_block_ikdq66"
+      ],
+      "name": "USPs Bar",
+      "settings": {
+        "color_scheme": ""
+      }
+    },
     "new_arrival_J3Hxg7": {
       "type": "new-arrival",
       "settings": {
         "title": "New arrival",
-        "image": "shopify://shop_images/home3_slide-item.webp",
+        "discription": "Introducing our newest arrivals — where modern design meets refined sophistication.",
+        "image": "shopify://shop_images/watch.webp",
         "color_scheme": "scheme-1",
-        "collection": "puffer-coat",
+        "collection": "new-arrival",
         "columns_show": 3.5,
         "product_limit": 8,
         "show_secondary_image": true,
@@ -61,7 +113,7 @@
         "title": "Our Best Sellers",
         "description": "<p>Shop our most popular picks, trusted by thousands of happy customers.These top sellers combine style, quality, and value you’ll love.</p>",
         "view_all_link": "",
-        "columns_show": 4,
+        "columns_show": 3.5,
         "collection": "all",
         "color_scheme": "",
         "show_secondary_image": true,
@@ -75,11 +127,11 @@
       "settings": {
         "layout": "full_bleed",
         "color_scheme": "",
-        "heading": "Where science meets nature to redefine skincare.",
-        "description": "<p>Our cutting-edge formulas, backed by clinical studies, bring you the latest in skin & hair care innovation.</p>",
-        "button_link": "#",
+        "heading": "Lakmé Complete Beauty & Makeup Collection",
+        "description": "<p>Discover the perfect blend of skincare and makeup with the Lakmé Complete Beauty Collection. This range includes foundation, lipstick, kajal, moisturizer, CC cream, and eyeshadow designed to enhance your natural beauty.<br/></p>",
+        "button_link": "shopify://collections/lakeme",
         "button_text": "Shop Now",
-        "image": "shopify://shop_images/home3_slide-item.webp"
+        "image": "shopify://shop_images/lakme-beauty-kit-for-parlour-use-003.jpg"
       }
     },
     "category_section_jKKYNt": {
@@ -104,7 +156,7 @@
         "category_item_8tGpqQ": {
           "type": "category_item",
           "settings": {
-            "collection": "puffer-coat",
+            "collection": "bella-vita",
             "title": "",
             "link": ""
           }
@@ -112,7 +164,7 @@
         "category_item_AWVpRL": {
           "type": "category_item",
           "settings": {
-            "collection": "sweater",
+            "collection": "lakeme",
             "title": "",
             "link": ""
           }
@@ -120,7 +172,7 @@
         "category_item_8PpTcq": {
           "type": "category_item",
           "settings": {
-            "collection": "timberland",
+            "collection": "vans",
             "title": "",
             "link": ""
           }
@@ -142,42 +194,40 @@
         "enable_desktop_slider": true
       }
     },
-    "our_categorys_Fyyicb": {
-      "type": "our-categorys",
+    "our_categories_yatziP": {
+      "type": "our-categories",
       "blocks": {
-        "column_LwWHbw": {
+        "column_NCkCKY": {
           "type": "column",
           "settings": {
-            "subheading": "Nutrition",
-            "heading": "Essentials",
-            "description": "<p>Explore our collection of essential items that.</p>",
-            "button_url": "",
-            "button_label": "Shop Now",
-            "image": "shopify://shop_images/category_image1.png"
+            "background_image": "shopify://shop_images/Catogery_section.jpg",
+            "heading": "Ladies Jackets",
+            "description": "<p>Style that keeps you warm.</p>",
+            "button_url": "shopify://collections/jacket",
+            "button_label": "Shop Now"
           }
         },
-        "column_BQpirU": {
+        "column_iqExeY": {
           "type": "column",
           "settings": {
-            "subheading": "Nutrition",
-            "heading": "Essentials",
-            "description": "<p>Explore our collection of essential items that.</p>",
-            "button_url": "",
-            "button_label": "Shop Now",
-            "image": "shopify://shop_images/home3_slide-item.webp"
+            "background_image": "shopify://shop_images/perfume-bottle-silk-fabric-and-dried-flowers-photo.jpg",
+            "heading": "Perfumes",
+            "description": "<p>Fragrance that lasts.</p>",
+            "button_url": "shopify://collections/bella-vita",
+            "button_label": "Shop Now"
           }
         }
       },
       "block_order": [
-        "column_LwWHbw",
-        "column_BQpirU"
+        "column_NCkCKY",
+        "column_iqExeY"
       ],
-      "name": "Our Categories",
+      "name": "Our Category",
       "settings": {
         "color_scheme": "",
         "border_radius": 10,
-        "columns_show": 1,
-        "enable_desktop_slider": true,
+        "columns_show": 2,
+        "enable_desktop_slider": false,
         "title": "Our Categories",
         "description": "<p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.</p>",
         "view_all_link": ""
@@ -207,15 +257,6 @@
             "testimonial": "Excellent product quality and very good support. Everything arrived in perfect condition and exactly as described. I’m extremely satisfied with my purchase."
           }
         },
-        "testimonial_yFxraC": {
-          "type": "testimonial",
-          "settings": {
-            "image": "shopify://shop_images/Testimonial-image2.jpg",
-            "name": "John Carter",
-            "designation": "Happy Customer",
-            "testimonial": "Amazing quality and fast delivery. I am really happy with my purchase and will definitely shop again. The packaging was great and the product quality is exactly as described."
-          }
-        },
         "testimonial_6ECVA3": {
           "type": "testimonial",
           "settings": {
@@ -233,13 +274,22 @@
             "designation": "Regular Buyer",
             "testimonial": "Great customer service and beautiful products. The team was very helpful and answered all my questions quickly. I’m really impressed with the quality and overall experience."
           }
+        },
+        "testimonial_yFxraC": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/Testimonial-image2.jpg",
+            "name": "John Carter",
+            "designation": "Happy Customer",
+            "testimonial": "The makeup is long-lasting and feels very light on my skin. The shades are perfect and the results look very natural. I’m really happy with my purchase."
+          }
         }
       },
       "block_order": [
         "testimonial_RR7wKf",
-        "testimonial_yFxraC",
         "testimonial_6ECVA3",
-        "testimonial_DEXadi"
+        "testimonial_DEXadi",
+        "testimonial_yFxraC"
       ],
       "name": "Our Testimonial",
       "settings": {
@@ -247,17 +297,37 @@
         "border_radius": 10,
         "columns_show": 3,
         "enable_desktop_slider": true,
+        "enable_autoplay": true,
+        "autoplay_speed": 3000,
         "title": "Our Testimonials",
         "description": "<p>See what our customers are saying about their experience with our products and services. We value every review and continuously strive to deliver quality, reliability, and excellent customer satisfaction.</p>"
+      }
+    },
+    "image_overlay_banner_kMTWqi": {
+      "type": "image-overlay-banner",
+      "name": "Image overlay Hero",
+      "settings": {
+        "color_scheme": "",
+        "banner_image": "shopify://shop_images/image-overlay-banner.jpg",
+        "heading": "OUR INSPIRATION",
+        "description": "Modern fashion can be stylish and sustainable—looking good shouldn’t cost the planet.",
+        "button_link": "shopify://collections/new-arrival",
+        "button_text": "Shop Now"
       }
     },
     "collection_tabbing_jaXyeV": {
       "type": "collection-tabbing",
       "blocks": {
-        "tab_NxqFGT": {
+        "tab_catKP4": {
           "type": "tab",
           "settings": {
-            "collection": "jacket"
+            "collection": "bella-vita"
+          }
+        },
+        "tab_VpkPc6": {
+          "type": "tab",
+          "settings": {
+            "collection": "lakeme"
           }
         },
         "tab_GwJGfe": {
@@ -286,7 +356,8 @@
         }
       },
       "block_order": [
-        "tab_NxqFGT",
+        "tab_catKP4",
+        "tab_VpkPc6",
         "tab_GwJGfe",
         "tab_VCErDK",
         "tab_y9PcyP",
@@ -311,78 +382,59 @@
         "countdown_date": "2026-04-05",
         "countdown_time": "01:00:00",
         "button_label": "SHOP NOW",
-        "button_link": "",
+        "button_link": "shopify://collections/all",
         "color_scheme": "scheme-d1d6ea59-e59b-4dca-84b0-47a0bed20039"
       }
     },
     "brand_logo_slider_btJUme": {
       "type": "brand-logo-slider",
       "blocks": {
-        "logo_rci36P": {
+        "logo_LLemYT": {
           "type": "logo",
           "settings": {
-            "image": "shopify://shop_images/logo.webp"
+            "image": "shopify://shop_images/Lakme_logo.png"
           }
         },
-        "logo_44pdjb": {
+        "logo_pVdyA9": {
           "type": "logo",
           "settings": {
-            "image": "shopify://shop_images/logo.webp"
+            "image": "shopify://shop_images/Pantaloons-logo.png"
           }
         },
-        "logo_KFrQrY": {
+        "logo_3jk63G": {
           "type": "logo",
           "settings": {
-            "image": "shopify://shop_images/logo.webp"
+            "image": "shopify://shop_images/Zara-log.png"
           }
         },
-        "logo_TpKUU9": {
+        "logo_aBMqHB": {
           "type": "logo",
           "settings": {
-            "image": "shopify://shop_images/logo.webp"
+            "image": "shopify://shop_images/Nike-Logo-new.png"
           }
         },
-        "logo_pcmBMP": {
+        "logo_TaAMEG": {
           "type": "logo",
           "settings": {
-            "image": "shopify://shop_images/logo.webp"
-          }
-        },
-        "logo_cKCkrh": {
-          "type": "logo",
-          "settings": {
-            "image": "shopify://shop_images/logo.webp"
-          }
-        },
-        "logo_y8KPfP": {
-          "type": "logo",
-          "settings": {
-            "image": "shopify://shop_images/logo.webp"
-          }
-        },
-        "logo_T3UHpT": {
-          "type": "logo",
-          "settings": {
-            "image": "shopify://shop_images/logo.webp"
+            "image": "shopify://shop_images/Bellavita-Logo-new.png"
           }
         }
       },
       "block_order": [
-        "logo_rci36P",
-        "logo_44pdjb",
-        "logo_KFrQrY",
-        "logo_TpKUU9",
-        "logo_pcmBMP",
-        "logo_cKCkrh",
-        "logo_y8KPfP",
-        "logo_T3UHpT"
+        "logo_LLemYT",
+        "logo_pVdyA9",
+        "logo_3jk63G",
+        "logo_aBMqHB",
+        "logo_TaAMEG"
       ],
       "settings": {
         "title": "Shop by Brand",
         "description": "<p>Discover your favorite brands all in one place. From trusted names to emerging labels, shop by brand to find the styles and quality you love.</p>",
         "view_all_link": "",
-        "color_scheme": "",
+        "color_scheme": "scheme-1",
         "columns_show": 4,
+        "enable_autoplay": true,
+        "autoplay_speed": 1000,
         "enable_desktop_slider": true
       }
     },
@@ -465,13 +517,15 @@
   },
   "order": [
     "banner_slider",
+    "usps_bar_xG88fH",
     "new_arrival_J3Hxg7",
     "best_selling_products_4pDCUz",
     "image_banner_rkMCY8",
     "category_section_jKKYNt",
-    "our_categorys_Fyyicb",
+    "our_categories_yatziP",
     "promo_banner_ga9rbY",
     "our_testimonial_miehcQ",
+    "image_overlay_banner_kMTWqi",
     "collection_tabbing_jaXyeV",
     "sale_countdown_TgA8rA",
     "brand_logo_slider_btJUme",

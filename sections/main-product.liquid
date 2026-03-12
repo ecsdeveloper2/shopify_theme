@@ -229,15 +229,10 @@
                         type="number"
                         name="quantity"
                         id="Quantity-{{ section.id }}"
-                        data-cart-quantity="{{ cart_qty }}"
-                        data-min="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
-                        min="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
-                        {% if product.selected_or_first_available_variant.quantity_rule.max != null %}
-                          data-max="{{ product.selected_or_first_available_variant.quantity_rule.max }}"
-                          max="{{ product.selected_or_first_available_variant.quantity_rule.max }}"
-                        {% endif %}
-                        step="{{ product.selected_or_first_available_variant.quantity_rule.increment }}"
-                        value="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
+                        min="1"
+                        max="{{ product.selected_or_first_available_variant.inventory_quantity }}"
+                        step="1"
+                        value="1"
                         form="{{ product_form_id }}"
                       >
                       <button class="quantity__button" name="plus" type="button">
@@ -499,6 +494,54 @@
     {% endif %}
   {% endif %}
 {% endfor %}
+<script>
+ document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll(".quantity__input").forEach(function(input){
+    input.addEventListener("change", function(){
+      let max = parseInt(this.getAttribute("max"));
+      let min = parseInt(this.getAttribute("min")) || 1;
+      let value = parseInt(this.value);
+      if(value > max){
+        this.value = max;
+      }
+      if(value < min || isNaN(value)){
+        this.value = min;
+      }
+    });
+  });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  const addToCartBtn = document.querySelector('#ProductSubmitButton-template--26137031442727__main');
+  if (!addToCartBtn) return;
+  addToCartBtn.addEventListener("click", function (e) {
+    const qtyInput = document.querySelector('input[name="quantity"]');
+    const variantInput = document.querySelector('input[name="id"]');
+    let selectedQty = qtyInput ? parseInt(qtyInput.value) : 1;
+    let currentVariantId = variantInput ? variantInput.value : null;
+    const cartItems = document.querySelectorAll('.drawer-qty');
+    for (let i = 0; i < cartItems.length; i++) {
+      let cartItem = cartItems[i];
+      let cartVariantId = cartItem.dataset.variantId;
+      if (cartVariantId == currentVariantId) {
+        let currentQty = parseInt(cartItem.querySelector('.qty-number').textContent.trim());
+        let maxQty = parseInt(cartItem.dataset.max);
+        if ((currentQty + selectedQty) > maxQty) {
+          e.preventDefault();
+          let remaining = maxQty - currentQty;
+          if (remaining > 0) {
+            alert("You can only add " + remaining + " more item.");
+          } else {
+            alert("Only " + maxQty + " products available.");
+          }
+          return false;
+        }
+        break; 
+      }
+    }
+  });
+});
+</script>
 {% schema %}
 {
   "name": "t:sections.main-product.name",

@@ -19,12 +19,23 @@
   justify-content: end;
   width: 100%;
   align-items: center;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
 }
 .header__icon account-icon {
   display: flex;
 }
 .header__icon.header__icon--cart::before {
+  content: "";
+  display: block;
+  width: 1px;
+  height: 20px;
+  background: #bfc3c8;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+.header__icon.header__icon--account::before {
   content: "";
   display: block;
   width: 1px;

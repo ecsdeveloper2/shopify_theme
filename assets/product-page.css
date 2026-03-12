@@ -367,3 +367,12 @@ details[open] summary .icon-minus {
     height: 40px;
   }
 }
+@media (max-width:430px){
+  .product-form__buttons .add-to-cart-button{
+    width: 50%;
+  }
+  .product-form__buttons {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+}
