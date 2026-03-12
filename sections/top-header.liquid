@@ -23,6 +23,16 @@
           {% endif %}
       {% endif %}
       {% endfor %}
+      <div class="top-header-contact d-flex align-items-center d-none-sm">
+        <a class="contact-detail-info icon-email link d-flex align-items-center d-none-sm" href="mailto:{{ settings.email_id }}">
+            <span class="svg-wrapper">{{ 'icon-email.svg' | inline_asset_content }}</span>
+            {{ settings.email_id }}
+        </a>
+        <a class="contact-detail-info icon-phone link d-flex align-items-center" href="tel:{{ settings.phone_number }}">
+            <span class="svg-wrapper">{{ 'icon-phone.svg' | inline_asset_content }}</span>
+            {{ settings.phone_number }}
+        </a>
+      </div>
     </div>
   </div>
 </div>
