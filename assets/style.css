@@ -1844,6 +1844,9 @@ footer .footer-social-icon {
     width: 18px;
     height: 19px;
   } 
+  .top-header-item-block {
+    padding: 8px 0;
+  }
   .top-header-item-block .header__icons {
     display: flex;
   }
@@ -2492,26 +2495,3 @@ form#FacetFiltersForm {
     gap: 10px;
   }
 }
-/* Collection Desc read more css */
-.banner__description {
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.banner__description.expanded {
-  -webkit-line-clamp: unset;
-}
-
-.svg-wrapper{
-  transition: transform 0.3s ease;
-}
-
-.svg-wrapper.rotate{
-  transform: rotate(180deg);
-}
-.before-description-section .text{
-  font-weight:bold;
-}
-/* End Collection Desc read more css */
