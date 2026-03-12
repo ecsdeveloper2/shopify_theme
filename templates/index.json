@@ -61,7 +61,7 @@
         "title": "Our Best Sellers",
         "description": "<p>Shop our most popular picks, trusted by thousands of happy customers.These top sellers combine style, quality, and value you’ll love.</p>",
         "view_all_link": "",
-        "columns_show": 3,
+        "columns_show": 3.5,
         "collection": "all",
         "color_scheme": "",
         "show_secondary_image": true,
