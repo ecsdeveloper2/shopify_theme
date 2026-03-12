@@ -142,48 +142,6 @@
         "enable_desktop_slider": true
       }
     },
-    "our_categorys_Fyyicb": {
-      "type": "our-categorys",
-      "blocks": {
-        "column_Prh8QK": {
-          "type": "column",
-          "settings": {
-            "subheading": "Trending",
-            "heading": "Cosmetics",
-            "description": "<p>Explore our collection of cosmetics.</p>",
-            "button_url": "shopify://collections/lakeme",
-            "button_label": "Shop Now",
-            "image": "shopify://shop_images/lakme-beauty-kit-for-parlour-use-003.jpg"
-          }
-        },
-        "column_BQpirU": {
-          "type": "column",
-          "settings": {
-            "subheading": "Luxury",
-            "heading": "Perfumes",
-            "description": "<p>Explore our collection of perfumes.</p>",
-            "button_url": "shopify://collections/bella-vita",
-            "button_label": "Shop Now",
-            "image": "shopify://shop_images/LuxuryPerfumeforMenandWomenIPerfumeGiftSet-BellaVitaLuxury.png"
-          }
-        }
-      },
-      "block_order": [
-        "column_Prh8QK",
-        "column_BQpirU"
-      ],
-      "disabled": true,
-      "name": "Our Categories",
-      "settings": {
-        "color_scheme": "",
-        "border_radius": 10,
-        "columns_show": 2,
-        "enable_desktop_slider": false,
-        "title": "Our Categories",
-        "description": "<p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.</p>",
-        "view_all_link": ""
-      }
-    },
     "our_categories_yatziP": {
       "type": "our-categories",
       "blocks": {
@@ -511,7 +469,6 @@
     "best_selling_products_4pDCUz",
     "image_banner_rkMCY8",
     "category_section_jKKYNt",
-    "our_categorys_Fyyicb",
     "our_categories_yatziP",
     "promo_banner_ga9rbY",
     "our_testimonial_miehcQ",
