@@ -41,10 +41,62 @@
       ],
       "settings": {}
     },
+    "usps_bar_xG88fH": {
+      "type": "usps-bar",
+      "blocks": {
+        "usp_block_Wxz43C": {
+          "type": "usp_block",
+          "settings": {
+            "icon": "shopify://shop_images/free_shipping.svg",
+            "icon_svg": "",
+            "heading": "Free Shipping",
+            "description": "Free shipping on all orders over $50 with fast and reliable delivery."
+          }
+        },
+        "usp_block_TCh4CA": {
+          "type": "usp_block",
+          "settings": {
+            "icon": "shopify://shop_images/easy_returns.svg",
+            "icon_svg": "",
+            "heading": "Easy Returns",
+            "description": "Hassle-free returns within 30 days for a smooth shopping experience."
+          }
+        },
+        "usp_block_dC493n": {
+          "type": "usp_block",
+          "settings": {
+            "icon": "shopify://shop_images/Security.svg",
+            "icon_svg": "",
+            "heading": "Secure Checkout",
+            "description": "Your payments are protected with advanced security and trusted gateways."
+          }
+        },
+        "usp_block_ikdq66": {
+          "type": "usp_block",
+          "settings": {
+            "icon": "shopify://shop_images/Premium_quality.svg",
+            "icon_svg": "",
+            "heading": "Premium Quality",
+            "description": "Carefully selected products made with high-quality materials."
+          }
+        }
+      },
+      "block_order": [
+        "usp_block_Wxz43C",
+        "usp_block_TCh4CA",
+        "usp_block_dC493n",
+        "usp_block_ikdq66"
+      ],
+      "name": "USPs Bar",
+      "settings": {
+        "color_scheme": ""
+      }
+    },
     "new_arrival_J3Hxg7": {
       "type": "new-arrival",
       "settings": {
         "title": "New arrival",
+        "discription": "Introducing our newest arrivals — where modern design meets refined sophistication.",
         "image": "shopify://shop_images/watch.webp",
         "color_scheme": "scheme-1",
         "collection": "new-arrival",
@@ -465,6 +517,7 @@
   },
   "order": [
     "banner_slider",
+    "usps_bar_xG88fH",
     "new_arrival_J3Hxg7",
     "best_selling_products_4pDCUz",
     "image_banner_rkMCY8",
