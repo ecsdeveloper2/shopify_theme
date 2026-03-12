@@ -13,9 +13,9 @@
               >
                 <span
                   {%- if link.child_active %}
-                    class="header__active-menu-item h3"
+                    class="header__active-menu-item"
                   {% else %}
-                    class="h3"
+                    class=""
                   {% endif %}
                 >
                   {{- link.title | capitalize | escape -}}
@@ -115,7 +115,7 @@
               {%- if link.current %}
                 class="header__active-menu-item"
               {% else %}
-              class="h3"
+              class=""
               {% endif %}
             >
               {{- link.title | escape -}}
