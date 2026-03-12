@@ -979,9 +979,8 @@ a.view-all-button.btn {
 .new-arrival-row {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
   width: 100%;
-  gap: 24px;
+  gap: 22px;
 }
 .new-arrival-box {
   width: calc(25% - 12px);
@@ -1249,7 +1248,7 @@ ul.slick-dots {
   flex-wrap: wrap;
   align-items: center;
   width: 100%;
-  gap: 24px;
+  gap: 22px;
 }
 .best-selling-product{
   width: calc(75% - 12px);
