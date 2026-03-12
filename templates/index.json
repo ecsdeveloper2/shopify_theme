@@ -48,7 +48,7 @@
         "image": "shopify://shop_images/watch.webp",
         "color_scheme": "scheme-1",
         "collection": "new-arrival",
-        "columns_show": 3,
+        "columns_show": 3.5,
         "product_limit": 8,
         "show_secondary_image": true,
         "quick_add": true,
