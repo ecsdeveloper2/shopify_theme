@@ -17,7 +17,7 @@
   height: 16px;
 }
 .main-collection-banner .banner__image img {
-  max-height: 480px;
+  max-height: fit-content;
   display: block;
   width: 100%;
   object-fit: contain;
