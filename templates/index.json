@@ -16,10 +16,14 @@
           "type": "banner-slider-item",
           "settings": {
             "color_scheme": "",
-            "image": "shopify://shop_images/banner-image1.webp",
-            "image-mobile": "shopify://shop_images/banner-image1.webp",
-            "image_opacity": 0,
-            "link": "shopify://collections/herschel"
+            "image": "shopify://shop_images/BannerImage.jpg",
+            "image-mobile": "shopify://shop_images/Purse.jpg",
+            "heading": "Elevate Your Everyday Style",
+            "description": "Step into the latest trends and redefine your everyday look.",
+            "image_opacity": 30,
+            "link": "shopify://collections/herschel",
+            "button_text": "Shop Now",
+            "image_position": "left"
           },
           "blocks": {}
         },
@@ -27,10 +31,14 @@
           "type": "banner-slider-item",
           "settings": {
             "color_scheme": "",
-            "image": "shopify://shop_images/banner-image2.webp",
-            "image-mobile": "shopify://shop_images/banner-image2.webp",
-            "image_opacity": 0,
-            "link": "shopify://collections/dr-martens"
+            "image": "shopify://shop_images/BannerImage.jpg",
+            "image-mobile": "shopify://shop_images/Maroon-Jacket.png",
+            "heading": "Elevate Your Everyday Style",
+            "description": "Step into the latest trends and redefine your everyday look.",
+            "image_opacity": 30,
+            "link": "shopify://collections/dr-martens",
+            "button_text": "Shop Now",
+            "image_position": "left"
           },
           "blocks": {}
         }
