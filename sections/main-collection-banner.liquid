@@ -22,10 +22,10 @@
     <div class="banner banner--split d-flex flex-wrap item-gap align-items-center">
       <div class="banner__text col-2 col-2-lg col-2-sm col-2-xs">
         <h1 class="banner__heading">{{ collection.title }}</h1>
-        <div class="banner__description text-left">{{ collection.description |  strip_html |  truncatewords: 40 }}</div>
-        <a class="before-description-section link" href="#before-description">
-          Read More 
-          <div class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</div>
+        <div class="banner__description text-left" id="collection-desc">{{ collection.description |  strip_html |  truncatewords: 40 }}</div>
+        <a class="before-description-section link" id="toggle-desc-btn" href="javascript:void(0)" href="#before-description">
+          <span class="text">Read More</span> 
+          <div class="svg-wrapper" id="arrow-icon">{{- 'icon-caret.svg' | inline_asset_content -}}</div>
         </a>
       </div>
       <div class="banner__image col-2 col-2-lg col-2-sm col-2-xs">
@@ -49,6 +49,33 @@
     </div>
   </div>
 </div>
+<script>
+ document.addEventListener("DOMContentLoaded", function () {
+
+  const desc = document.getElementById("collection-desc");
+  const btn = document.getElementById("toggle-desc-btn");
+  const text = btn.querySelector(".text");
+  const arrow = document.getElementById("arrow-icon");
+
+  if (desc.scrollHeight <= desc.clientHeight) {
+    btn.style.display = "none";
+  }
+
+  btn.addEventListener("click", function () {
+
+    desc.classList.toggle("expanded");
+    arrow.classList.toggle("rotate");
+
+    if (desc.classList.contains("expanded")) {
+      text.textContent = "Read Less";
+    } else {
+      text.textContent = "Read More";
+    }
+
+  });
+
+});
+</script>
 {% schema %}
 {
     "name": "Main Collection Banner",
