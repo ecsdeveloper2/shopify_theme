@@ -147,11 +147,16 @@
     {%- endif -%}
 
     <div class="header__icons">
-      {% render 'header-search-field', input_id: 'Search-In-Modal' %}
+      <div class="header__icon header__icon--search link focus-inset">
+        <span class="svg-wrapper">
+          {{- 'icon-search.svg' | inline_asset_content -}}
+        </span>
+        {% render 'header-search-field', input_id: 'Search-In-Modal' %}
+      </div>
 
       <a
         href="/pages/wishlist"
-        class="header__icon header__icon--wishlist link focus-inset d-none-sm"
+        class="header__icon header__icon--wishlist link focus-inset"
         id="wishlist-icon"
       >
         <span class="svg-wrapper">
@@ -175,7 +180,7 @@
       {%- if shop.customer_accounts_enabled -%}
         <a
           href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
-          class="header__icon header__icon--account link focus-inset{% if section.settings.menu != blank %} small-hide{% endif %} d-none-sm"
+          class="header__icon header__icon--account link focus-inset{% if section.settings.menu != blank %} small-hide{% endif %}"
           rel="nofollow"
         >
           {%- if section.settings.enable_customer_avatar -%}
@@ -210,7 +215,7 @@
 
       <a
         href="{{ routes.cart_url }}"
-        class="header__icon header__icon--cart link focus-inset d-none-sm"
+        class="header__icon header__icon--cart link focus-inset"
         id="cart-icon-bubble"
       >
         {% if cart == empty %}

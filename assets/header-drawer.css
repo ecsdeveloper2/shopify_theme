@@ -143,3 +143,10 @@
 .menu-drawer__submenu-list details[open] summary .svg-wrapper {
   rotate: 0deg;
 }
+.drawer-contact-detail .contact-detail-info{
+  padding: 10px 0;
+  gap: 12px;
+}
+.drawer-contact-detail .icon-email{
+  border-bottom: 1px solid #bfc3c8;
+}
