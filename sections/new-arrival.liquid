@@ -7,7 +7,7 @@
           <p>{{ section.settings.discription }}</p>
         </div>
         {% if section.settings.image %}
-          <img src="{{ section.settings.image | img_url: 'medium' }}" alt="New Arrival Image" />
+          <img src="{{ section.settings.image | img_url: 'medium' }}" alt="New Arrival Image" width="" height=""/>
         {% endif %}
       </div>
       <div class="new-arrival-product">
@@ -106,6 +106,12 @@
       "id": "shop_now",
       "default": false,
       "label": "Shop Now Button"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_wishlist",
+      "label": "Enable Wishlist",
+      "default": true
     }
   ],
   "presets": [

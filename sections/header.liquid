@@ -64,10 +64,6 @@
       if section.settings.menu != blank
         render 'header-drawer'
       endif
-
-      if section.settings.logo_position == 'top-center' or section.settings.menu == blank
-        render 'header-search-icon', input_id: 'Search-In-Modal-1'
-      endif
     -%}
 
     {%- if section.settings.logo_position != 'middle-center' -%}
@@ -147,36 +143,43 @@
     {%- endif -%}
 
     <div class="header__icons">
-      <div class="header__icon header__icon--search link focus-inset">
-        <span class="svg-wrapper">
-          {{- 'icon-search.svg' | inline_asset_content -}}
-        </span>
-        {% render 'header-search-field', input_id: 'Search-In-Modal' %}
-      </div>
-
-      <a
-        href="/pages/wishlist"
-        class="header__icon header__icon--wishlist link focus-inset"
-        id="wishlist-icon"
-      >
-        <span class="svg-wrapper">
-          <svg
-            viewBox="0 0 64 64"
-            width="22"
-            height="22"
-            xmlns="http://www.w3.org/2000/svg"
-            stroke-width="0"
-            stroke="#000"
-            fill="none"
-          >
-            <path d="M9.06,25C7.68,17.3,12.78,10.63,20.73,10c7-.55,10.47,7.93,11.17,9.55a.13.13,0,0,0,.25,0c3.25-8.91,9.17-9.29,11.25-9.5C49,9.45,56.51,13.78,55,23.87c-2.16,14-23.12,29.81-23.12,29.81S11.79,40.05,9.06,25Z"/>
-          </svg>
-        </span>
-        <span class="visually-hidden">Wishlist</span>
-        <div class="wishlist-count-bubble " style="display:none;">
-          <span aria-hidden="true" style="color: white;">0</span>
+      <div>
+        <div class="header__icon header__icon--search link focus-inset" id="searchToggle">
+          <span class="svg-wrapper">
+            {{- 'icon-search.svg' | inline_asset_content -}}
+          </span>
         </div>
-      </a>
+        <div class="header-search-dropdown" id="headerSearch">
+          <div class="page-container">
+            {% render 'header-search-field', input_id: 'Search-In-Modal' %}
+          </div>
+        </div>
+      </div>
+      {% if section.settings.enable_wishlist %}
+        <a
+          href="/pages/wishlist"
+          class="header__icon header__icon--wishlist link focus-inset"
+          id="wishlist-icon"
+        >
+          <span class="svg-wrapper">
+            <svg
+              viewBox="0 0 64 64"
+              width="22"
+              height="22"
+              xmlns="http://www.w3.org/2000/svg"
+              stroke-width="0"
+              stroke="#000"
+              fill="none"
+            >
+              <path d="M9.06,25C7.68,17.3,12.78,10.63,20.73,10c7-.55,10.47,7.93,11.17,9.55a.13.13,0,0,0,.25,0c3.25-8.91,9.17-9.29,11.25-9.5C49,9.45,56.51,13.78,55,23.87c-2.16,14-23.12,29.81-23.12,29.81S11.79,40.05,9.06,25Z"/>
+            </svg>
+          </span>
+          <span class="visually-hidden">Wishlist</span>
+          <div class="wishlist-count-bubble " style="display:none;">
+            <span aria-hidden="true" style="color: white;">0</span>
+          </div>
+        </a>
+      {% endif %}
       {%- if shop.customer_accounts_enabled -%}
         <a
           href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
@@ -340,30 +343,23 @@
   customElements.define('sticky-header', StickyHeader);
 {% endjavascript %}
 <script>
-  if (window.innerWidth >= 990) {
-    document.querySelectorAll('header details.mega-menu').forEach(function (menu) {
-      menu.addEventListener('mouseenter', function () {
-        menu.setAttribute('open', '');
-      });
-
-      menu.addEventListener('mouseleave', function () {
-        menu.removeAttribute('open');
-      });
-    });
-  }
-</script>
-{% comment %} <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
-    let bubble = document.querySelector('.wishlist-count-bubble span');
-    let bubbleWrap = document.querySelector('.wishlist-count-bubble');
-    if (!bubble) return;
-    if (wishlist.length > 0) {
-      bubbleWrap.style.display = 'block';
-      bubble.textContent = wishlist.length;
-    }
+if (window.innerWidth >= 990) {
+  document.querySelectorAll('header details.mega-menu, .dropdown-menu-items').forEach(menu => {
+    menu.onmouseenter = () => menu.setAttribute('open','');
+    menu.onmouseleave = () => menu.removeAttribute('open');
   });
-</script> {% endcomment %}
+}
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const toggle = document.getElementById('searchToggle');
+    const search = document.getElementById('headerSearch');
+
+    toggle.addEventListener('click', function () {
+      search.classList.toggle('active');
+    });
+  });
+</script>
 <script type="application/ld+json">
   {
     "@context": "http://schema.org",
@@ -509,6 +505,12 @@
       "default": true,
       "label": "t:sections.header.settings.enable_customer_avatar.label",
       "info": "t:sections.header.settings.enable_customer_avatar.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_wishlist",
+      "label": "Enable Wishlist",
+      "default": true
     },
     {
       "type": "header",

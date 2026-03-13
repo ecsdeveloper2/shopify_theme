@@ -156,6 +156,7 @@
   box-shadow: 0px 4px 4px -4px #00000094;
   max-height: 550px;
   overflow: hidden auto;
+  border-radius: 10px;
 }
 .cart-popup{
   position: fixed;

@@ -38,7 +38,7 @@
         </div>
       {%- endif -%}
 
-      {%- if articles.size > 0 -%}
+      {% comment %} {%- if articles.size > 0 -%}
         <div class="search-section articles-section">
           <h2>Articles</h2>
           <div class="d-flex flex-wrap item-gap">
@@ -51,9 +51,9 @@
             {%- endfor -%}
           </div>
         </div>
-      {%- endif -%}
+      {%- endif -%} {% endcomment %}
 
-      {%- if pages.size > 0 -%}
+      {% comment %} {%- if pages.size > 0 -%}
         <div class="search-section pages-section">
           <h2>Pages</h2>
           <div class="d-flex flex-wrap item-gap">
@@ -79,7 +79,7 @@
             {%- endfor -%}
           </div>
         </div>
-      {%- endif -%}
+      {%- endif -%} {% endcomment %}
     {%- endif -%}
   {% endpaginate %}
 </div>
