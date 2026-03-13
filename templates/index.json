@@ -440,7 +440,7 @@
         "description": "<p>Discover your favorite brands all in one place. From trusted names to emerging labels, shop by brand to find the styles and quality you love.</p>",
         "view_all_link": "",
         "color_scheme": "scheme-1",
-        "columns_show": 4,
+        "columns_show": 5,
         "enable_autoplay": true,
         "autoplay_speed": 1000,
         "enable_desktop_slider": true
