@@ -60,8 +60,9 @@
       <button type="button" class="drawer-close btn" id="CloseCart">×</button>
     </div>
 
-    <div class="cart-drawer-body">
+    <div class="cart-drawer-body d-flex flex-column justify-content-between h-100">
       {% if cart.item_count > 0 %}
+        <div>
         {% for item in cart.items %}
           <div class="drawer-item">
             <img src="{{ item.image | image_url: width: 80 }}" alt="" width="" height="">
@@ -77,6 +78,7 @@
             </div>
           </div>
         {% endfor %}
+        </div>
         <div class="cart-drawer-footer">
           <div class="drawer-subtotal">
             <span>Subtotal:</span>
@@ -97,136 +99,3 @@
     </div>
   </div>
 {% endif %}
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const CartDrawer = document.getElementById('CartDrawer'),
-      CartOverlay = document.getElementById('CartOverlay');
-
-    /* OPEN CART */
-    function openCart() {
-      CartDrawer.classList.add('active');
-      CartOverlay.classList.add('active');
-      document.body.classList.add('cart-open');
-    }
-
-    /* CLOSE CART */
-    function closeCart() {
-      CartDrawer.classList.remove('active');
-      CartOverlay.classList.remove('active');
-      document.body.classList.remove('cart-open');
-    }
-
-    /* UPDATE CART UI */
-    function updateCartUI(cart) {
-      const subtotal = document.getElementById('DrawerSubtotal'),
-        bubbles = document.querySelectorAll('.cart-count-bubble');
-
-      bubbles.forEach((b) => {
-        const v = b.querySelector('span[aria-hidden="true"]'),
-          h = b.querySelector('.visually-hidden');
-        if (v) v.textContent = cart.item_count;
-        if (h) h.textContent = cart.item_count + ' items';
-      });
-
-      if (subtotal) {
-        subtotal.textContent = 'Rs. ' + (cart.total_price / 100).toLocaleString('en-IN', { minimumFractionDigits: 2 });
-      }
-    }
-
-    /* REFRESH CART DRAWER */
-    function refreshDrawer() {
-      fetch(location.href)
-        .then((r) => r.text())
-        .then((html) => {
-          const doc = new DOMParser().parseFromString(html, 'text/html'),
-            newDrawer = doc.querySelector('#CartDrawer');
-          if (newDrawer) CartDrawer.innerHTML = newDrawer.innerHTML;
-        });
-
-      fetch('/cart.js')
-        .then((r) => r.json())
-        .then((cart) => updateCartUI(cart));
-    }
-
-    /* ADD TO CART */
-    document.addEventListener('submit', function (e) {
-      const form = e.target.closest('form[data-type="add-to-cart-form"]');
-      if (!form) return;
-
-      e.preventDefault();
-
-      fetch('/cart/add.js', {
-        method: 'POST',
-        body: new FormData(form),
-      })
-        .then((res) => res.json())
-        .then(() => {
-          refreshDrawer();
-          openCart();
-        });
-    });
-
-    /* CLICK EVENTS */
-    document.addEventListener('click', function (e) {
-      /* OPEN CART */
-      if (e.target.closest('#cart-icon-bubble')) {
-        e.preventDefault();
-        openCart();
-        return;
-      }
-
-      /* CLOSE CART */
-      if (e.target.id === 'CloseCart' || e.target.id === 'CartOverlay') {
-        closeCart();
-        return;
-      }
-
-      /* REMOVE ITEM */
-      if (e.target.classList.contains('cart-remove-btn')) {
-        fetch('/cart/change.js', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            id: e.target.dataset.key,
-            quantity: 0,
-          }),
-        })
-          .then((res) => res.json())
-          .then(() => refreshDrawer());
-
-        return;
-      }
-
-      /* QUANTITY UPDATE */
-      const qtyWrapper = e.target.closest('.drawer-qty');
-      if (!qtyWrapper) return;
-
-      let numberEl = qtyWrapper.querySelector('.qty-number');
-      let minusBtn = qtyWrapper.querySelector('.qty-minus');
-      let plusBtn = qtyWrapper.querySelector('.qty-plus');
-      let value = parseInt(numberEl.textContent.trim());
-      let newQty = value;
-      let max = parseInt(qtyWrapper.dataset.max);
-
-      if (e.target.classList.contains('qty-plus')) newQty++;
-      if (e.target.classList.contains('qty-minus')) newQty--;
-      if (newQty < 1) newQty = 1;
-      if (newQty > max) newQty = max;
-
-      numberEl.textContent = newQty;
-      minusBtn.disabled = newQty <= 1;
-      plusBtn.disabled = newQty >= max;
-
-      fetch('/cart/change.js', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          id: qtyWrapper.dataset.key,
-          quantity: newQty,
-        }),
-      })
-        .then((res) => res.json())
-        .then((cart) => updateCartUI(cart));
-    });
-  });
-</script>

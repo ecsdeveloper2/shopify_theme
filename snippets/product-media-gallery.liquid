@@ -7,7 +7,7 @@
             alt="{{ product.title }}"
             data-index="0"
             class="main-product-image"
-            style="cursor: zoom-in;"
+            style="cursor: zoom-in;" width="" height=""
         />
         <span class="zoom-icon svg-wrapper" onclick="zoomImage()">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M32 32C14.3 32 0 46.3 0 64l0 96c0 17.7 14.3 32 32 32s32-14.3 32-32l0-64 64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L32 32zM64 352c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 96c0 17.7 14.3 32 32 32l96 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0 0-64zM320 32c-17.7 0-32 14.3-32 32s14.3 32 32 32l64 0 0 64c0 17.7 14.3 32 32 32s32-14.3 32-32l0-96c0-17.7-14.3-32-32-32l-96 0zM448 352c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 64-64 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l96 0c17.7 0 32-14.3 32-32l0-96z"/></svg>
@@ -21,7 +21,7 @@
                     alt="{{ product.title }} thumbnail {{ forloop.index }}"
                     class="thumbnail{% if forloop.first %} active{% endif %}"
                     data-index="{{ forloop.index0 }}"
-                    onclick="changeMainImage({{ forloop.index0 }})"
+                    onclick="changeMainImage({{ forloop.index0 }})" width="" height=""
                 />
             {%- endfor -%}
         </div>
@@ -34,7 +34,7 @@
 
 <div id="zoom-modal" class="zoom-modal" style="display:none;">
     <span class="close" onclick="closeZoom()">&times;</span>
-    <img class="zoom-modal-content" id="zoomed-image" />
+    <img class="zoom-modal-content" id="zoomed-image" width="" height="">
 </div>
 <script>
     var images = [
@@ -89,4 +89,17 @@ window.onclick = function(event) {
         closeZoom();
     }
 }
+</script>
+<script>
+document.addEventListener('change', function(e) {
+  if (e.target.name === 'id') {
+    const variantId = e.target.value;
+    const variants = {{ product.variants | json }};
+    const mainImage = document.getElementById('main-product-image');
+    const selectedVariant = variants.find(v => v.id == variantId);
+    if (selectedVariant && selectedVariant.featured_image) {
+      mainImage.src = selectedVariant.featured_image.src.replace(/(\.[^.]*)$/, '_1024x1024$1');
+    }
+  }
+});
 </script>
